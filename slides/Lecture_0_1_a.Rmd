@@ -17,15 +17,15 @@ Introductory survey of some formal methods that are of broad philosophical use.
 
 ## Three Sections
 
-1. Propositional Logic
-2. Probability and Statistical Reasoning
-3. Modal Logic and Conditionals
+> 1. Propositional Logic
+> 2. Probability and Statistical Reasoning
+> 3. Modal Logic and Conditionals
 
 ## Propositional Logic
 
-> - This is the logic of sentences that can be true or false, and that can combine to form longer sentences. 
-> - It is taken for granted in almost any field (outside philosophy) where formal tools are used. 
-> - In philosophy we might sometimes want to drop the assumption that everything is either true or false (and not both), but for this course we'll take it for granted.
+- This is the logic of sentences that can be true or false, and that can combine to form longer sentences. 
+- So as well as looking at simple sentences, like _Nadia sings_, we will look at sentences that are built from simple sentences.
+- Examples of such sentences are _Nadia doesn't sing_, _Nadia sings and Bethany dances_, and _If Nadia sings, Simone sleeps_.
 
 ## Probability and Statistical Reasoning
 
