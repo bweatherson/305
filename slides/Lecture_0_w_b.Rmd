@@ -134,12 +134,11 @@ What are some virtues of arguments that you can think of? What makes for a good 
 
 ## Virtues of Arguments
 
-- Premises are true.
-- Premises are known. 
-- Premises are accepted in debate. 
-- Premises are evidence for the conclusion.
-- Premises are reasons to believe the conclusion.
-- Premises guarantee the truth of the conclusion.
+> - Premises are true.
+> - Premises are known. 
+> - Premises are accepted in debate. 
+> - Premises are evidence for the conclusion.
+> - Premises guarantee the truth of the conclusion.
 
 ## Logic
 

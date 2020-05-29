@@ -36,9 +36,9 @@ Introductory survey of some formal methods that are of broad philosophical use.
 
 This is the logic of 'must' and 'might'.  It has as many applications as there are interpretations of 'must' and 'might'. The primary interpretations we'll look at are:
 
-- Metaphysical 
-- Epistemological  
-- Moral 
+> - Metaphysical 
+> - Epistemological  
+> - Moral 
 
 ## Textbooks
 
@@ -52,24 +52,36 @@ The three books are for the three parts of the course.
 
 ## The Carnap Book
 
-![https://carnap.io](images/0_1_a_Carnap.png){height=80%}
+![https://carnap.io](../images/0_1_a_Carnap.png){height=80%}
 
 ## Registering with Carnap
 
-![One more registration step](images/0_1_a_Carnap_Need_Register.png){height=80%}
+![One more registration step](../images/0_1_a_Carnap_Need_Register.png){height=80%}
 
 ---
 
-![Register in the right course](images/0_1_a_Registration.png){height=80%}
+![Register in the right course](../images/0_1_a_Registration.png){height=80%}
 
 ## Odds and Ends
 
-![https://jonathanweisberg.org/vip/](images/0_1_a_Odds_and_Ends.png){height=80%}
+![https://jonathanweisberg.org/vip/](../images/0_1_a_Odds_and_Ends.png){height=80%}
 
 ## Boxes and Diamonds
 
-![https://bd.openlogicproject.org](images/0_1_a_Boxes_and_Diamonds.png){height=80%}
+![https://bd.openlogicproject.org](../images/0_1_a_Boxes_and_Diamonds.png){height=80%}
 
 ---
 
-![Boxes and Diamonds - Ann Arbor](images/0_1_a_Boxes_and_Diamonds_AA.png){height=80%}
+![Boxes and Diamonds - Ann Arbor](../images/0_1_a_Boxes_and_Diamonds_AA.png){height=80%}
+
+## Logistics
+
+- These lectures are going to be very short.
+- That's in part because it's really hard to retain focus through a long logic video, and in part because it's easier to manage uploads and downloads with smaller files.
+- So we'll typically have somewhere between 6 and 10 'lectures' each week, though each will be 5 to 15 minutes.
+
+## Access
+
+- These slides don't have captioning.
+- But the script I'm reading off is available on Canvas, and that should be more reliable than automated captions.
+- The script also says where the slide jumps are, so if you don't want to listen to me, you can just read along the script plus the slides.

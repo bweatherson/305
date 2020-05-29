@@ -1,0 +1,146 @@
+Logic studies whether arguments have a certain good feature.
+
+An argument, in the sense we're interested in, has two parts: premises and conclusion. The premises are things that are offered as reasons, and the conclusion is what is claimed to be supported from the premises.
+
+<new slide>
+
+Here is an example of an argument. It has two premises.
+
+One: All kangaroos are wise.
+
+Two: Skippy is a kangaroo.
+
+And it has a conclusion: Skippy is wise.
+
+<new slide>
+
+When we are presenting arguments this way, we typically separate premises and conclusions with a horizontal line. The premises go above the line, and are numbered.
+
+<new slide>
+
+The conclusion goes below the line, and need not be numbered. Sometimes you see it marked with a C for conclusion, or a number one after the premises. So that would be 3 in this case. But that's just ornamentation; it doesn't need a number.
+
+<new slide>
+
+There is no fixed number of premises. You can have any number you like. Indeed, there need not be any premises.
+
+<new slide>
+
+Here's a presentation, in premise-conclusion form, of the opening of the Declaration of Independence. This argument is saying that it follows from no premises at all that All men are created equal. And that seems like a rough and ready way of understanding what the Founders meant by saying its self-evident.
+
+<new slide>
+
+And you can have arguments that just have a single premise, like this one.
+
+<new slide>
+
+But the most common cases we'll look at have multiple premises, like the argument we started with
+
+<new slide>
+
+One thing we won't represent here is that sometimes arguments are chained. So if you use one argument to show that Skippy is wise, you might go on to use that fact you've now established as a premise in another argument. And when we get to chains of reasoning, this will be an important thing to remember - something that's a conclusion now can turn into a premise straight away.
+
+But in any given argument, although there are any number of premises, there is only one conclusion.
+
+Mathematically, we'll say that an argument is a relation between a **set** of premises and a conclusion. Sets can have 0, 1 or multiple members, so that matches up with the fact that you can have 0, 1 or multiple premises.
+
+<new slide>
+
+When I write up arguments like this on a slide, I merely mean to present them for consideration. Presenting them like this isn't asserting that they are good, in any way.
+
+This matters because soon we'll get to ways of presenting arguments that do carry with them an assertion that the argument has one or other good-making feature.
+
+But in this form, it's just a presentation. It's just as if I'd written "The sky is green" on the board so as to give us an example of a syntactically correct English sentence.
+
+<new slide>
+
+So I want us to think for a bit about what makes arguments good or bad. It might be worth pausing here to think for a minute about this yourself. When you consider an argument, what about it makes you think it is a good argument or a bad argument?
+
+OK - are you done thinking? 
+
+<new slide>
+
+One important virtue of arguments is that their premises are true. Presumably I didn't convince you that Skippy was a wise kangaroo with the Skippy argument, because it isn't true that all kangaroos are wise.
+
+<new slide>
+
+Another important virtue of arguments is that their premises are known to be true. We often use arguments to rationalise actions. But you can't rationalise actions with a lucky guess. If I reason from the premise that this cookie is not infected with any viruses or bacteria, and go on to eat it, and it turns out to be just plain lucky that it wasn't infected, that's not good reasoning. I won't get sick - the cookie wasn't actually infected - but I relied on a lucky guess. Good reasoning, and hence good arguments, shouldn't rely on guesses.
+
+<new slide>
+
+Imagine that you know something very important, but no one believes you. If you offer an argument for taking some collective plan that starts from this thing you know, you won't convince anyone. After all, they don't believe your starting point. This can be true even if you know what you're talking about. Arguing is a social activity, and we might care about whether our arguments will succeed at this activity.
+
+<new slide>
+
+Here's a bad argument. Premise: In winter, it snows in Michigan. Conclusion: I'm the King of France. The premise is true, and known to be true, and accepted by the audience. (Right?) But that doesn't make the argument any good. That it snows in Michigan is no evidence at all that I'm the King of France. And premises should provide evidence for their conclusion.
+
+<new slide>
+
+Some arguments provide really strong evidence for their conclusion: they guarantee that the conclusion is true. The truth of the premises makes it impossible for the conclusion to be false.
+
+<new slide>
+
+That's basically the feature of arguments that we're interested in in logic.
+
+Does the truth of a set of premises guarantee the truth of the conclusion?
+
+<new slide>
+
+But actually we're interested in a special kind of guarantee. One that holds in virtue of the structure of the premises and conclusion.
+
+This is a bit of abstract notion, so let me explain it with some examples.
+
+<new slide>
+
+The Skippy argument has premises that guarantee the truth of the conclusion. If all kangaroos are wise, and Skippy is a kangaroo, that guarantees that all kangaroos are wise.
+
+This argument has that feature too. If today is Wednesday, tomorrow must be Thursday.
+
+But this guarantee relies on particular facts about Wednesday and Thursday; namely that they are consecutive days. The Skippy argument didn't rely on anything quite so particular about kangaroos or wisdom.
+
+<new slide>
+
+A nice thing about these arguments that just rely on structure is that the guarantee persists when you make certain changes to the argument.
+
+So this argument has premises that guarantee the truth of the conclusion.
+
+<new slide>
+
+And so does this one, when I replace Skippy with Lucky.
+
+<new slide>
+
+And so does this one, when I replace kangaroo with koala.
+
+<new slide>
+
+And so does this one, when I replace wisdom with dishonesty.
+
+Once you find that a certain structure means that the premises guarantee the truth of the conclusion, you learn that lots and lots of arguments have this feature.
+
+<new slide>
+
+I'll end this lecture with some terminology.
+
+An argument is valid just in case the truth of the premises guarantees the truth of the conclusion. This isn't an account of what the word valid means in ordinary English; it's a stipulative definition of how we're going to use the word.
+
+An argument is sound just in case it is valid and has true premises. Again, this isn't a theory about what it means in English to say an argument is sound. It's just a stipulation.
+
+We're not going to talk much about soundness here. To a first approximation, it's the job of every other department in the university to tell you which premises in arguments are true. It's the job of logic to tell you whether those premises guarantee the truth of the conclusion.
+
+<new slide>
+
+The two definitions on the slide are equivalent.
+
+The first is the one we've been using so far - the premises guarantee the truth of the conclusion. If the premises are true, then necessarily the conclusion is too.
+
+But we'll often use the second. On the face of it, it looks more complicated. It adds two negations to the first definition. But in practice it turns out to be easier to use.
+
+What it says is that the valid arguments are those such that you cannot have the premises be true and the conclusion false.
+
+And we'll use that a lot, because sometimes it is easier to tell what can't be the case than to tell what must be the case.
+
+That's all for this lecture. In the next lecture, we'll start looking at one important kind of logic: propositional logic.
+
+
+

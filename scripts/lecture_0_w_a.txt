@@ -1,0 +1,97 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 1: Getting Started
+
+<new slide>
+
+This course introduces you to some formal tools that are particularly useful when doing philosophical work. These tools should also be useful for thinking about subjects in other disciplines, and outside your studies.
+
+<new slide>
+
+The course has three sections. In this summer course, we're going to spend about two weeks on each of them.
+
+The first section is propositional logic, the logic of sentences.
+
+The second section is probability and statistical reasoning. We are going to focus on how to think about how likely it is that the world is a certain way, and how to change your views about how likely things are when new evidence comes in.
+
+The third section is about modals and conditionals, which is about how things must and might be, and about how things would have been if things had been different.
+
+<new slide>
+
+Propositional logic is the logic of sentences that can be true or false, and that can combine into longer sentences.
+
+In particular, we're going to look at the logical properties of four terms that can be used to build longer sentences from short sentences: and, or, not and if.
+
+<new slide>
+
+Probability is a tool for managing our ignorance.
+
+We often don't know all the things we'd like to know about the world. To take one depressingly topical example, we don't know right now what activities will lead to us getting sick or staying healthy. Indeed, we often don't know if we are sick or healthy.
+
+But that doesn't mean we're totally in the dark. We know that taking courses online rather than in person makes it less likely that you will get sick. Getting a negative test result makes it less likely that you are sick.
+
+There are very well worked out tools for regimenting what we do and don't know about these kinds of likelihoods, and we'll spend two weeks looking at them.
+
+<new slide>
+
+The English word 'must' has a dizzying range of uses. English isn't special in this regard: most human languages have a similar term, and it is often just as ambiguous. Here are some of the ways it can be used.
+
+In metaphysics, we talk about how things must, metaphysically, be. So, arguably, squares must have four sides, bachelors must be unmarried, and water must contain oxygen. There is something incoherent about a story with five sided squares, married bachelors, or deoxygenated water. (Or at least that's the standard theory - nothing in metaphysics is uncontroversial.) That's one way we can use 'must': to talk about how things have to be on pain of a certain kind of incoherence.
+
+<new slide>
+
+But there are other usages too. We often use 'must' to talk about our knowledge and ignorance. When I look in the cookie jar, and see there are no cookies left, I might say "My little brother **must** have eaten the last cookie". That's not a claim about metaphysics; there is nothing incoherent about my little brother staying out of the cookie jar. It means something like "I know my little brother ate the last cookie." I'll call this the epistemological usage, because 'epistemology' means the study of knowledge. And these usages seem to have something to do with what we know.
+
+<new slide>
+
+And sometimes we use 'must' in a moral sense. When I say "You must pay your taxes", what do I mean? It isn't a metaphysical claim: there isn't anything incoherent about not paying your taxes. And it isn't a claim about knowledge. I hope you pay your taxes, but I don't know you do. Rather, the word 'must' there means something different again. Maybe it means something moral, or something legal.
+
+So we have this fascinating word that can be used to express all sorts of different things. Each of these meanings come with a certain logic: what follows from a claim about 'must' depends on just what you mean by 'must'. The striking thing is that just as we use the same word to express all these different thoughts, we use the same kind of logic (though not exactly the same logic) to reason using them.
+
+And that's going to be what we look at in the third part of the course.
+
+<new slide>
+
+There are three textbooks for the course. Happily, they are all free. I've put links to each of them up on the Canvas page for the course.
+
+The three books correspond to the three units of the course.
+
+<new slide>
+
+For propositional logic, we'll use a book called "Carnap". It's named after an important twentieth century philosopher: Rudolph Carnap. You can access it directly at carnap dot i o.
+
+<new slide>
+
+You will need to **register** with Carnap to use some of the resources. Happily, this is free as well.
+
+<new slide>
+
+When you register, you need to make sure that you're in the right course. Our course is called "University of Michigan - S20 - PHIL305"
+
+<new slide>
+
+For probability, we'll use a book called "Odds and Ends". I've linked to the PDF version of the book in Canvas, but if you prefer reading things on web pages, there is an HTML version at the address shown here.
+
+<new slide>
+
+For modal logic, we'll use a book called Boxes and Diamonds. You can see the original of it here.
+
+<new slide>
+
+It is a book designed for a much more specialised class, so I've created an edited version of it for this class. I didn't **write** this in any interesting sense; it's just that it was possible to cut and paste the sections/chapters I wanted us to focus on into a single book.
+
+<new slide>
+
+I'm going to break up these lectures into very short chunks. I do not think the best thing to do will be to simply replicate a 50 minute (or even worse an 80 minute) lecture. I'm not sure I could do a lecture that long without serious flubs in any case. And I'm not sure my computer, or the UM servers, would play well with files as big as a 50 minute lecture.
+
+I think it's also better educationally to have shorter, sharper pieces rather than asking you to keep concentration through a long piece.
+
+So there will be a lot of 'lectures' each week, though some of them will be as short as 5 minutes. And if any go over 20 minutes, I'm messing up.
+
+<new slide>
+
+I don't have captioning for these slides. I don't really trust the automated captioning, and it would I think get very messy to have captions and slides on the one screen. So to help with access, I've also posted the scripts I'm reading from to Canvas. I'm still learning how to write scripts and read them, and it's possible that the wording that ends up in the recording will be slightly different to the script. But probably the script will be better in those cases.
+
+If you have trouble hearing the lectures, then obviously the scripts are there to help. But they are there for everyone. Personally I prefer reading transcripts to listening to things, and if you're the same, then hopefully the scripts are useful for you too. 
+
+That's all for this recording - in the next recording I'll start on talkinig about what logic is.

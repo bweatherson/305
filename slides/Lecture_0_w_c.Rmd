@@ -28,7 +28,7 @@ We start with one key assumption:
 
 - Traditionally, classical logic is divided into two parts. 
 - We're just going to look at the first part here.
-- The parts differ on what counts as a **structural*- feature of a sentence.
+- The parts differ on what counts as a **structural** feature of a sentence.
 
 ## Classical Propositional Logic
 
