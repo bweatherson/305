@@ -1,0 +1,71 @@
+---
+title: "305 Lecture 04 - Argument Forms"
+author: "Brian Weatherson"
+date: "July 6, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan for This Lecture
+
+- Some revision of the notion of validity
+- A discussion of which aspects of arguments we formalise, and why we do this.
+
+## Definition
+
+An argument is valid when
+
+- The truth of the premises guarantees the truth of the conclusion.
+- Equivalently, when it is impossible for the premises to be true and the conclusion not true.
+
+## Formal Validity
+
+An argument is formally valid if
+
+- It is valid; and
+- Any argument of the same form is valid.
+
+In those cases, we infer that it is valid **because of** its form.
+
+## Three Big Questions About Form
+
+> 1. Which words get treated as part of the form, and which get replaced by symbols when converting into formal notation?
+> 2. Which words have the same meaning and should be replaced by the same symbol, and which should be treated differently?
+> 3. How do we break the sentence into its constituent parts?
+
+## Part of the Form
+
+I'm going to have a fairly pluralist, pragmatist view on this question.
+
+- This is not to say that pluralism or pragmatism is right - it's just that it's what I'll adopt. (It is to say that I think it's a reasonable approach.)
+- For some purposes the 'formal words' are very few, like 'and', 'or', 'not' etc.
+- For other purposes the set is more expansive.
+
+## Same/Different
+
+There are problems in both directions here.
+
+- Sometimes we want to treat words with different spelling as representing the same meaning - e.g., 'kangaroo' and 'kangaroos'.
+- And sometimes we want to treat words with the same spelling as expressing different meanings.
+
+## Relating the First Two Questions
+
+Some kinds of ambiguity are 'resolved' by treating the word as part of the formal system.
+
+- That's what the book does with "Nothing is better than world peace".
+- And some less pluralist approaches to the 'formal words' question are moved by the thought that some words really need this kind of treatment.
+
+## Three Formal Tools
+
+> 1. Replacing words/sentences with letters.
+> 2. Using parentheses.
+> 3. Replacing 'formal words' with symbols.
+
+## For Next Time
+
+We'll look at how propositional logic carries out these three tasks.

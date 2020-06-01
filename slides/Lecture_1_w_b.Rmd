@@ -1,0 +1,214 @@
+---
+title: "305 Lecture 08 - Indirect Derivations"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Proving a Conditional
+
+Intuitively, they way to show $A \rightarrow B$ is to imagine/assume/suppose $A$ is true, and show that then $B$ will be true as well.
+
+- That's what we'll do in Carnap.
+
+## Three New Tricks
+
+1. Having the 'Show' be a conditional.
+2. Starting with 'AS' not 'PR'.
+3. Ending with Conditional Derivation - CD.
+
+## Example
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+What goes in 'Show' is still the conclusion, but it isn't what we end the proof with.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+We start with two kinds of underived lines.
+
+1. Assumptions
+2. Premises
+
+\endcol
+\endcols
+
+## Premises
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The premises, in this case line 3, you are used to already.
+
+\endcol
+\endcols
+
+## Assumption
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The assumption is the thing on the left of what you're trying to prove - the **antecedent** of the conditional.
+
+\endcol
+\endcols
+
+## Conditional Proof
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+Then you can use all the regular rules that you've used so far, with the same constraints.
+
+\endcol
+\endcols
+
+## Conditional Proof
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The big difference is that you end with the **consequent** of what you're trying to show; the thing to the right of the $\rightarrow$.
+
+\endcol
+\endcols
+
+## Conditional Proof
+
+To prove: $P \rightarrow Q \vdash P \rightarrow \neg \neg Q$
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+And then (and this is a bit distinctive to Carnap), you write 'CD' for Conditional Derivation, not 'DD' for Direct Derivation.
+
+\endcol
+\endcols
+
+## For Next Time
+
+- Read chapters 4 and 5.
+- We will talk especially about what happens when these conditional derivations get **nested**.
+- Finish the first assignment - the exercises from chapters 1 and 3.

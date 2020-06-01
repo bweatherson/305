@@ -1,0 +1,750 @@
+---
+title: "305 Lecture 07 - Direct Derivations"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Basic Idea
+
+A derivation is a series of steps that get you from the premises to the conclusion, with every step falling into one of a small number of approved kinds of transition.
+
+## Justification
+
+The big thought is that no step could take you from truth to falsity (or to non-truth).
+
+- So you can string as many of these steps together as you like, and it will never take you from truth to falsity.
+- And to justify the procedure, you just need to justify the various kinds that are allowed.
+
+## Example
+
+``
+\DisplayArg{
+\item $P$
+\item $\neg \neg P \rightarrow \neg \neg Q$
+}
+{
+$Q$
+}
+``{=latex} 
+
+## Intuitive Argument
+
+> - Start assuming that the two premises are true.
+> - If $P$ is true, then $\neg \neg P$ is true.
+> - So $\neg \neg P$ is true.
+> - If $\neg \neg P$ and $\neg \neg P \rightarrow \neg \neg Q$ are true, then $\neg \neg Q$ is true.
+> - So $\neg \neg Q$ is true.
+> - And that implies $Q$ is true, as required.
+
+## Formal Argument in Carnap
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+## Carnap
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- A lot of what I'm going to say over the next few slides is about **Carnap**, not about logic in general.
+
+\endcol
+\endcols
+
+## Natural Deduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- This is a version of what is known as a **natural deduction** proof system.
+- It is somewhat non-standard, but that's not to say any one way is standard.
+
+\endcol
+\endcols
+
+## Natural Deduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- What is common to all natural deduction systems is that when you read the steps, they read like a (pedantic version of) ordinary language reasoning.
+
+\endcol
+\endcols
+
+## Starting and Ending
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- The most idiosyncratic feature of Carnap is the first and last line of the derivation.
+
+\endcol
+\endcols
+
+## Starting
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- In Carnap, you have to start a proof by announcing where you are headed.
+
+\endcol
+\endcols
+
+## Ending
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- And you end the proof by saying which line it is that the conclusion is reached.
+
+\endcol
+\endcols
+
+## Starting and Ending
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- Note that these are the only two lines that are not indented.
+- Proof systems (Carnap included) are visual, graphic systems, and vertical and horizontal arrangements tend to have meaning.
+
+\endcol
+\endcols
+
+## Starting and Ending
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- They are also the only lines here that do not have a justification.
+- Those abbreviations and numbers to the right of the other lines are justifications - you don't include them on the start or the finish.
+
+\endcol
+\endcols
+
+## Ending
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- The `DD' at the end is to indicate this is a **direct** derivation.
+- We'll get to the contrast with indirect derivations presently.
+
+\endcol
+\endcols
+
+## Premises
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+After the introductory line, the first lines are the premises - if they exist.
+
+\endcol
+\endcols
+
+## Premises
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The premises need to be noted - that's what the 'PR' is for - but they are not derived.
+
+\endcol
+\endcols
+
+## Premises
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+Your justification for writing them is that they are the beginning of what you are trying to prove.
+
+\endcol
+\endcols
+
+## Premises
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+So they don't get line numbers afterwards.
+
+\endcol
+\endcols
+
+## Derived Lines
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- From now on, every line will be derived from previous lines.
+- And the justification for it will be a rule, plus some line or lines.
+
+\endcol
+\endcols
+
+## Derived Lines
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+In Carnap the premises and derived lines are indented.
+
+- The indenting is **four spaces**. For reasons I don't understand, a tab character here won't work.
+
+\endcol
+\endcols
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+If $\varphi$ is a line, then you can add $\neg \neg \varphi$ as a new line.
+
+\endcol
+\endcols
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The rule that you are using is abbreviated to `DNI', and you have to justify this by citing the line where $\varphi$ appears.
+
+\endcol
+\endcols
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: ~~~~P
+2.     P          :PR
+3.     ~~P        :DNI 2
+4.     ~~~~P      :DNI 3
+5. :DD 4
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+This isn't specific to DNI, but note that for any rule, the input lines can be either a premise or a derived line.
+
+- The rules do not distinguish between premises and derived lines.
+
+\endcol
+\endcols
+
+## Rules
+
+A rule says that given sentences of some form, another particular sentence can be written.
+
+## Rules
+
+To apply the rule correctly, you have to do 3 things
+
+1. The sentence has to be the right one given the constraints of the rule.
+2. You have to write down (immediately after a colon) the abbreviation for the rule.
+3. You have to write down the line, or lines, that provide the inputs.
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+Line 4 is allowed because you can add $\neg \neg$ to any line by the rule Double Negation Introduction.
+
+\endcol
+\endcols
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+The abbreviation for Double Negation Introduction is DNI - so that's what we write.
+
+\endcol
+\endcols
+
+## Double Negation Introduction
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+And the input, the line we are adding $\neg \neg$ to, is line 2, so we write '2'.
+
+\endcol
+\endcols
+
+## A Trap
+
+This is not a good proof - why not?
+
+```
+1. Show: ~~P -> Q
+2.     P -> Q     :PR
+3.     ~~P -> Q   :DNI 2
+4. :DD 3
+```
+
+## A Trap
+
+You have to add the negations to **the whole sentence**.
+
+- So the correct output here is $\neg \neg (P \rightarrow Q)$
+
+## Modus Ponens
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- The rule at line 5 is the most important in this part of the course.
+- It even gets a fancy Latin name.
+
+\endcol
+\endcols
+
+## Modus Ponens
+
+Given inputs $\varphi \rightarrow \psi$ and $\varphi$, infer $\psi$
+
+## Modus Ponens
+
+- The abbreviation is MP.
+- The line numbers are the lines where $\varphi \rightarrow \psi$ and $\varphi$ appear.
+
+## Line Numbers
+
+- There is a detail that some people get confused by at this point.
+- The line numbers are the lines where the immediate inputs to the rule come from.
+- They don't list all the justifications for those lines.
+- So we list line 4, because it is where $\neg \neg P$ is, but not line 2, from where we derived line 2
+- At every stage, we are just looking at whether that immediate step is ok.
+
+## A Trap
+
+- As with DNI, it is important to apply the rule only to whole sentences.
+- The sentence $\varphi \rightarrow \psi$ has to have $\rightarrow$ as its **main connective**.
+
+## Modus Ponens
+
+\begincols
+\begincol{.5\textwidth}
+
+This is OK.
+
+```
+1. Show: Q \/ R
+2.     P -> (Q \/ R) :PR
+3.     P             :PR
+4.     Q \/ R        :MP 2, 3
+5. :DD 4
+```
+
+\endcol
+\begincol{.5\textwidth}
+
+This is **not** OK.
+
+```
+1. Show: Q \/ R
+2.     (P -> Q) \/ R :PR
+3.     P             :PR
+4.     Q \/ R        :MP 2, 3
+5. :DD 4
+```
+
+\endcol
+\endcols
+
+## Modus Tollens
+
+There is another rule that I haven't included in the example proof - modus tollens.
+
+- It takes as input a line saying $\varphi \rightarrow \psi$, and a line saying $\neg \psi$.
+- And it outputs a line saying $\neg \varphi$.
+
+## Differences between MP and MT
+
+Different input
+
+- In MP, the input is the left hand side, the **antecedent** of the conditional.
+- In MT, the input is the **negation** of the **right hand side**, or **consequent** of the conditional.
+
+Different output
+
+- In MP, the output is the right hand side, the **consequent** of the conditional.
+- In MT, the output is the **negation** of the **left hand side** of the conditional.
+
+## Double Negation Elimination
+
+- This rule takes as input a sentence of the form $\neg \neg \varphi$.
+- And it returns as output the sentence $\varphi$.
+
+## Double Negation Elimination
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+- The abbreviation is DNE.
+- And because there is only one input, there is only one line cited.
+
+\endcol
+\endcols
+
+## That's All!
+
+\begincols
+\begincol{.48\textwidth}
+
+```
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+```
+
+\endcol
+\begincol{.48\textwidth}
+
+Since the line matches what was to be shown, we have a complete `direct derivation'.
+
+\endcol
+\endcols
+
+## Four Rules
+
+Modus Ponens (MP)
+:    From $\varphi \rightarrow \psi$ and $\varphi$, infer $\psi$
+
+Modus Tollens (MT)
+:    From $\varphi \rightarrow \psi$ and $\neg \psi$, infer $\neg \varphi$
+
+Double Negation Introduction (DNI)
+:    From $\varphi$, infer $\neg \neg \varphi$
+
+Double Negation Elimination (DNE)
+:    From $\neg \neg \varphi$, infer $\varphi$
+
+## Restrictions and Things to Remember
+
+- Apply the negations in DNI to the whole sentence.
+- Make sure the arrow is the main connective for MP and MT
+- Cite the lines where the 'from' sentences appear in the proof.
+
+## Carnap is fussy about spacing
+
+- Four spaces for the indented sentences.
+- No space ever after a colon.
+- One space after the abbreviation for the rule.
+- These are not part of `logic' in any sense - they are rules for this particular computer program.

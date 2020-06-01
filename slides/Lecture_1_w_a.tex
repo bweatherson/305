@@ -1,0 +1,1307 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 07 - Direct Derivations},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+% \usepackage{tikz-qtree}
+% \usepackage{markdown}
+% \usepackage{prooftrees}
+% \forestset{not line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+\def\True{\textcolor{dodgerblue}{\text{T}}}
+\def\False{\textcolor{red}{\text{F}}}
+
+\title{305 Lecture 07 - Direct Derivations}
+\author{Brian Weatherson}
+\date{July 8, 2020}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Basic Idea}
+\protect\hypertarget{basic-idea}{}
+
+A derivation is a series of steps that get you from the premises to the
+conclusion, with every step falling into one of a small number of
+approved kinds of transition.
+
+\end{frame}
+
+\begin{frame}{Justification}
+\protect\hypertarget{justification}{}
+
+The big thought is that no step could take you from truth to falsity (or
+to non-truth).
+
+\begin{itemize}
+\tightlist
+\item
+  So you can string as many of these steps together as you like, and it
+  will never take you from truth to falsity.
+\item
+  And to justify the procedure, you just need to justify the various
+  kinds that are allowed.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example}
+\protect\hypertarget{example}{}
+
+\DisplayArg{ \item $P$ \item $\neg \neg P \rightarrow \neg \neg Q$ } { $Q$ }
+
+\end{frame}
+
+\begin{frame}{Intuitive Argument}
+\protect\hypertarget{intuitive-argument}{}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Start assuming that the two premises are true.
+\item
+  If \(P\) is true, then \(\neg \neg P\) is true.
+\item
+  So \(\neg \neg P\) is true.
+\item
+  If \(\neg \neg P\) and \(\neg \neg P \rightarrow \neg \neg Q\) are
+  true, then \(\neg \neg Q\) is true.
+\item
+  So \(\neg \neg Q\) is true.
+\item
+  And that implies \(Q\) is true, as required.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Formal Argument in Carnap}
+\protect\hypertarget{formal-argument-in-carnap}{}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Carnap}
+\protect\hypertarget{carnap}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  A lot of what I'm going to say over the next few slides is about
+  \textbf{Carnap}, not about logic in general.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Natural Deduction}
+\protect\hypertarget{natural-deduction}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  This is a version of what is known as a \textbf{natural deduction}
+  proof system.
+\item
+  It is somewhat non-standard, but that's not to say any one way is
+  standard.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Natural Deduction}
+\protect\hypertarget{natural-deduction-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  What is common to all natural deduction systems is that when you read
+  the steps, they read like a (pedantic version of) ordinary language
+  reasoning.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Starting and Ending}
+\protect\hypertarget{starting-and-ending}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  The most idiosyncratic feature of Carnap is the first and last line of
+  the derivation.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Starting}
+\protect\hypertarget{starting}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  In Carnap, you have to start a proof by announcing where you are
+  headed.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Ending}
+\protect\hypertarget{ending}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  And you end the proof by saying which line it is that the conclusion
+  is reached.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Starting and Ending}
+\protect\hypertarget{starting-and-ending-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that these are the only two lines that are not indented.
+\item
+  Proof systems (Carnap included) are visual, graphic systems, and
+  vertical and horizontal arrangements tend to have meaning.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Starting and Ending}
+\protect\hypertarget{starting-and-ending-2}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  They are also the only lines here that do not have a justification.
+\item
+  Those abbreviations and numbers to the right of the other lines are
+  justifications - you don't include them on the start or the finish.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Ending}
+\protect\hypertarget{ending-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  The `DD' at the end is to indicate this is a \textbf{direct}
+  derivation.
+\item
+  We'll get to the contrast with indirect derivations presently.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Premises}
+\protect\hypertarget{premises}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+After the introductory line, the first lines are the premises - if they
+exist.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Premises}
+\protect\hypertarget{premises-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The premises need to be noted - that's what the `PR' is for - but they
+are not derived.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Premises}
+\protect\hypertarget{premises-2}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+Your justification for writing them is that they are the beginning of
+what you are trying to prove.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Premises}
+\protect\hypertarget{premises-3}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+So they don't get line numbers afterwards.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Derived Lines}
+\protect\hypertarget{derived-lines}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  From now on, every line will be derived from previous lines.
+\item
+  And the justification for it will be a rule, plus some line or lines.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Derived Lines}
+\protect\hypertarget{derived-lines-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+In Carnap the premises and derived lines are indented.
+
+\begin{itemize}
+\tightlist
+\item
+  The indenting is \textbf{four spaces}. For reasons I don't understand,
+  a tab character here won't work.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+If \(\varphi\) is a line, then you can add \(\neg \neg \varphi\) as a
+new line.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The rule that you are using is abbreviated to `DNI', and you have to
+justify this by citing the line where \(\varphi\) appears.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction-2}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: ~~~~P
+2.     P          :PR
+3.     ~~P        :DNI 2
+4.     ~~~~P      :DNI 3
+5. :DD 4
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+This isn't specific to DNI, but note that for any rule, the input lines
+can be either a premise or a derived line.
+
+\begin{itemize}
+\tightlist
+\item
+  The rules do not distinguish between premises and derived lines.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{Rules}
+\protect\hypertarget{rules}{}
+
+A rule says that given sentences of some form, another particular
+sentence can be written.
+
+\end{frame}
+
+\begin{frame}{Rules}
+\protect\hypertarget{rules-1}{}
+
+To apply the rule correctly, you have to do 3 things
+
+\begin{enumerate}
+\tightlist
+\item
+  The sentence has to be the right one given the constraints of the
+  rule.
+\item
+  You have to write down (immediately after a colon) the abbreviation
+  for the rule.
+\item
+  You have to write down the line, or lines, that provide the inputs.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction-3}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+Line 4 is allowed because you can add \(\neg \neg\) to any line by the
+rule Double Negation Introduction.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction-4}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The abbreviation for Double Negation Introduction is DNI - so that's
+what we write.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Introduction}
+\protect\hypertarget{double-negation-introduction-5}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+And the input, the line we are adding \(\neg \neg\) to, is line 2, so we
+write `2'.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{A Trap}
+\protect\hypertarget{a-trap}{}
+
+This is not a good proof - why not?
+
+\begin{verbatim}
+1. Show: ~~P -> Q
+2.     P -> Q     :PR
+3.     ~~P -> Q   :DNI 2
+4. :DD 3
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{A Trap}
+\protect\hypertarget{a-trap-1}{}
+
+You have to add the negations to \textbf{the whole sentence}.
+
+\begin{itemize}
+\tightlist
+\item
+  So the correct output here is \(\neg \neg (P \rightarrow Q)\)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Modus Ponens}
+\protect\hypertarget{modus-ponens}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  The rule at line 5 is the most important in this part of the course.
+\item
+  It even gets a fancy Latin name.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{Modus Ponens}
+\protect\hypertarget{modus-ponens-1}{}
+
+Given inputs \(\varphi \rightarrow \psi\) and \(\varphi\), infer
+\(\psi\)
+
+\end{frame}
+
+\begin{frame}{Modus Ponens}
+\protect\hypertarget{modus-ponens-2}{}
+
+\begin{itemize}
+\tightlist
+\item
+  The abbreviation is MP.
+\item
+  The line numbers are the lines where \(\varphi \rightarrow \psi\) and
+  \(\varphi\) appear.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Line Numbers}
+\protect\hypertarget{line-numbers}{}
+
+\begin{itemize}
+\tightlist
+\item
+  There is a detail that some people get confused by at this point.
+\item
+  The line numbers are the lines where the immediate inputs to the rule
+  come from.
+\item
+  They don't list all the justifications for those lines.
+\item
+  So we list line 4, because it is where \(\neg \neg P\) is, but not
+  line 2, from where we derived line 2
+\item
+  At every stage, we are just looking at whether that immediate step is
+  ok.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{A Trap}
+\protect\hypertarget{a-trap-2}{}
+
+\begin{itemize}
+\tightlist
+\item
+  As with DNI, it is important to apply the rule only to whole
+  sentences.
+\item
+  The sentence \(\varphi \rightarrow \psi\) has to have \(\rightarrow\)
+  as its \textbf{main connective}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Modus Ponens}
+\protect\hypertarget{modus-ponens-3}{}
+
+\begincols
+\begincol{.5\textwidth}
+
+This is OK.
+
+\begin{verbatim}
+1. Show: Q \/ R
+2.     P -> (Q \/ R) :PR
+3.     P             :PR
+4.     Q \/ R        :MP 2, 3
+5. :DD 4
+\end{verbatim}
+
+\endcol
+\begincol{.5\textwidth}
+
+This is \textbf{not} OK.
+
+\begin{verbatim}
+1. Show: Q \/ R
+2.     (P -> Q) \/ R :PR
+3.     P             :PR
+4.     Q \/ R        :MP 2, 3
+5. :DD 4
+\end{verbatim}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{Modus Tollens}
+\protect\hypertarget{modus-tollens}{}
+
+There is another rule that I haven't included in the example proof -
+modus tollens.
+
+\begin{itemize}
+\tightlist
+\item
+  It takes as input a line saying \(\varphi \rightarrow \psi\), and a
+  line saying \(\neg \psi\).
+\item
+  And it outputs a line saying \(\neg \varphi\).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Differences between MP and MT}
+\protect\hypertarget{differences-between-mp-and-mt}{}
+
+Different input
+
+\begin{itemize}
+\tightlist
+\item
+  In MP, the input is the left hand side, the \textbf{antecedent} of the
+  conditional.
+\item
+  In MT, the input is the \textbf{negation} of the \textbf{right hand
+  side}, or \textbf{consequent} of the conditional.
+\end{itemize}
+
+Different output
+
+\begin{itemize}
+\tightlist
+\item
+  In MP, the output is the right hand side, the \textbf{consequent} of
+  the conditional.
+\item
+  In MT, the output is the \textbf{negation} of the \textbf{left hand
+  side} of the conditional.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Double Negation Elimination}
+\protect\hypertarget{double-negation-elimination}{}
+
+\begin{itemize}
+\tightlist
+\item
+  This rule takes as input a sentence of the form \(\neg \neg \varphi\).
+\item
+  And it returns as output the sentence \(\varphi\).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Double Negation Elimination}
+\protect\hypertarget{double-negation-elimination-1}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+\begin{itemize}
+\tightlist
+\item
+  The abbreviation is DNE.
+\item
+  And because there is only one input, there is only one line cited.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{That's All!}
+\protect\hypertarget{thats-all}{}
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: Q
+2.     P          :PR
+3.     ~~P -> ~~Q :PR
+4.     ~~P        :DNI 2
+5.     ~~Q        :MP 4, 3
+6.     Q          :DNE 5
+7. :DD 6
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+Since the line matches what was to be shown, we have a complete `direct
+derivation'.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{Four Rules}
+\protect\hypertarget{four-rules}{}
+
+\begin{description}
+\tightlist
+\item[Modus Ponens (MP)]
+From \(\varphi \rightarrow \psi\) and \(\varphi\), infer \(\psi\)
+\item[Modus Tollens (MT)]
+From \(\varphi \rightarrow \psi\) and \(\neg \psi\), infer
+\(\neg \varphi\)
+\item[Double Negation Introduction (DNI)]
+From \(\varphi\), infer \(\neg \neg \varphi\)
+\item[Double Negation Elimination (DNE)]
+From \(\neg \neg \varphi\), infer \(\varphi\)
+\end{description}
+
+\end{frame}
+
+\begin{frame}{Restrictions and Things to Remember}
+\protect\hypertarget{restrictions-and-things-to-remember}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Apply the negations in DNI to the whole sentence.
+\item
+  Make sure the arrow is the main connective for MP and MT
+\item
+  Cite the lines where the `from' sentences appear in the proof.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Carnap is fussy about spacing}
+\protect\hypertarget{carnap-is-fussy-about-spacing}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Four spaces for the indented sentences.
+\item
+  No space ever after a colon.
+\item
+  One space after the abbreviation for the rule.
+\item
+  These are not part of `logic' in any sense - they are rules for this
+  particular computer program.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
