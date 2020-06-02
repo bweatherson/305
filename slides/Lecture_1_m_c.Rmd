@@ -37,7 +37,7 @@ As speakers of a human language, you're used to this kind of recursion. All of t
 ## Recursive Rule
 
  - If _S_ is a sentence, and _N_ is a name, then _N thinks that S_ is a sentence.
- - Note that the output of this rule can be the inpute to a new instance of it.
+ - Note that the output of this rule can be the input to a new instance of it.
  
 ## Formal Language Recursion
 
@@ -92,7 +92,7 @@ A binary connective is the main connective if (and only if) either side of it ar
 
 > $P \wedge (Q \rightarrow R)$
 
-The $\rightarrow$ is the main connective because either side of it are
+The $\rightarrow$ is not the main connective because either side of it are
 
 - $P \wedge (Q$
 - $R)$
@@ -125,6 +125,5 @@ And they are not both sentences.
 
 ## For Next Time
 
-- That's all for today's lectures
-- For next time, read Chapter 3 of The Carnap Book
+- Before next lecture, read Chapter 3 of The Carnap Book
 - We're going to start applying these tools to analysing arguments.
