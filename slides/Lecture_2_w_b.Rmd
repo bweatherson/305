@@ -1,0 +1,117 @@
+---
+title: "305 Lecture 21 - Rules for Truth Trees"
+author: "Brian Weatherson"
+date: "July 15, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+This lecture introduces the rules we use for building up truth trees.
+
+## What Rules Do
+
+The rules tell you what new lines to write down given the lines you've already got.
+
+- To some extent they simply have to be memorised.
+- But hopefully they are all (except for the rules about $\rightarrow$) fairly intuitive.
+
+## Rules for $\neg$
+
+
+\begin{center}
+\AxiomC{\sFmla{\True}{\lnot A}}
+\RightLabel{\TRule{\True}{\lnot}}
+\UnaryInfC{\sFmla{\False}{A}}
+\DisplayProof
+\pause
+\hspace{10pt}
+\AxiomC{\sFmla{\False}{\lnot A}}
+\RightLabel{\TRule{\False}{\lnot}}
+\UnaryInfC{\sFmla{\True}{A}}
+\DisplayProof
+\end{center}
+\bigskip \pause
+
+
+That is, if you have a negated sentence, write down the unnegated sentence with an opposite truth value.
+
+## Rules for $\wedge$ ##
+
+
+\begin{center}\noindent
+\AxiomC{\sFmla{\True}{A \wedge B}}
+\RightLabel{\TRule{\True}{\wedge}}
+\UnaryInfC{\sFmla{\True}{A}}
+\noLine
+\UnaryInfC{\sFmla{\True}{B}}
+\DisplayProof
+\hspace{10pt}
+\pause
+\AxiomC{\sFmla{\False}{A \wedge B}}
+\RightLabel{\TRule{\False}{\wedge}}
+\UnaryInfC{$\sFmla{\False}{A} \quad \mid \quad \sFmla{\False}{B}$}
+\DisplayProof
+\end{center}
+\bigskip \pause
+
+
+- If you have a true conjunction, write down each conjunct.
+- If you have a false conjunction, create two branches, one for each way it can be false.
+
+## Rules for $\vee$
+
+
+\begin{center}
+\AxiomC{\sFmla{\True}{A \vee B}}
+\RightLabel{\TRule{\True}{\vee}}
+\UnaryInfC{$\sFmla{\True}{A} \quad \mid \quad \sFmla{\True}{B}$}
+\DisplayProof
+\hspace{10pt}
+\AxiomC{\sFmla{\False}{A \vee B}}
+\RightLabel{\TRule{\False}{\vee}}
+\UnaryInfC{\sFmla{\False}{A}}
+\noLine
+\UnaryInfC{\sFmla{\False}{B}}
+\DisplayProof
+\end{center}
+\bigskip
+
+
+- If you have a true disjunction, create two branches for the two disjuncts.
+- If you have a false disjunction, write down that each disjunct is false.
+
+## Rules for $\rightarrow$ ##
+
+
+\begin{center}
+\AxiomC{\sFmla{\True}{A \lif B}}
+\RightLabel{\TRule{\True}{\lif}}
+\UnaryInfC{$\sFmla{\False}{A} \quad \mid \quad \sFmla{\True}{B}$}
+\DisplayProof
+\pause
+\hspace{10pt}
+\AxiomC{\sFmla{\False}{A \lif B}}
+\RightLabel{\TRule{\False}{\lif}}
+\UnaryInfC{\sFmla{\True}{A}}
+\noLine
+\UnaryInfC{\sFmla{\False}{B}}
+\DisplayProof \pause
+\end{center}
+\bigskip
+
+
+- And this is the hard rule.
+- When a conditional is true, we create two branches - one for the antecedent being false, the other for the consequent being true.
+- When a conditional is false, we infer that the antecedent is true and the conclusion false.
+
+## For Next Time
+
+We will look at some examples of truth trees.
+

@@ -1,0 +1,102 @@
+---
+title: "305 Lecture 22 - Examples of Truth Trees"
+author: "Brian Weatherson"
+date: "July 15, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+This lecture goes over some examples of truth trees.
+
+## A Logical Truth
+
+This is a tableau for showing $A \rightarrow (A \vee B)$ is a logical truth.
+
+
+\bigskip \begin{oltableau}
+[\sFmla{\False}{A \rightarrow (A \vee B)}, checked, just = \TAss
+	[\sFmla{\True}{A}, just = {\TRule{\False}{\rightarrow}[1]}
+		[\sFmla{\False}{A \vee B}, checked, just = {\TRule{\False}{\rightarrow}[1]}
+			[\sFmla{\False}{A}, just = {\TRule{\False}{\vee}[3]}
+				[\sFmla{\False}{B}, just = {\TRule{\False}{\vee}[3]}, close
+				]
+			]
+		]
+	]
+]
+\bigskip
+\bigskip \end{oltableau}
+
+
+## An Argument
+
+Here is a tableau for showing that $A \rightarrow B, \neg B \vdash \neg A$ is valid.
+
+
+\bigskip \begin{oltableau}
+[\sFmla{\True}{A \rightarrow B}, checked, just = \TAss
+	[\sFmla{\True}{\neg B}, checked, just = \TAss
+		[\sFmla{\False}{\neg A}, checked, just = \TAss
+			[\sFmla{\False}{B}, just = {\TRule{\True}{\neg}[2]}
+				[\sFmla{\True}{A}, just = {\TRule{\False}{\neg}[3]}
+					[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]}, close]
+					[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]}, close]
+				]
+			]
+		]
+	]
+]
+\bigskip \end{oltableau}
+
+
+## An Open Tableau
+
+Here is a tableau for showing that $A \rightarrow B, \neg A \vdash \neg B$ is invalid.
+
+
+\bigskip \begin{oltableau}
+[\sFmla{\True}{A \rightarrow B}, checked, just = \TAss
+	[\sFmla{\True}{\neg A}, checked, just = \TAss
+		[\sFmla{\False}{\neg B}, checked, just = \TAss
+			[\sFmla{\False}{A}, just = {\TRule{\True}{\neg}[2]}
+				[\sFmla{\True}{B}, just = {\TRule{\False}{\neg}[3]}
+					[\sFmla{\False}{A}, just = {\TRule{\True}{\rightarrow}[1]},]
+					[\sFmla{\True}{B}, just = {\TRule{\True}{\rightarrow}[1]},]
+				]
+			]
+		]
+	]
+]
+\end{oltableau} \bigskip
+
+
+This one is over the top - since both branches are open. You only need one open branch.
+
+## Another Open Tableau
+
+Here's one for the argument $A \vee B \vdash A$
+
+
+\bigskip \begin{oltableau}
+[\sFmla{\True}{A \vee B}, checked, just = \TAss
+	[\sFmla{\False}{A}, just = \TAss
+		[\sFmla{\True}{A}, just = {\TRule{\True}{\vee}[1]}, close]
+		[\sFmla{\True}{B}, just = {\TRule{\True}{\vee}[1]},]
+	]
+]
+\bigskip \end{oltableau}
+
+
+The right hand branch is open, so the whole tableau is open.
+
+## For Next Time
+
+We will look at how we use truth trees to check for validity.
+

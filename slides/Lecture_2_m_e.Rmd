@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 18 - Building Complicated Truth Tables"
+title: "305 Lecture 19 - Truth Tables and Validity"
 author: "Brian Weatherson"
 date: "July 13, 2020"
 output: 

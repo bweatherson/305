@@ -1,0 +1,108 @@
+---
+title: "305 Lecture 23 - Truth Trees in Logic"
+author: "Brian Weatherson"
+date: "July 15, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+This lecture goes over how truth trees help us think about validity.
+
+## Simple Deduction Theorem
+
+The following two things are equivalent; if either is true, the other must be true too.
+
+1. The sentence $X \rightarrow Y$ is a logical truth.
+2. The argument $X \vdash Y$ is valid. \pause
+
+Proof: In each case, we get a tree that has $X$ is true and $Y$ is false, and test whether it closes. If so, both are true. If not, both are false.
+
+## General Deduction Theorem
+
+The following two things are equivalent; if either is true, the other must be true too.
+
+1. The argument $\Gamma \vdash X \rightarrow Y$ is valid.
+2. The argument $\Gamma, X \vdash Y$ is valid. \pause
+
+Proof: In each case, we get a tree that has (after applying the rule for $X \rightarrow Y$ is false) every sentence in $\Gamma$ being true, and $X$ being true and $Y$ being false, and test whether it closes. If so, both are true. If not, both are false.
+
+## Terminology
+
+- $\Gamma \vDash A$ means that the truth table for $\Gamma$ and $A$ does not have any rows where everything in $\Gamma$ is true and $A$ is false.
+- More generally, it means every **model** for $\Gamma$ is also a model for $A$. \pause
+- $\Gamma \vdash A$ means that the tree that starts with $\Gamma$ being true and $A$ being false closes.
+- More generally, it means that there is a **proof** of $A$ on the basis of $\Gamma$. \pause
+
+We will just talk about the specific case today (relating truth tables and tableaux), but we'll occasionally come back to the general case (relating models and proofs) when we cover modal logic.
+
+## Soundness
+
+Saying that the tableaux system is **sound** means this:
+
+> If $\Gamma \vdash A$, then $\Gamma \vDash A$.
+
+That is, if the tree shows that $\Gamma$ implies $A$, then there is no row on the truth table where everything in $\Gamma$ is true and $A$ is false.
+
+## Completeness
+
+Saying that the tableaux system is **complete** means this:
+
+> If $\Gamma \vdash A$, then $\Gamma \vDash A$.
+
+That is, if every row on the truth table where $\Gamma$ is true is also a row where $A$ is true, then the tableaux that starts with $\Gamma$ being true and $A$ being false will close.
+
+## Proving These
+
+The proofs of soundness and completeness are not at all trivial.
+
+- And in general, these results do not hold.
+- Famously, natural proof systems for mathematics do not prove all of the mathematical truths.
+- But that's precisely what we're not getting into here.
+- I'm just explaining the $\vDash$ and $\vdash$ symbols.
+- Since soundness and completeness do hold here, we can move between them freely.
+
+## General Principle
+
+If something is a logical truth, then uniformly replacing one of the sentence letters with another sentence will still be a logical truth.
+
+- This is kind of obvious if the replacement is another sentence letter.
+- But it's a powerful technique if it is not.
+
+## Substitution Example
+
+Start with this logical truth, which I'll do the tree for on the tablet.
+
+> $(A \rightarrow B) \rightarrow (\neg B \rightarrow \neg A) \pause$
+
+Now replace $B$ with $C \wedge D$. We get, without even having to do a new tree, that this is a logical truth.
+
+> $(A \rightarrow (C \wedge D)) \rightarrow (\neg (C \wedge D) \rightarrow \neg A)$
+
+## Congruence
+
+Here's another important fact about logical truth.
+
+> If you substitute in one **logically equivalent** sentence for another, you always preserve logical validity.
+
+Sentences $X$ and $Y$ are logically equivalent when they have the same truth table, i.e., $X \vDash Y$ and $Y \vDash X$.
+
+## Putting these together
+
+So if 1 is a logical truth, so is 2.
+
+1. $(A \rightarrow (C \wedge D)) \rightarrow (\neg (C \wedge D) \rightarrow \neg A)$
+2. $(A \rightarrow (C \wedge D)) \rightarrow ((\neg C \vee \neg D) \rightarrow \neg A) \pause$
+
+All I've done here is replace $\neg (C \wedge D)$ with $\neg C \vee \neg D$. And those are equivalent, though we should check that.
+
+## For Next Time
+
+We will go over some examples of truth trees.
+

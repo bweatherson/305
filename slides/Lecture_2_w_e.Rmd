@@ -1,0 +1,61 @@
+---
+title: "305 Lecture 24 - More Examples of Truth Trees"
+author: "Brian Weatherson"
+date: "July 15, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+This lecture goes over some examples of truth trees.
+
+## Examples to work On
+
+Are these arguments valid?
+
+## $\neg A \vee \neg B \vdash \neg (A \vee B)$
+
+## $\neg A \wedge \neg B \vdash \neg (A \vee B)$
+
+## $\neg (A \wedge B) \vdash \neg (A \vee B)$
+
+## $\neg (A \vee B) \vdash \neg (A \wedge B)$
+
+## $\neg A \vee B, A \vdash B$
+
+## $\neg A \vee B \vdash A \rightarrow B$
+
+## $A \rightarrow (B \rightarrow C) \vdash (A \vee B) \rightarrow C$
+
+## $A \rightarrow (B \rightarrow C) \vdash (A \wedge B) \rightarrow C$
+
+## $A \rightarrow C \vdash (A \vee B) \rightarrow C$
+
+## $A \rightarrow C \vdash (A \wedge B) \rightarrow C$
+
+## $(A \rightarrow C) \wedge (B \rightarrow C) \vdash (A \wedge B) \rightarrow C$
+
+## $(A \rightarrow C) \wedge (B \rightarrow C) \vdash (A \vee B) \rightarrow C$
+
+## $(A \rightarrow C) \vee (B \rightarrow C) \vdash (A \wedge B) \rightarrow C$
+
+## $(A \rightarrow C) \vee (B \rightarrow C) \vdash (A \vee B) \rightarrow C$
+
+## $(A \rightarrow (B \rightarrow C)) \rightarrow (B \rightarrow (A \rightarrow C))$
+
+## $A \rightarrow ((A \rightarrow B) \rightarrow B))$
+
+## $(A \rightarrow B) \rightarrow (A \rightarrow B)$
+
+## $(A \rightarrow (B \rightarrow C)) \rightarrow ((A \rightarrow B) \rightarrow (A \rightarrow C))$
+
+## For Next Time
+
+- Do the week's assignment on trees and tables.
+- Next week we start on _Odds and Ends_
