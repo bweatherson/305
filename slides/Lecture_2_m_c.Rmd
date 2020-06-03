@@ -1,0 +1,150 @@
+---
+title: "305 Lecture 17 - Tautologies"
+author: "Brian Weatherson"
+date: "July 13, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+This lecture is about how we use truth tables to check for logical properties.
+
+## Tautologies
+
+We are going to start with a particular kind of sentence, a **tautology**.
+
+## Definition
+
+A tautology is a sentence that gets the value $\True$ in every row of its truth table.
+
+## Examples of Tautologies
+
+What are some sentences that might fit the bill?
+
+## The Law of Excluded Middle
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A &  & A & $\lor$ & $\neg$ & A & \\
+\hline 
+$\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\False$ & $\True$ & \\
+$\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## The Law of Non-Contradiction
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{ }}
+A & $\neg$ & ( & A & $\wedge$ & $\neg$ & A & )\\
+\hline 
+$\True$ & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ & $\True$ & \\
+$\False$ & \textcolor{red}{$\True$} &  & $\False$ & $\False$ & $\True$ & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Reflexive Conditionals
+
+\begin{center}
+\begin{tabular}{@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A &  & A & $\rightarrow$ & A & \\
+\hline 
+$\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## A Surprising One
+
+\begin{center}
+\begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
+A & B &  & ( & A & $\rightarrow$ & B & ) & $\lor$ & ( & B & $\rightarrow$ & A & ) & \\
+\hline 
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+\end{tabular}
+\end{center}
+
+## Tautologies and Logical Truth
+
+- All tautologies are logical truths.
+- But the converse isn't true - some logical truths are not tautologies.
+- E.g., If Brian is necessarily a human, then Brian is a human.
+
+## Validity
+
+We can also use truth tables to check for properties of arguments, and in particular to check for validity.
+
+## Truth Tables and Validity
+
+> - An argument is (truth-functionally) valid if (and only if) every line on the truth table where all the premises are $\True$, the conclusion is $\True$ as well.
+- Equivalently, an argument is invalid if there is a line where the premises are $\True$ and the conclusion $\False$, and valid otherwise.
+
+## Example of Invalidity
+
+The argument $A$, therefore $A \wedge B$ is invalid because of the second line.
+
+\begin{center}
+\bigskip
+\begin{tabular}{@{ }c@{ }@{ }c | c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B & A &  & A & $\wedge$ & B & \\
+\hline 
+$\True$ & $\True$ & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ & \textcolor{red}{$\False$} &  & $\False$ & \textcolor{red}{$\False$} & $\True$ & \\
+$\False$ & $\False$ & \textcolor{red}{$\False$} &  & $\False$ & \textcolor{red}{$\False$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Another Invalidity Example
+
+Note that there are several lines with $\True$ premises and conclusion. But the argument $A \lif B$, so $A \lif C$ is invalid because of line 2.
+
+\begin{center}
+\bigskip
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B & C &  & A & $\rightarrow$ & B &  &  & A & $\rightarrow$ & C & \\
+\hline 
+$\True$ & $\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\True$ & $\False$ & $\True$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\True$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+$\False$ & $\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## Hypothetical Syllogism
+
+On the other hand the argument from $A \lif B$ and $B \lif C$ to $A \lif C$ is valid.
+
+\begin{center}
+\bigskip
+\begin{tabular}{@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c | c@{ }@{ }c@{ }@{ }c@{ }@{ }c@{ }@{ }c}
+A & B & C &  & A & $\rightarrow$ & B &  &  & B & $\rightarrow$ & C &  &  & A & $\rightarrow$ & C & \\
+\hline 
+$\True$ & $\True$ & $\True$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\True$ & $\False$ &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\True$ & $\False$ & $\True$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\True$ & $\False$ & $\False$ &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ & \\
+$\False$ & $\True$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\True$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\True$ & \textcolor{red}{$\False$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+$\False$ & $\False$ & $\True$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\True$ & \\
+$\False$ & $\False$ & $\False$ &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ &  &  & $\False$ & \textcolor{red}{$\True$} & $\False$ & \\
+\end{tabular}
+\end{center}
+
+## For Next Time
+
+We'll talk about how to build more complicated truth tables.
+
