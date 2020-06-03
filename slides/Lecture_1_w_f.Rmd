@@ -1,0 +1,109 @@
+---
+title: "305 Lecture 14 - Explosion"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan for Today
+
+- We're going to talk two interesting consequences of the rules we've produced so far.
+- The first is that the rules validate explosion, the idea that everything follows from a contradiction.
+- The second is that they validate all four of what are called DeMorgan's Laws.
+
+# Explosion
+
+## What It is
+
+$P, \neg P \vdash Q$
+
+## One Weird Thing About it
+
+It violates **relevance** - the constraint that any valid argument should have at least some term in common between premise and conclusion.
+
+## Informal Argument
+
+> - An argument is valid if it is impossible for the premises to be true and the conclusion false.
+> - In **Explosion**, it is impossible for the premises to be true.
+> - So in **Explosion**, it is impossible for the premises to be true and the conclusion false.
+> - So **Explosion** is valid.
+
+## Formal Argument
+
+Prove **Explosion** in Carnap.
+
+## First Attempt
+
+![$P, \neg P \vdash Q$](../images/class05/Class-05-5.png)
+
+## Second Attempt
+
+![$P, \neg P \vdash Q$](../images/class05/Class-05-6.png)
+
+## Choice Point
+
+1. Reject Addition
+2. Reject Disjunctive Syllogism
+3. Accept Explosion
+
+> - Most people who reject explosion also reject disjunctive syllogism.
+
+## Why Reject Explosion
+
+> 1. Truth in a Database
+> 2. Truth in a Story
+> 3. There are actual true contradictions, but some things are not true.
+
+## My View
+
+Explosion is fine - we just have to be careful with databases and stories.
+
+# DeMorgan Laws
+
+## First Equivalence
+
+1. $\neg (P \vee Q)$
+2. $\neg P \wedge \neg Q$
+
+Prove these are equivalent.
+
+## First Direction
+
+![$\neg (P \vee Q) \vdash \neg P \wedge \neg Q$](../images/class05/Class-05-7.png)
+
+## Second Direction
+
+![$\neg P \wedge \neg Q \vdash \neg (P \vee Q)$](../images/class05/Class-05-8.png)
+
+## Second Equivalence
+
+1. $\neg P \vee \neg Q$
+2. $\neg (P \wedge Q)$
+
+## First Direction
+
+![$\neg (P \wedge Q) \vdash \neg P \vee \neg Q$](../images/class05/Class-05-9.png)
+
+## Second Direction
+
+![$\neg (P \wedge Q) \vdash \neg P \vee \neg Q$](../images/class05/Class-05-10.png)
+
+## General Principle
+
+To move a negation from outside the parentheses to inside it, you do two things.
+
+1. Negate each of the parts.
+2. Flip the conjunction/disjunction symbol upside down.
+
+This process is reversible.
+
+## For Next Time
+
+Do the weekly assignment, and we'll start talking about truth tables.
+

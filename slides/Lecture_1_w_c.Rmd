@@ -1,0 +1,52 @@
+---
+title: "305 Lecture 11 - The Conditional Theorem"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan for Today
+
+We're going to go over an important general fact about conditional in Carnap - the conditional theorem. This is going to be very short.
+
+## The Conditional Theorem
+
+These two things are equivalent in Carnap for any $A, B, C$.
+
+1. $A, B \vdash C$
+2. $A \vdash B \rightarrow C$
+
+This is somewhat intuitive, though it's worth going over why it is so.
+
+## Argument for 1 to 2 (Informal)
+
+- Assume we have a proof from $A, B$ to $C$
+- Now imagine a proof that starts with $A$, then has 'Show: $B \rightarrow C$' followed by an assumption of $B$.
+- Whatever you did in the first proof to get to $C$, you can repeat in the second proof.
+- So eventually, you'll get $C$.
+- So you can now use 'Conditional Derivation' to get $B \rightarrow C$.
+
+## Argument for 2 to 1
+
+- Assume that from $A$ we have a proof of $B \rightarrow C$
+- Continue that proof for one more line with premise $B$.
+- Then use MPP on the last two lines to get $C$.
+- And now you've got a proof with premises $A, B$ and conclusion $C$.
+
+## Metalogic
+
+- The last two slides were super-duper informal.
+- But the basic arguments were sound.
+- And this is how you prove results in **metalogic**.
+- You aren't trying to prove that some particular things are true, you're trying to prove general things about the nature of what can be proven.
+- We're not going to do much metalogic in this course, but it's worth knowing about.
+
+## For Next Time
+
+We're going to start on some material from chapter 8, in particular, we'll talk about how to prove things involving 'and'.

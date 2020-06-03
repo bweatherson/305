@@ -1,0 +1,562 @@
+---
+title: "305 Lecture 09 - Nested Derivations"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan
+
+We're going to go over whathappens when there are multiple indirect derivations in a single argument.
+
+## Using Conditionals
+
+Sometimes we need to prove conditionals along the way of an argument.
+
+- The big picture is that we can introduce 'Show' lines at any stage.
+- These will introduce what I'll call a 'sub-proof'.
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+There is a lot to unpack here, and we'll spend some time going over it all.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+The first line is simply the conclusion of the argument - that's nothing new.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+The next two lines are the premises of the argument - again nothing new here.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+The big new step is at line 4.
+
+- This is the first use of 'Show' after line 1 we've seen.
+
+\endcol
+\endcols
+
+## Proving a Conditional
+
+The way you prove a conditional that you need along the way is to:
+
+1. Use 'Show' to say you're going to prove it.
+2. Assume the antecedent.
+3. Derive the consequent.
+4. End the subproof with a CD statement.
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 4 we say what we're doing.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 5 we assume the antecedent of the conditional - the left-hand side.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+From here we just start using familiar rules.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+It turns out we just need one step - MT gets from 2 and 5 to $P$.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+Note that these are doubly indented.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+Every time we start a sub-proof, we indent by more spaces. I'm using four, though I don't think it insists.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+Now we've got from antecedent to consequent, so we can end.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 7 we record that we've got from $\neg Q$ to $\neg P$, so we can say we've shown that $\neg Q \rightarrow \neg P$.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+We are done with that part of the proof, so we can go back to normal indenting.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+Given $\neg Q \rightarrow \neg P$ we can apply MP to line 3, and that's what we do at line 8.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+The next bit is one I didn't expect - we cite the 'show' line, not the CD line.
+
+- That is, at line 8 we don't cite line 7 - just the 'show' at line 4.
+
+\endcol
+\endcols
+
+## Example
+
+To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
+
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+```
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+```
+
+\endcol
+\begincol{.36\textwidth}
+
+And now we're done - we've proven R as required.
+
+\endcol
+\endcols
+
+## A Big Restriction
+
+When you do this kind of nesting, the 'nested' lines are not available for later reasoning.
+
+- Anything between 'Show' and 'CD' is off-limits for later reasoning.
+- That's why we are indenting those lines - to say that they are all a bit of suppositional reasoning that is out-of-bounds once the supposition has been lifted.
+
+## A Bad Attempt at a Proof
+
+To prove: $P \rightarrow (P \rightarrow Q), Q \rightarrow (P \rightarrow R) \vdash (P \rightarrow Q) \rightarrow R$
+
+```
+1. Show: (P -> Q) -> R
+2.     P -> Q             :AS
+3.     P -> (P -> Q)      :PR
+4.     Q -> (P -> R)      :PR
+5.     Show: P -> Q
+6.         P              :AS
+7.         P -> Q         :MP 3, 6
+8.         Q              :MP 6, 7
+9.         P -> R         :MP 6, 7
+10.    :CD 8
+11.    P -> R             :MP 4, 8
+12.    R                  :MP 6, 11
+13.    :CD 12
+```
+
+## A Bad Attempt at a Proof
+
+Three mistakes on previous slide.
+
+1. No reason to try to show something that you already have.
+2. At line 11, cite a line inside a subproof. 
+   - It's to prove something already seen but that's actually ok; getting something outside of the subproof could be useful. But it's an illegal step.
+3. At line 12, cite a line inside a subproof.
+
+## Subproof
+
+The Carnap book doesn't use the term 'subproof', but I find it useful.
+
+- I mean the lines from one of these 'show' statements not on line 1 until the ':CD' that closes it off.
+
+## For Next Time
+
+We'll start talking about how to do something that pop culture sometimes says is impossible: prove a negative.

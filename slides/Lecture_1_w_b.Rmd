@@ -1,0 +1,77 @@
+---
+title: "305 Lecture 10 - Indirect Proof"
+author: "Brian Weatherson"
+date: "July 8, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+## Plan for Today
+
+We're going to introduce how we prove negations in Carnap.
+
+## How to Prove a Negation
+
+Show that if it were true, something absurd would follow.
+
+## Absurdity
+
+> - In engineering, a perpetual motion machine, or some other kind of free energy.
+> - In finance, a risk-free way to make a guaranteed profit.
+> - In logic, a sentence and its negation.
+
+## Structure of Proof
+
+1. Say that we will show $\neg X$
+2. Assume $X$
+3. Derive some pair of sentences, $Y$ and $\neg Y$
+4. Close the indirect proof by listing the lines where $Y$ and $\neg Y$ appear.
+5. Say that $\neg X$ has been shown at the 'show' line, and not citing any of the lines between it and the 'Indirect Proof' line.
+
+## Example
+
+To prove: $P \rightarrow Q, P \rightarrow \neg Q \vdash \neg P$
+
+```
+1. Show: ~P
+2.     P         :AS
+3.     P -> Q    :PR
+4.     P -> ~Q   :PR
+5.     Q         :MP 2, 3
+6.     ~Q        :MP 2, 4
+7. :ID 5 6
+```
+
+## Notes
+
+> - We indent all the lines between 'show' and 'id' - this is a subproof just like in conditional derivation.
+> - The pair of lines cited have to be one sentence, and the negation of that very sentence.
+> - Oddly, we don't put a comma between the lines cited at the end.
+> - Once you end the sub-proof, you can't cite lines from in it again.
+> - But in the sub-proof, you can cite lines from earlier; they could even be one of the pair of lines that make up the absurdity.
+
+## One More Example
+
+To prove: $P \rightarrow Q, R \rightarrow \neg Q \vdash R \rightarrow \neg P$
+
+```
+1. Show: R -> ~P
+2.     R                 :AS
+3.     P -> Q            :PR
+4.     R -> ~Q           :PR
+5.     ~Q                :MP 2, 4
+6.     Show: ~P
+7.         P             :AS
+8.         Q             :MP 3,7
+9.     :ID 5 8
+10. :CD 6
+```
+
+## For Next Time
+
+We will talk about an interesting general fact about what you can prove in Carnap.
