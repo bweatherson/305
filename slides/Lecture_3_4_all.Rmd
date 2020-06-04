@@ -1,0 +1,4179 @@
+---
+title: "305 Lecture 25 - Introduction to Decision Theory"
+author: "Brian Weatherson"
+date: "July 15, 2020"
+output: 
+  beamer_presentation:
+    md_extensions: +link_attributes
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: 305-beamer-header.tex
+---
+
+# Probability
+
+## Textbook
+
+![Odds and Ends, by Jonathan Weisberg](images/class10/odds_and_ends.png)
+
+## Plan
+
+> - These lectures should supplement it, not summarise it.
+> - So to start, did anyone have any questions about Monty Hall?
+
+## Timetable
+
+> - I haven't taught from this book before, so I'm not sure on pacing.
+> - We might end up speeding up if we're getting through stuff quickly enough, and cover one or two more chapters.
+> - But let's see how we go.
+
+# Learning
+
+## Abraham Wald
+
+\begincols
+\begincol{.48\textwidth}
+
+![Abraham Wald](../images/class10/wald_photo.jpg)
+
+\endcol
+\begincol{.48\textwidth}
+
+We're going to do a bit of math, but we'll start with a point made by someone who was a mathematician (and a good one) that doesn't require any math. 
+
+\endcol
+\endcols
+
+## Surviving Gunfire
+
+- The backstory is that during WWII the Allies were losing a lot of planes to German artillery.
+- They were thinking about how to add armor to the planes in order to defend them better.
+- So they investigated the planes that had come back to see where they were getting most bullet holes, and planned to add extra armor to those parts.
+
+## The Evidence
+
+\begincols
+\begincol{.48\textwidth}
+
+![Bulletholes](../images/class10/wald_plane.jpg)
+
+\endcol
+\begincol{.48\textwidth}
+
+Here's a representation of where they found holes in the planes.
+
+\endcol
+\endcols
+
+## Policy
+
+\begincols
+\begincol{.48\textwidth}
+
+![Bulletholes](../images/class10/wald_plane.jpg)
+
+\endcol
+\begincol{.48\textwidth}
+
+Where should they add the armor?
+
+\endcol
+\endcols
+
+## Wald's Answer
+
+\begincols
+\begincol{.48\textwidth}
+
+![Bulletholes](../images/class10/wald_plane.jpg)
+
+\endcol
+\begincol{.48\textwidth}
+
+You should put the extra armor where the holes aren't.
+
+\endcol
+\endcols
+
+## Hypothesis One - The Original Airforce View
+
+- The planes coming back are our best sample of the planes in the field.
+- The bullet holes in them are asymmetrically distributed.
+- So that's evidence that certain parts of the planes are more likely to get hit.
+- And that's where we should add extra protection.
+
+## Hypothesis Two - Wald's View
+
+- Bullet holes are almost surely randomly distributed.
+- The planes coming back are not a random sample of the planes in the air.
+- They do not include all of the planes that crashed.
+- The best explanation of the asymmetry is that the 'missing' bullet holes are for the planes that crashed.
+- And the best explantion in turn for that is that those are the places where bullet holes are fatal to the plane.
+
+## Who Was Right
+
+- We nowadays think Wald was.
+- Artillery, especially artillery of that era, is really a random process.
+- Moreover, the places with no holes - the engines and the cockpit - are just where you'd expect fatal injuries to occur.
+- So the thing to do was to protect those areas, and try to turn fatal injuries into non-fatal ones.
+
+## Big Lesson
+
+When you see that $p$ is true, there are two different possible lessons to learn.
+
+1. $p$ is true.
+2. I'm seeing that $p$ is true.
+
+Very often, the second is the right lesson to draw.
+
+## Example
+
+\begincols
+\begincol{.48\textwidth}
+
+![Bulletholes](../images/class10/wald_plane.jpg)
+
+\endcol
+\begincol{.48\textwidth}
+
+- A plane comes back with a bullethole in its left wing.
+- That tells us that this plane got shot in the left wing.
+- It also tells us, from the fact that we can see that this plane got shot in the left wing, that this damage is non-fatal.
+
+\endcol
+\endcols
+
+## Big Picture
+
+- We want to learn from our evidence.
+- But sometimes that requires thinking about why we got just this evidence.
+- And to do that it helps to have a theory about how to think about how evidence bears on uncertainty.
+
+# Basics of Probability
+
+## Basic Idea
+
+- A probability function is a mapping from possibilities to numbers.
+- The numbers must sum to one.
+- Intuitively, the numbers measure how likely the possibilities are.
+
+## Sum to One
+
+The math of probability functions is just the math of proportions. Ultimately, all we'll be doing is the same kind of math that you would do when thinking about things like
+
+- What proportion of UM students are from North Carolina?
+- What proportion of UM undergraduates are Tigers fans?
+
+etc.
+
+## Two Big Questions
+
+> 1. What to do with these numbers?
+> 2. Where these numbers come from?
+> 3. What do the numbers even mean?
+
+# Using Probabilities
+
+## A Simple Case
+
+- Imagine that it is basketball season, and UM has planned to have both the women's and men's teams play on the same night.
+- So at the end of the night there are four possible outcomes.
+
+## Made Up Probabilities
+
+I'll stipulate that the probabilities of the four possible outcomes are given by this table.
+
+              Men Win   Men Lose
+-----------  --------- ----------
+Women Win       0.45      0.25
+Women Lose      0.20      0.10
+
+## Another Representation
+
+Here are the same numbers written a different way.
+
+ Women   Men    Probability
+------- ------ -------------
+  Win    Win        0.45
+  Win    Lose       0.25
+  Lose   Win        0.20
+  Lose   Lose       0.10
+  
+## Possibilities
+
+Say a possibility (for current purposes) is one of these maximally specific things that the probability is defined over.
+
+- It is not really a complete possibility.
+- It doesn't tell us the score, or the weather, or the results of the next election, or for that matter the results of the last election.
+- But it tells us everything that's relevant to a particular inquiry.
+- It is a lot like a line on a truth table.
+  
+## Events
+
+We will say an **event** is a proposition that can be defined using these possibilities. So here are some sample events.
+
+- The women's team wins.
+- The men's team wins.
+- At least one Michigan team wins.
+- The two teams have the same result.
+
+## Probability of Events
+
+- An event is true at some possibilities, false at others.
+- Each possibility gets a probability.
+- The probability of an event is the sum of the probabilities of the possibilities where it is true.
+
+## Examples - Probability Women's Team Wins
+
+\begincols
+\begincol{.48\textwidth}
+
+ Women   Men    Probability
+------- ------ -------------
+  Win    Win        0.45
+  Win    Lose       0.25
+  Lose   Win        0.20
+  Lose   Lose       0.10
+  
+\endcol
+\begincol{.48\textwidth}
+
+The women's team wins at lines 1 and 2.
+
+- So its probability is 0.45 + 0.25 = $0.7$.
+
+\endcol
+\endcols
+
+## Examples - Probability Men's Team Wins
+
+\begincols
+\begincol{.48\textwidth}
+
+ Women   Men    Probability
+------- ------ -------------
+  Win    Win        0.45
+  Win    Lose       0.25
+  Lose   Win        0.20
+  Lose   Lose       0.10
+  
+\endcol
+\begincol{.48\textwidth}
+
+The men's team wins at lines 1 and 3.
+
+- So its probability is 0.45 + 0.20 = $0.65$.
+
+\endcol
+\endcols
+
+## Examples - At Least One Team Wins
+
+\begincols
+\begincol{.48\textwidth}
+
+ Women   Men    Probability
+------- ------ -------------
+  Win    Win        0.45
+  Win    Lose       0.25
+  Lose   Win        0.20
+  Lose   Lose       0.10
+  
+\endcol
+\begincol{.48\textwidth}
+
+\pause
+
+At least one team wins at lines 1, 2 and 3.
+
+- So its probability is 0.45 + 0.25 + 0.20 = $0.90$.
+
+\endcol
+\endcols
+
+## Examples - Same Result in Each Game
+
+\begincols
+\begincol{.48\textwidth}
+
+ Women   Men    Probability
+------- ------ -------------
+  Win    Win        0.45
+  Win    Lose       0.25
+  Lose   Win        0.20
+  Lose   Lose       0.10
+  
+\endcol
+\begincol{.48\textwidth}
+
+\pause
+
+It is the same result in each game at lines 1 and 4.
+
+- So its probability is 0.45 + 0.10 = $0.55$.
+
+\endcol
+\endcols
+
+# General Properties of Probability
+
+## Scale
+
+$$
+0 \leq \Pr(A) \leq 1
+$$
+
+## Negation
+
+$$
+\Pr(\neg A) = 1 - \Pr(A)
+$$
+
+## Excluded Middle
+
+$$
+\Pr(A) + \Pr(\neg A) = 1
+$$
+
+## Partition
+
+Some events $A_1, \dots A_n$ form a partition if, necessarily, exactly one of them is true.
+
+- So they are **exclusive** - you can't have any two of them both be true.
+- And they are **exhaustive** - you have to have at least one true.
+
+## Partition
+
+If $A_1, \dots A_n$ form a partition then
+
+$$
+\Pr(A_1) + \dots + \Pr(A_n) = 1
+$$
+
+## Exclusive
+
+If $A, B$ are exclusive
+
+$$
+\Pr(A \vee B) = \Pr(A) + \Pr(B)
+$$
+
+## General Principle
+
+$$
+\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+$$
+
+\pause
+
+It's worth thinking through why this is true in terms of possibilities.
+
+# How To Compute Probabilities
+
+## Trees
+
+- Often, we can't just write down numbers for the possibilities.
+- But we can write down, or at least make reasonable guesses about, numbers for certain events.
+- And we can think about how things are likely to go given those events happen.
+- This is the tree structure that is used in _Odds and Ends_.
+
+## Presidential Forecasting
+
+- So let's say you're interested in the probability that Donald Trump wins the next Presidential election.
+- As you probably know, there is right now an impeachment inquiry going on, and that probably affects things.
+- But it's hard to put into numbers how it affects things.
+
+## One Method
+
+- Divide up the state space.
+- Work out the probability of being in one or other part of the space.
+- Work out the probability of Trump winning in each part of the space.
+- Add things up.
+
+## Nothing is Reliable
+
+> - There are a lot of ways to do this.
+> - You could divide up the space by who the Democractic candidate is.
+> - Or you could divide up the space by how many serious candidates there are.
+> - Or, and let's work with this one, you could divide it up by how the impeachment saga goes.
+
+## Three States
+
+1. Trump is not impeached.
+2. Trump is impeached but not convicted.
+3. Trump is convicted.
+
+## Two Step Process
+
+1. Work out (or at least estimate) probability of each state.
+2. Work out probability of Trump winning within each of those states.
+
+This will involve a lot of guesswork - do not make investment decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
+
+## Probabilities of States
+
+This could be embarrassingly out of date by the time we even do the classes, but let's say the probabilities look like this.
+
+- Not impeached - 20%, or 0.2.
+- Impeached but not convicted - 70%, or 0.7.
+- Impeached and convicted, i.e., removed - 10%, or 0.1
+
+## Win Probabilities
+
+Then we want to work out how likely it is that Trump wins given each of those states.
+
+## Not Impeached
+
+If he's not impeached, then probably Democrats are panicking, and he's in a strong position to win, so let's say that's a 60%, or 0.6, win probability.
+
+\bigskip
+
+So that would mean that there's a 40%, or 0.4, lose probability.
+
+> - I'm totally happy to revise these numbers if the class thinks they are absurd - I can't emphasis this enough that I'm literally making these numbers up.
+
+## Impeached but not Convicted
+
+That's basically the status quo, and the status quo is that he's behind in the polls but not by so much that he couldn't win, so let's call that a 40%, or 0.4, win probability, and hence a 60%, or 0.6, lose probability.
+
+## Impeached and Convicted
+
+Now we're in really unknown territory, because this has literally never happened. It would be a Lazarus like comeback to win from here, but stranger things have happened. Say his win probability now drops to 10%, or 0.1. (Largely because he's really unlikely to even be the Republican candidate in this scenario.)
+
+## The Giant Table
+
+                                     Trump wins             Trump loses
+---------------------------- ------------------------- -------------------------
+Not impeached                 $0.2 \times 0.6 = 0.12$   $0.2 \times 0.4 = 0.08$
+Impeached but not convicted   $0.7 \times 0.4 = 0.28$   $0.7 \times 0.6 = 0.42$
+Impeaches and convicted       $0.1 \times 0.1 = 0.01$   $0.1 \times 0.9 = 0.09$
+
+So the probability that he wins (given our very rough assumptions) is $0.12 + 0.28 + 0.01 = 0.41$, or 41%.
+
+## Probabilities and Errors
+
+- The error bars on that calculation are massive.
+- But it's a kind of sanity check on how you think things are going.
+- Especially in situations where only a handful of paths lead to a salient result (like in playoffs in sports, or when thinking about the likelihood of a particular challenger winning), doing the tree even with favorable numbers can give you a conservative estimate of some probability.
+
+## Three Cases Where This is More Precise
+
+1. Probabilities are stipulated
+2. Probabilities are due to well understood chance processes (like gambling devices)
+3. Probabilities are derived from very large data sets
+
+
+# For Next Time
+
+## For Next Time
+
+Read chapter 4, and skim chapters 2 and 3 to make sure they are familiar enough given what we've done already.
+
+# A Tree Example
+
+## Soccer Tournament
+
+There is a big soccer tournament this weekend. The teams competing are
+
+- Fireflies
+- Penguins
+- Huskies
+- Bluebirds
+
+## Tournament Structure
+
+There will be three games.
+
+1. Fireflies vs Penguins
+2. Huskies vs Bluebirds
+3. Winner of Game 1 vs Winner of Game 2
+
+Each game will have a winner one way or the other (maybe via penalty kicks or extra time).
+
+## Team Strength
+
+The teams are not all equally good. They each have a 'strength'. Here is their respective strengths
+
+ Team        Strength
+----------- ---------- 
+ Fireflies      5
+ Penguins       4
+ Huskies        3
+ Bluebirds      1
+
+## Win Probabilities
+
+If a team with strength $x$ plays a team with strength $y$, the team with strength $x$ will win with probability
+
+$$
+\frac{x}{x+ y}
+$$
+
+\bigskip
+
+And the team with strength $y$ will win with probability
+
+$$
+\frac{y}{x + y}
+$$
+
+## Question
+
+What is the probability that each team will win the tournament?
+
+> - We will answer this by doing a tree.
+
+## Tournament Tree {.fragile}
+
+\newcommand{\pictext}[3]{
+\put(#1, #2){\makebox(0, 0)[b]{#3}}}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{215}{20}{P}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+\pause
+
+Now we have to add the probabilities to it.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+The first game is strength 5 vs strength 4, so the win probability for the stronger team is $\nicefrac{5}{5+4}$, i.e., $\nicefrac{5}{9}$.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
+
+The second game is strength 3 vs strength 1, so the win probability for the stronger team is $\nicefrac{3}{3+1}$, i.e., $\nicefrac{3}{4}$. And it doesn't matter how the first game went - that's the probability for the second game.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+And now for each possible match up in game 3, we apply the formula to get the win probability for each team.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\frac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+- The probability of each completed branch is the product of each of the smaller branches.
+- So the one I've marked is $\frac{4}{9} \times \frac{3}{4} \times \frac{3}{7} = \frac{1}{7}$.
+
+## Tournament Tree {.fragile}
+
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+\pictext{50}{125}{$\frac{25}{96}$}
+\put(70, 82){\line(1, 2){20}}
+\pictext{90}{125}{$\frac{5}{32}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+\pictext{120}{125}{$\frac{25}{216}$}
+\put(140, 82){\line(1, 2){20}}
+\pictext{160}{125}{$\frac{5}{216}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+\pictext{190}{125}{$\frac{4}{21}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\frac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+\pictext{260}{125}{$\frac{4}{45}$}
+\put(280, 82){\line(1, 2){20}}
+\pictext{300}{125}{$\frac{1}{45}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
+
+I've included all the others - they usually don't cancel as nicely as that one.
+
+## Tournament Table
+
+It might be easier to see the results in a table
+
+  Winner     Runner-Up   Probability         Approx
+----------- ----------- ------------------ ------------
+ Fireflies   Huskies     $\frac{25}{96}$     0.260
+ Huskies     Fireflies   $\frac{5}{32}$      0.156
+ Fireflies   Bluebirds   $\frac{25}{216}$    0.116
+ Bluebirds   Fireflies   $\frac{5}{216}$     0.023
+ Penguins    Huskies     $\frac{4}{21}$      0.190
+ Huskies     Penguins    $\frac{1}{7}$       0.143
+ Penguins    Bluebirds   $\frac{4}{45}$      0.089
+ Bluebirds   Penguins    $\frac{1}{45}$      0.022 
+ 
+## Tournament Table
+
+And we can rearrange that so the rows where each team wins are adjacent.
+
+  Winner     Runner-Up   Probability         Approx
+----------- ----------- ------------------ ------------
+ Fireflies   Huskies     $\frac{25}{96}$     0.260
+ Fireflies   Bluebirds   $\frac{25}{216}$    0.116
+ Huskies     Fireflies   $\frac{5}{32}$      0.156
+ Huskies     Penguins    $\frac{1}{7}$       0.143
+ Penguins    Huskies     $\frac{4}{21}$      0.190
+ Penguins    Bluebirds   $\frac{4}{45}$      0.089
+ Bluebirds   Fireflies   $\frac{5}{216}$     0.023
+ Bluebirds   Penguins    $\frac{1}{45}$      0.022 
+
+## Tournament Table
+
+And then just adding up the probabilities for the two ways each team can win, we get the actual probabilities of each win. (I'm just doing the decimals now.)
+
+  Winner     Approx Probability
+----------- --------------------
+ Fireflies          0.376
+ Huskies            0.299
+ Penguins           0.279
+ Bluebirds          0.045
+ 
+(Those numbers don't sum to 1 precisely because of rounding.)
+
+# Gambler's Fallacy
+
+## Abstract Setup
+
+A process will be repeated. It just had one kind of outcome, and we want to know whether that made the likelihood of some other outcome on the next run of the process go up.
+
+## Questions
+
+Given that trial $n$ of the process produced output $o$, which processes are such that
+
+- The probability that trial $n$ will produce output $o$ just went up?
+- The probability that trial $n$ will produce output $o$ stayed the same?
+- The probability that trial $n$ will produce output $o$ just went down?
+
+## Induction
+
+There should be lots of cases where the probability goes up.
+
+> - E.g., I don't know what it's like to put my hand on a hot plate.
+> - On trial one, it hurts a lot.
+> - That increases the probability on trial two that it will also hurt a lot.
+
+## Fair Gambling Devices
+
+There are also a lot of cases where the probability stays the same.
+
+> - That's what happens in all fair gambling devices.
+> - But note that not all gambling devices are fair, and sometimes the fact that you get output $o$ is evidence that it is (intentionally or not) biased towards $o$.
+
+## Option Three
+
+It's really hard to find real-world cases where option three applies.
+
+> - Sampling without replacement (if you want to call it a single process) is one.
+> - The fact that the previous bag going onto the luggage carousel is not yours does really raise the probability that the next one will be yours.
+> - But these cases are rare.
+
+## Hot Hand
+
+- It's a little odd to lump 'hot hand' reasoning in with gambler's fallacy.
+- On the face of it, it looks like simple inductive reasoning.
+- I think (though the data are really messy) that hot hand reasoning is often over-stated, but that there really is a phenomenon there.
+
+## Hot Hand
+
+The trick is squaring the intuitive idea in 1 with the observation in 2.
+
+1. Someone who hits a shot is more likely 'hot' and hence somewhat more likely to hit the next shot.
+2. Shooting percentages are roughly the same for shooters who hit and who missed on their previous shots.
+
+## Three Possible Explanations
+
+> - Injuries (though this would be small effect)
+> - Defence (assumes everyone knows about effect - which is realistic)
+> - Shot selection (not obviously rational, but might be)
+
+# Conditional Probability
+
+## What it is
+
+- Sometimes we don't just care about how likely something is.
+- We care about how likely it is given some other thing has happened or will happen. \pause
+- This might be because we want to plan. \pause
+- It might be because we want to compute overall probabilities. \pause
+- Or it might be because we've found something out, and want to know what it means for other likelihoods.
+
+## Prior Examples
+
+We've already used some conditional probabilities.
+
+- We already talked, for example, about the probability of the Fireflies winning conditional on them being in the final against the Bluebirds.
+
+## Inverting
+
+But there are other questions we might want to ask as well.
+
+> - E.g., conditional on the Fireflies winning, how likely is it that they played the Huskies.
+
+## Intuitions
+
+This isn't an easy question to answer intuitively.
+
+- It is more likely that the Huskies will be actually in the final - because they are the better team.
+- But it is more likely that the Fireflies will win against the Bluebirds - because they are weaker.
+- It isn't always easy to intuitively balance these forces.
+
+## Formula
+
+$$
+\Pr(A | B) = \frac{Pr(A \wedge B)}{Pr(B)}
+$$
+
+\pause
+
+- The left-hand side means "The probability of $A$ given $B$." \pause
+- And the right-hand side says that this is equal to the probability of $A \wedge B$ divided by the probability of $B$.
+
+## Fireflies
+
+$$
+\Pr(HR | FC) = \frac{\Pr(HR \wedge FC)}{\Pr(FC)}
+$$
+
+That is, the probability that the Huskies are runners-up ($HR$) given that the Fireflies are champions ($FC), is given by the formula on the right.
+
+## Fireflies
+
+$$
+\Pr(HR | FC) = \frac{0.26}{0.26+0.116} = \frac{0.26}{0.376} \approx 0.691
+$$
+So conditional on the Fireflies winning, it's just under 70% likely they beat the Huskies.
+
+## Updating
+
+A big thing we'll talk about after Fall break is this philosophical claim
+
+$$
+\Pr{}_B(A) = \Pr(A | B)
+$$
+
+The way to read that is saying that the conditional probability of $A$ after learning $B$ equals the conditional probability of $A$ given $B$. This claim - and it is a philosophical claim not a mathematical one - is a big part of why we care about conditional probability.
+
+# For Next Time
+
+## For Next Time
+
+Definitely read chapter 5, though we'll probably start on 6 as well.
+# Conditional Probability
+
+## The Magic Formula
+
+$$
+\Pr(A | B) = \frac{\Pr(A \wedge B)}{\Pr(B)}
+$$
+
+Intuitively, the probability of $A$ given $B$ is the proportion of the $B$ cases that are also $A$ cases.
+
+## Independence
+
+$A$ and $B$ are independent if (and only if)
+
+$$
+\Pr(A | B) = \Pr(A)
+$$
+
+That is, taking things conditional on $B$ doesn't change $A$.
+
+## Ways Independence can Fail
+
+Causal
+
+- $B$ might be a possible cause of $A$. \pause
+- $B$ might be a possible preventer of $A$. \pause
+- $B$ might be a common effect of a frequent cause of $A$. \pause
+- $B$ might be a common effect of a frequent preventre of $A$.
+
+## Ways Indepenence can Fail
+
+Epistemic
+
+- $B$ being true could tell you that a source that also predicts $A$ is more reliable than you thought.
+
+## Two Big Real World Facts about Independence
+
+1. In reality, strict independence almost never obtains. \pause
+2. In practice, it's very often useful to assume independence for modelling purposes. \pause
+
+These are consistent, but it does mean be careful. Sometimes assuming independence is like assuming that relativistic considerations aren't important to figuring out whether a bridge will stand up. And sometimes it is like assuming that friction isn't important to figuring out whether a bridge will stand up.
+
+## An Odd Instance of Independence
+
+Two fair dice, one red and one blue, are going to be tossed. Let $A$ be that the sum of what they show is 7. Let $B$ be that the red die shows a 2.
+
+Question
+:    Are $A$ and $B$ independent? \pause
+
+Surprising answer - yes!
+
+# Inverting Conditional Probabilities
+
+## A Real World Problem
+
+* Imagine that 3% of men have disease D. 
+* A man you know has no special reason to think he's vulnerable to D, it's not like all his male ancestors had D, but no special reason to think he's immune to it either.
+* There is a test for whether one has disease D or not. 
+* Among people who have the disease, 90% test positive. 
+* But only 5% of those who do not have the disease test positive.$\pause$
+
+This man just had the test, and it came back positive. What is the probability that he has disease D?
+
+## How To Solve These Problems
+
+* Start with a table with the states of the world on one axis, and states of the test on the other axis.
+* In this case it can just be a 2*2 table.
+* In each cell, write down the initial probability of ending up in that cell.
+* That will be the probability of being in that state, times the probability of that test result given that you are in that state.
+* The formula we are constantly using here is $Pr(A \wedge B) = Pr(A) Pr(B | A)$.
+
+## The Table
+
+|  | Test Positive | Test Negative |
+| --	| -------------	| -------------	|
+| Have Disease | 0.027 | 0.003 |
+| No Disease | 0.0485 | 0.9215 |
+
+$\pause$
+
+* Add up all the values in the 'Test Positive' columnn to get the probability of testing positive.
+* In this case it's 0.027 + 0.0485 = 0.0755
+
+## Solving the Problem
+
+|  | Test Positive | Test Negative |
+| --	| -------------	| -------------	|
+| Have Disease | 0.027 | 0.003 |
+| No Disease | 0.045 | 0.855 |
+
+* We want to know Pr(Disease $|$ Test Positive). Call this $Pr(D | TP)$.$\pause$
+* That's $Pr(D \wedge TP)$ divided by $Pr(TP)$.$\pause$
+* And $Pr(D \wedge TP)$ is 0.027.$\pause$
+* And $Pr(TP)$ is 0.0755.$\pause$
+* So the answer is roughly 0.35, i.e., $\frac{0.27}{0.755}$.
+
+## Practical Consequence
+
+* That test looked pretty reliable.
+* But testing positive only raises the probability of having the disease toa bit over 1 in 3.
+* This wasn't really a quirk of the example.
+* When testing for relatively rare conditions, this is a really common situation.
+* Unless the test is **really** reliable, testing positive is worrying, but usually raises the dreaded probability to well under 1, often under 0.5.
+
+## General Strategy For A/B Problems
+
+- Make a 2 x 2 table, with $A, \neg A$ on the rows, and $B, \neg B$ on the columns.
+- Work out the probability of each cell.
+- To do this, repeatedly use the formula
+
+$$
+\Pr(X \wedge Y) = \Pr(X | Y)\Pr(Y)
+$$
+
+- Add up the values across the rows to get $\Pr(A), \Pr(\neg A)$.
+- Add up the values down the columns to get $\Pr(B), \Pr(\neg B)$.
+- Use the formula for conditional probability to work out the answer.
+
+## Another Example
+
+- $\Pr(A) = 0.6$.
+- $\Pr(B | A) = 0.3$.
+- $\Pr(B | \neg A) = 0.8$.
+- Find $\Pr(B)$ and $\Pr(A | B)$.
+
+## Use the Negation Rule to fill in the Basic Probabilities
+
+- $\Pr(A) = 0.6$, so $\Pr(\neg A) = 0.4$. \pause
+- $\Pr(B | A) = 0.3$, so $\Pr(\neg B | A) = 0.7$. \pause
+- $\Pr(B | \neg A) = 0.8$, sp $\Pr(\neg B | \neg A) = 0.2$.
+
+## Build the Table
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |        |             |
+|$\neg A$|        |             |
+
+## Top Left Corner
+
+\begin{align*}
+\Pr(A \wedge B) &= \Pr(B | A) \Pr(A) \\
+ &= 0.3 \times 0.6 \\
+ &= 0.18
+\end{align*}
+
+\pause
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |             |
+|$\neg A$|        |             |
+
+## Top Right Corner
+
+\begin{align*}
+\Pr(A \wedge \neg B) &= \Pr(\neg B | A) \Pr(A) \\
+ &= 0.7 \times 0.6 \\
+ &= 0.42
+\end{align*}
+
+\pause
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|        |             |
+
+## Check
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|        |             |
+
+The numbers in the top row are 0.18 + 0.42 = 0.6, which is what we were told $\Pr(A)$ was. So our work passes this little cross-check.
+
+## Bottom Left Corner
+
+\begin{align*}
+\Pr(\neg A \wedge B) &= \Pr( B | \neg A) \Pr(\neg A) \\
+ &= 0.8 \times 0.4 \\
+ &= 0.32
+\end{align*}
+
+\pause
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|  0.32  |             |
+
+## Bottom Right Corner
+
+\begin{align*}
+\Pr(\neg A \wedge \neg B) &= \Pr( \neg B | \neg A) \Pr(\neg A) \\
+ &= 0.2 \times 0.4 \\
+ &= 0.08
+\end{align*}
+
+\pause
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|  0.32  |   0.08      |
+
+## Check
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|  0.32  |   0.08      |
+
+- The bottom row sums to 0.4, as we knew $\Pr(\neg A)$ was.
+- And the whole thing sums to 1, which is good.
+
+## $\Pr(B)$
+
+|        |  $B$   |   $\neg B$  |
+|-------:|:------:|:-----------:|
+|$A$     |  0.18  |   0.42      |
+|$\neg A$|  0.32  |   0.08      |
+
+- $\Pr(B) = 0.18 + 0.32 = 0.5$. \pause
+- $\Pr(\neg B) = 0.42 + 0.08 = 0.5$ \pause
+- Given $\Pr(B)$ we could have used the negation rule to work out $\Pr(\neg B)$.
+
+## $\Pr(A | B)$
+
+\begin{align*}
+\Pr(A | B) &= \frac{\Pr(A \wedge B)}{\Pr(B)} \\
+ &= \frac{0.18}{0.5} \\
+ &= 0.36
+\end{align*}
+
+- So the answer is that $\Pr(A | B)$ is 0.36.
+- If you learn $B$, the probability of $A$ falls from 0.6 to 0.36.
+
+# Putting Properties Together
+
+## The Negation Rule
+
+1. All logical truths have probability 1, so $\Pr(A \vee \neg A) = 1$. \pause
+2. If $X$ and $Y$ are exclusive, then $\Pr(X \vee Y) = \Pr(X) + \Pr(Y)$. \pause
+3. $A$ and $\neg A$ are exclusive. \pause
+4. So, from 1, 2, 3, we get $\Pr(A) + \Pr(\neg A) = 1$. \pause
+5. So, from 4, we get $\Pr(\neg A) = 1 - \Pr(A)$.
+
+## The Multiplication Rule
+
+1. By definition, $\Pr(A | B) = \frac{\Pr(A \wedge B)}{\Pr(B)}$. \pause
+2. Multiplying both sides by $\Pr(B)$ gives us $\Pr(A \wedge B) = \Pr(A | B)\Pr(B)$.
+
+## Another Addition Rule
+
+1. $B$ is logically equivalent to $(A \wedge B) \vee (\neg A \wedge B)$. \pause
+2. So, $\Pr(B) = \Pr((A \wedge B) \vee (\neg A \wedge B))$. \pause
+3. $(A \wedge B)$ and $(\neg A \wedge B)$ are exclusive. \pause
+4. So $\Pr((A \wedge B) \vee (\neg A \wedge B)) = \Pr(A \wedge B) + \Pr(\neg A \wedge B)$. \pause
+5. By the multiplication rule, $\Pr(A \wedge B) = \Pr(B | A)\Pr(A)$. \pause
+6. Also by the multiplication rule, $\Pr(\neg A \wedge B) = \Pr(B | \neg A)\Pr(\neg A)$. \pause
+7. Putting all these together, we get
+
+$$
+\Pr(B) = \Pr(B | A)\Pr(A) + \Pr(B | \neg A)\Pr(\neg A)
+$$
+
+## Another Conditional Probability Rule
+
+Putting that formula for $\Pr(B)$ into the definition of conditional probability, we get
+
+$$
+Pr(A | B) = \frac{\Pr(A \wedge B)}{\Pr(B | A)\Pr(A) + \Pr(B | \neg A)\Pr(\neg A)}
+$$
+
+## Yet Another Conditional Probability Rule
+
+\begin{align*}
+\Pr(B | A) \times \frac{\Pr(A)}{\Pr(B)} &= \frac{\Pr(B \wedge A)}{\Pr(A)}  \times \frac{\Pr(A)}{\Pr(B)} \\
+ &= \frac{\Pr(A \wedge B)}{\Pr(A)}  \times \frac{\Pr(A)}{\Pr(B)}  \\
+ &= \frac{\Pr(A \wedge B)}{\Pr(B)} \\
+ &= \Pr(A | B)
+\end{align*}
+
+## Yet Another Conditional Probability Rule
+
+Or, as it is usually written
+
+$$
+Pr(A | B) = \frac{\Pr(B | A)\Pr(A)}{\Pr(B)}
+$$
+
+# For Next Time
+
+## For Next Time
+
+Read through chapter 8 of _Odds and Ends_. We'll look at how the assignment goes and see how much we want to pace the next week.
+
+# Assignment Revision
+
+## The First Two Questions
+
+- There was a Canvas bug and the order of the answers was reversed.
+- Then it turns out that Canvas doesn't handle post-publication bug fixes to numerical answer questions the same way it handles post-publication bug fixes to multiple choice questions, which confused me.
+- But I think we manually graded all the questions correctly.
+
+## Odds and Ends 5.4b
+
+Assume $\Pr(A \wedge B) = \frac{1}{3}$ and $\Pr(A \wedge \neg B) = \frac{1}{5}$. Say (in decimal form, to two decimal places), what is $\Pr(A)$. \pause
+
+1. $A$ is logically equivalent to $(A \wedge B) \vee (A \wedge \neg B)$. \pause
+2. So $\Pr(A) = \Pr((A \wedge B) \vee (A \wedge \neg B))$. \pause
+3. And by the addition rule, $\Pr((A \wedge B) \vee (A \wedge \neg B)) = \Pr(A \wedge B) + \Pr(A \wedge \neg B)$. \pause
+4. That is, it equals $\frac{1}{3} + \frac{1}{5} = \frac{8}{15} \approx 0.53$.
+
+## Odds and Ends 5.4c
+
+Assume $\Pr(A \wedge B) = \frac{1}{3}$ and $\Pr(A \wedge \neg B) = \frac{1}{5}$. Are $(A \wedge B)$ and $(A \wedge \neg B)$ independent? \pause
+
+1. They are independent if they satisfy $\Pr(X \wedge Y) = \Pr(X)\Pr(Y)$. That is, if the probability of their conjunction is the product of their probabilities. \pause
+2. But $(A \wedge B) \wedge (A \wedge \neg B)$ is a contradiction, since it requires $B$ to be both true (on the left) and false (on the right). \pause
+3. So its probability is 0. \pause
+4. But $\Pr(A \wedge B) = \frac{1}{3}$ and $\Pr(A \wedge \neg B) = \frac{1}{5}$, so their product is $\frac{1}{15} \neq 0$.
+5. So they are not independent.
+
+## Odds and Ends 5.6
+
+True of false: If $\Pr(A) = \Pr(B)$ then $A$ and $B$ are logically equivalent. \pause
+
+- Here's a counterexample.
+- Imagine that I'm about to flip a coin.
+- $A$ is that it lands heads, $B$ that it lands tails.
+- They have the same probability, but they are not equivalent.
+
+## Odds and Ends 5.7a
+
+Consider this argument
+
+> If a coin is fair, then the probability of getting at least one heads in a sequence of four tosses is quite high: above 90%. Therefore, if a fair coin has landed tails three times in a row, the next toss will probably land heads.
+
+True or False: The premise of the argument is true.
+
+## Odds and Ends 5.7a
+
+To work out the probability of something happening at least once, it is often easiest to work out the probability of it never happening, then use the negation rule.
+
+- So the probability of four tails in a row is
+- $\frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{16}$.
+- The probability of getting heads at least once is 1 minus that.
+- That is, it's $1 - \frac{1}{16} = \frac{15}{16} > 0.9$.
+
+## Odds and Ends 5.7b
+
+Consider this argument
+
+> If a coin is fair, then the probability of getting at least one heads in a sequence of four tosses is quite high: above 90%. Therefore, if a fair coin has landed tails three times in a row, the next toss will probably land heads.
+
+True or False: The argument is valid
+
+## Odds and Ends 5.7b
+
+One way to see this is invalid is that the premises are actually true and the conclusion false! \pause
+
+- In general, the following is bad reasoning.
+- Such-and-such long sequence is improbable.
+- So if the first part of the sequence happens, the rest of the sequence must probably not happen.
+
+## Odds and Ends 5.7b
+
+Example
+
+1. It's improbable that I'll win the lottery and get rich. \pause
+2. So if I win the lottery, I probably won't get rich.
+
+## Odds and Ends 6.3b
+
+Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild.
+
+What is the probability a randomly selected tablet in the store has a factory defect?
+
+## Odds and Ends 6.3b
+
+Let's do this with a table
+
+|       | Defect | No Defect |
+|------:|:------:|:---------:|
+| Ixian |        |           |
+| Guild |        |           |
+
+We just need to fill in the left hand column, because the sum of the left hand column is the probability of defect.
+
+## Odds and Ends 6.3b
+
+The top left cell is given by the rule
+
+- Probability of coming from Ixian;
+- Times the probabilty of having a defect if coming from Ixian; \pause
+
+|       | Defect                       | No Defect |
+|------:|:----------------------------:|:---------:|
+| Ixian | $0.4 \times 0.05 = 0.02$     |           |
+| Guild |                              |           |
+
+## Odds and Ends 6.3b
+
+The bottom left cell is given by the rule
+
+- Probability of coming from Guild;
+- Times the probabilty of having a defect if coming from Guild; \pause
+
+|       | Defect                       | No Defect |
+|------:|:----------------------------:|:---------:|
+| Ixian | $0.4 \times 0.05 = 0.02$     |           |
+| Guild | $0.6 \times 0.1 = 0.06$      |           |
+
+## Odds and Ends 6.3b
+
+Putting this together
+
+|       | Defect                       | No Defect |
+|------:|:----------------------------:|:---------:|
+| Ixian | $0.4 \times 0.05 = 0.02$       |           |
+| Guild | $0.6 \times 0.1 = 0.06$        |           |
+| **Total** | $0.08$ |  |
+
+So the probability of a defective tablet is 0.08.
+
+## Odds and Ends 6.3b
+
+Putting this together
+
+|       | Defect                       | No Defect |
+|------:|:----------------------------:|:---------:|
+| Ixian | $0.02$     |           |
+| Guild | $0.06$      |           |
+| **Total** | $0.08$ |  |
+
+So the probability of a defective tablet is 0.08.
+
+## Odds and Ends 6.3c
+
+Five percent of tablets made by the company Ixian have factory defects. Ten percent of the tablets made by their competitor company Guild do. A computer store buys 40% of its tablets from Ixian, and 60% from Guild.
+
+What is the probability a randomly selected tablet in the store is made by Ixian, given that it has a factory defect?
+
+## Odds and Ends 6.3c
+
+What is 
+
+$$
+\Pr(\text{Ixian} | \text{Defect})
+$$
+
+## Odds and Ends 6.3c
+
+It is
+
+$$
+\frac{\Pr(\text{Ixian and Defect})}{\Pr(\text{Defect})}
+$$
+
+## Odds and Ends 6.3c
+
+That is, according to the last two questions
+
+$$
+\frac{0.02}{0.08} = 0.25
+$$
+
+# Another Worked Example
+
+## Odds and Ends 8.8
+
+A company makes websites, always powered by one of three server platforms: Bulldozer, Kumquat, or Penguin. Bulldozer crashes 1 out of every 10 visits, Kumquat crashes 1 in 50 visits, and Penguin only crashes 1 out of every 200 visits.
+
+Half of the websites are run on Bulldozer, 30% are run on Kumquat, and 20% are run on Penguin.
+
+You visit one of their sites for the first time and it crashes. What is the probability it was run on Penguin?
+
+## Start with a Table
+
+|           | Crash | No Crash |
+|----------:|:-----:|:--------:|
+| Bulldozer |       |          |
+| Kumquat   |       |          |
+| Penguin   |       |          |
+
+We will start by filling in the table - though really it is the left hand column that matters here
+
+## The Table
+
+|           | Crash                   | No Crash |
+|----------:|:-----------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$ |          |
+| Kumquat   |                         |          |
+| Penguin   |                         |          |
+
+The formular for Bulldozer-and-Crash is
+
+$$
+\Pr(\text{Bulldozer}) \times \Pr(\text{Crash}|\text{Bulldozer}) = 0.5 \times 0.1 = 0.05
+$$
+
+## The Table
+
+|           | Crash                      | No Crash |
+|----------:|:--------------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$    |          |
+| Kumquat   | $0.3 \times 0.02 = 0.006$  |          |
+| Penguin   |                            |          |
+
+The formula for Kumquat-and-Crash is
+
+$$
+\Pr(\text{Kumquat}) \times \Pr(\text{Crash}|\text{Kumquat}) = 0.3 \times 0.02 = 0.006
+$$
+
+## The Table
+
+|           | Crash                      | No Crash |
+|----------:|:--------------------------:|:--------:|
+| Bulldozer | $0.5 \times 0.1 = 0.05$    |          |
+| Kumquat   | $0.3 \times 0.02 = 0.006$  |          |
+| Penguin   | $0.2 \times 0.005 = 0.001$ |          |
+
+The formula for Penguin-and-Crash is
+
+$$
+\Pr(\text{Penguin}) \times \Pr(\text{Crash}|\text{Penguin}) = 0.2 \times 0.005 = 0.001
+$$
+
+## The Table
+
+|           | Crash          | No Crash |
+|----------:|:--------------:|:--------:|
+| Bulldozer | $0.05$         |          |
+| Kumquat   | $0.006$        |          |
+| Penguin   | $0.001$        |          |
+
+Let's rewrite it without the workings.
+
+## The Table
+
+|           | Crash          | No Crash |
+|----------:|:--------------:|:--------:|
+| Bulldozer | $0.05$         | $0.45$   |
+| Kumquat   | $0.006$        | $0.294$  |
+| Penguin   | $0.001$        | $0.199$  |
+
+We can fill in the right-hand column by noting that the rows have to add up to 0.5, 0.3 and 0.2 respectively; since those are the probabilities of the three server types.
+
+## Crash!
+
+|           | Crash          | No Crash |
+|----------:|:--------------:|:--------:|
+| Bulldozer | $0.05$         | $0.45$   |
+| Kumquat   | $0.006$        | $0.294$  |
+| Penguin   | $0.001$        | $0.199$  |
+
+So the probability of a crash is 
+
+$$
+0.05 + 0.006 + 0.001 = 0.057
+$$
+
+## Penguin given Crash
+
+So the probability of Penguin given Crash is
+
+$$
+\frac{\Pr(\text{Penguin-and-Crash})}{\Pr(\text{Crash})} = \frac{0.001}{0.057} \approx 0.0175
+$$
+
+\pause
+That's really low, because Penguin sites don't crash.
+
+# Using Formulae
+
+## One Important Equivalence
+
+$$
+\Pr(B | A) \Pr(A) = \Pr(A | B) \Pr(B)
+$$
+
+We know that because these are two different ways of expressing $\Pr(A \wedge B)$.
+
+## One Important Equivalence
+
+Divide both sides by $\Pr(B)$ (and flip sides around) and you get
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A) \Pr(A)}{\Pr(B)}
+$$
+
+\pause
+This is the formula that's written in neon in the textbook.
+
+## Another Important Equivalence
+
+Start again with our canonical formula for conditional probability.
+
+$$
+\Pr(A | B) = \frac{\Pr(A \wedge B)}{\Pr(B)}
+$$
+
+## Another Important Equivalence
+
+Replace $\Pr(A \wedge B)$ with its definition in terms of conditional probability.
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A)\Pr(A)}{\Pr(B)}
+$$
+
+## Another Important Equivalence
+
+Now replace $\Pr(B)$ with the formula we derived for it the other day.
+
+$$
+\Pr(A | B) = \frac{\Pr(B | A)\Pr(A)}{\Pr(B | A)\Pr(A) + \Pr(B | \neg A)\Pr(\neg A)}
+$$
+
+And this is what is sometimes called Bayes's Theorem.
+
+## General Version
+
+- Let $X_1, \dots, X_n$ be a partition of possibility space.
+- Then $B$ is equivalent to $(B \wedge X_1) \vee \dots \vee (B \wedge X_n)$.
+- So $\Pr(B) = \Pr(B \wedge X_1) + \dots + \Pr(B \wedge X_n)$
+- And we can use that to get the very general form of Bayes's theorem
+
+## General Version
+
+$$
+\Pr(X_i | B) = \frac{\Pr(B | X_i)\Pr(X_i)}{\sum_{k=1}^n \Pr(B | X_k)\Pr(X_k)}
+$$
+
+So if you know the prior probability of each cell in the partition, and the probability of $B$ conditional on each cell, you can work out the probability of being in a particular cell given $B$.
+
+## General Version
+
+- A lot of people make a big deal about this formula.
+- I rarely find myself in situations where it is easier to use than something like the trees or tables.
+- But the fact that so many people fuss so much about it suggests that for a lot of applications it is very helpful.
+- For the assignment questions this week, it's totally up to you whether to use the formula, or trees, or tables.
+
+# Base Rates
+
+## The Blue and Green Example
+
+Plan
+
+- Go over the example.
+- Explain what the book says about it.
+- Say why I think it's a bit more complicated than calling one view a mistake. (The short version is that English is ambiguous around here, and we shouldn't assume one particular disambiguation.)
+
+## Setup (Part One)
+
+A cab was involved in a hit and run accident at night. Two cab companies, the Green and the Blue, operate in the city. You are given the following data:
+
+1. 85% of the cabs in the city are Green and 15% are Blue.
+2. A witness identified the cab as Blue.
+
+## Setup (Part Two)
+
+The court tested the reliability of the witness under the same circumstances that existed on the night of the accident and concluded that the witness correctly identified each one of the two colors 80% of the time and failed 20% of the time.
+
+- What is the probability that the cab involved in the accident was blue rather green?
+
+## Reliability
+
+Let's understand that last clause as meaning that the following two claims are true.
+
+- Pr(Correct Identification $|$ Is-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Is-Blue) = $0.8$.
+
+Let's also note that this isn't obvious that this is the right translation. For one thing, it translates a single data point as a conjunction.
+
+## Restating Reliability
+
+- Pr(Looks-Green $|$ Is-Green) = $0.8$. \pause So Pr(Looks-Blue $|$ Is-Green) = $0.2$. \pause
+- Pr(Looks-Blue $|$ Is-Blue) = $0.8$. \pause So Pr(Looks-Green $|$ Is-Blue) = $0.2$. \pause
+- And we also know Pr(Is-Green) = $0.85$
+
+## Another Table
+
+|          |      Looks-Green          |          Looks-Blue       |
+|---------:|:-------------------------:|:-------------------------:|
+| Is-Green | $0.85 \times 0.8 = 0.68$ | $0.85 \times 0.2 = 0.17$ |
+| Is-Blue  | $0.15 \times 0.2 = 0.03$ | $0.15 \times 0.8 = 0.12$ |
+ 
+Think about why each of those numbers are there.
+
+## Conditional Probablility
+
+Now focus on the right-hand column.
+
+|          |      Looks-Green          |          Looks-Blue       |
+|---------:|:-------------------------:|:-------------------------:|
+| Is-Green | $0.85 \times 0.8 = 0.68$ | $0.85 \times 0.2 = 0.17$ |
+| Is-Blue  | $0.15 \times 0.2 = 0.03$ | $0.15 \times 0.8 = 0.12$ |
+ 
+\pause
+- The probability of Looks Blue is $0.17 + 0.12 = 0.29$ \pause
+- The probability of Is-Blue-and-Looks-Blue is $0.12$. \pause
+- So the probability of Is-Blue given Looks-Blue is $\frac{0.12}{0.29} \approx 0.41$.
+
+## The Standard Story
+
+> - Even though the witness is pretty reliable, it is still more likely a green cab than a blue cab given their evidence.
+> - When something is really probable to start with, it takes a lot of evidence to shift the probabilities.
+> - We often tend to conflate the **direction** of the recent evidence with the **result** of that getting that evidence.
+> - Even if Blue is better supported by the recent evidence than Green, the overall evidence might still better support Green.
+> - And a special case of that is where all the indivudalised evidence supports Blue, but the generic evidence (the base rates) supports Green.
+
+## Worry 1 of 3
+
+This is a really bad witness.
+
+- If they'd just said green every time, they'd have been more reliable.
+- If you're less reliable than a tape recorder saying the same thing over and over again, that's bad.
+- So bad that we might worry about what's going on.
+
+## Worry 2 of 3
+
+Why make the inference from Pr(Looks-Blue $|$ Is-Blue) = $0.8$ to Pr(Looks-Green $|$ Is-Blue) = $0.2$? \pause
+
+- The text only says that (a) all the taxis are Blue or Green, and (b) the witness is 80% accurate.
+- It doesn't follow that every time that they misidentify a Blue cab, they misidentify it as Green. \pause
+- Even if there aren't yellow cabs, they might see it as yellow. (Maybe they just moved from NYC). \pause
+- Or maybe a "don't know" verdict count as not a correct identification. So we need a column for "don't know".
+
+## Worry 3 of 3
+
+Why interpret the accuracy claim as that conjunction rather than the conjunction:
+
+- Pr(Correct Identification $|$ Looks-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Looks-Blue) = $0.8$.
+
+Then the answer is 0.8. And I guess I don't see what in the English makes it more likely to be read one way rather than another.
+
+## Worry 3 of 3 rephrased
+
+Put another way, if this conjunction was true, how would you describe it?
+
+- Pr(Correct Identification $|$ Looks-Green) = $0.8$; and
+- Pr(Correct Identification $|$ Looks-Blue) = $0.8$. \pause
+
+I think I'd say the witness correctly identified the color 80% of the time.
+
+## General Lesson
+
+- When you get this kind of accuracy data in words - check what you are being told!
+- Data with very different implications might be described in similar words.
+- This is just as important a lesson as the lesson "Attend to base rates".
+
+# For Next Time
+
+## For Next Time
+
+sfdasd
+# Multiple Data Points
+
+## Multiple Data Points
+
+- We've so far looked at what happens when we get one data point that tells for some hypotheses and against others.
+- What do we do when we get two data points?
+- Hopefully going over this will help us see what the answer is when there are three, four etc, but for now let's start with two.
+
+## Easy Answer
+
+We do the same thing. \pause
+
+- Let $E$ be the conjunction of all the new evidence we get.
+- To find the new probability of some hypothesis $H$, we work out $\Pr(H | E)$.
+- And to do that, it is usually easiest to work out (from the empirical data), $\Pr(E | H_i)$ for the various hypotheses $i$.
+
+## Longer Answer
+
+But that last point 'work out from the empirical data' hides some information.
+
+- If $E$ is that a particular website crashed, we can look at crash frequency to look at $Pr(E | H)$ for various hypotheses.
+- But if $E$ is "This website crashed, then it worked when I hit refresh", that's a little harder to simply read off the frequency data.
+- And that's what we're really working on here.
+
+# Conditional Probability Functions
+
+## The Motto
+
+> Conditional probabilities are probabilities.
+
+## What Does this Mean
+
+For any law of probability, the law holds conditional on any condition.
+
+## Negation Law
+
+Unconditional
+:    $\Pr(\neg A) = 1 - \Pr(A)$
+
+Conditional
+:    $\Pr(\neg A | C) = 1 - \Pr(A | C)$
+
+## Disjunction Law
+
+Unconditional
+:    $\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)$
+
+Conditional
+:    $\Pr(A | C) + \Pr(B | C) = \Pr(A \vee B | C) + \Pr(A \wedge B | C)$
+
+## Definition of Independence
+
+$A$ and $B$ are independent just in case
+
+> $\Pr(A)\Pr(B) = \Pr(A \wedge B)$ \pause
+
+$A$ and $B$ are independent given $C$ just in case
+
+> $\Pr(A | C)\Pr(B | C) = \Pr(A \wedge B | C)$ \pause
+
+## What About Conjunction Law
+
+Here's another law
+
+Unconditional
+:    $\Pr(A \wedge B) = \Pr(A)\Pr(B | A)$
+
+What's the conditional version of it?
+
+## Not This
+
+This is incoherent
+
+Conditional
+:    $\Pr(A \wedge B | C) = \Pr(A | C)\Pr(B | A | C)$
+
+You can't have strings of 'conditionals' like that.
+
+## Intuitive Equivalence
+
+Back in the propositional logic part, I spent a lot of time stressing this equivalence.
+
+- $C \rightarrow (A \rightarrow B)$
+- $(C \wedge A) \rightarrow B$
+
+We will use the same thing here. If you want multiple conditions, you join them with 'and'.
+
+## Conditional Form of Conjunction Law
+
+Unconditional
+:    $\Pr(A \wedge B) = \Pr(A)\Pr(B | A)$
+
+Conditional
+:    $\Pr(A \wedge B | C) = \Pr(A | C)\Pr(B | A \wedge C)$ \pause
+
+We will be using that a lot.
+
+# Case One - Conditional Independence
+
+## Conditional Independence
+
+In a lot of cases, the two data points we get will not be probabilistically independent, but they will be **conditionally independent**.
+
+That is, if $B_1$ and $B_2$ are the data points, and $X$ is an arbitrary hypothesis (like $A, \neg A$), we will have
+
+> $\Pr(B_1 | X)\Pr(B_2 | X) = \Pr(B_1 \wedge B_2 | X)$
+
+## Biased Coins
+
+Here is one kind of case where the happens.
+
+- We have a bunch of biased coins. For each of them, there is a probability $p$ of heads on an arbitrary flip, but we don't know what that is. \pause
+- The results of two flips of the same coin are not indepdendent.
+- If one flip lands heads, that is evidence of a bias towards heads, and hence it increases the probability of heads on the next flip. \pause
+- But conditional on a hypothesis about the bias of the coin, the flips are independent.
+
+## Skilled Activity
+
+A perhaps more real-life case of this is skilled action, like shooting free throws.
+
+- The success of one attempt is not independent of the success of the previous.
+- But conditional on the skill of the actor, the attempts are (probably, more or less) independent.
+
+## Sampling With Replacement
+
+Drawing from a selection **with replacement** produces conditional independence.
+
+- If I don't know how many black marbles are in an urn, then drawing a black marble **and replacing it** will be evidence that the next marble is black.
+- But conditional on a hypothesis about the nature of the urn, the draws with replacement will be independent.
+
+## Yesterday, Today, Tomorrow
+
+This is a little off topic, but a lot of real world phenomena satisfy (roughly) the following condition.
+
+- How things were yesterday is a good (probabilistic) guide to how things will be tomorrow.
+- So how things will be tomorrow is not independent of how things were yesterday. \pause
+- But, conditional on how things are today, how things were yesterday and will be tomorrow are independent.
+- Knowing how things were yesterday doesn't tell you any more about how things will be tomorrow once you know how things are today.
+
+## Markov Chains
+
+A chain of events where every event is probabilistically dependent on the previous one, but only on the previous one, is called a **Markov Chain**. \pause
+
+- Lots of real world processes are (more or less) Markov Chains.
+- Weather systems, for instance, are probably more or less Markov Chains.
+- And lots of ecological models assume that animal populations are Markov Chains.
+- And the core idea is just conditional independence.
+
+## Conditional Independence
+
+In cases where the data points $B_1$ and $B_2$ are independent, we have an easy story about how to work out the probabilities.
+
+> $\Pr(B_1 \wedge B_2 | X) = \Pr(B_1 | X)\Pr(B_2 | X)$
+
+## Same Event
+
+There is an even simpler formula where $B_1$ and $B_2$ are the 'same' event, like the coin landing heads both time, or the same color marble being drawn. 
+
+> $\Pr(B_1 \wedge B_2 | X) = \Pr(B_1 | X)^2$
+
+## An Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then a marble drawn from it.
+
+- If the marble is red, what is the probability that Urn A was selected?
+
+## A Table
+
+I'll just do the column for red marble selected.
+
+|           |        Red             |
+|:---------:|:----------------------:|
+| Urn A     | $0.5 \times 0.4 = 0.2$ |
+| Urn B     | $0.5 \times 0.8 = 0.4$ |
+| **Total** | $0.2 + 0.4 = 0.6$      |
+
+\pause
+
+$$
+\Pr(A | Red) = \frac{\Pr(A \wedge Red)}{\Pr(Red)} = \frac{0.2}{0.6} = \frac{1}{3}
+$$
+
+## Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If both draws are red, what is the probability that Urn A was selected?
+
+## A Table
+
+|           |        Red-Red            |
+|:---------:|:-------------------------:|
+| Urn A     | $0.5 \times 0.4^2 = 0.08$ |
+| Urn B     | $0.5 \times 0.8^2 = 0.32$ |
+| **Total** | $0.08 + 0.32 = 0.4$       |
+
+\pause
+
+$$
+\Pr(A | Red-Red) = \frac{\Pr(A \wedge Red-Red)}{\Pr(Red-Red)} = \frac{0.08}{0.4} = \frac{1}{5}
+$$
+
+The probability of Urn A fell by a lot.
+
+## Yet Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If the first draw is red and the second green, what is the probability that Urn A was selected?
+
+## A Table
+
+|           |       Red-Green                     |
+|:---------:|:-----------------------------------:|
+| Urn A     | $0.5 \times 0.4 \times 0.3 = 0.06$  |
+| Urn B     | $0.5 \times 0.8 \times 0.1 = 0.04$  |
+| **Total** | $0.06 + 0.04 = 0.1$                 |
+
+\pause
+
+$$
+\Pr(A | Red-Green) = \frac{\Pr(A \wedge Red-Green)}{\Pr(Red-Green)} = \frac{0.06}{0.1} = \frac{3}{5}
+$$
+
+The probability of Urn A rose by a lot.
+
+# Dependent Events
+
+## Dependence
+
+What happens if the events $B_1$ and $B_2$ are dependent on one or other of the hypotheses?
+
+- The typical case is that they will be dependent on none or all of the hypotheses.
+- But it's possible in principle to have independence on some and dependence on others. 
+- And in that case we have to use the more complicated procedure I'm about to describe.
+
+## Sampling Without Replacement
+
+The paradigm example of conditional dependence is sampling **without replacement**.
+
+- Assume you know which urn I'm using.
+- Then the draws without repalcement won't be independent because every time you draw a marble, there are fewer marbles of that color to draw the next time.
+
+## Example
+
+Assume that I am using urn A. (Or assume that we are working out conditional probabilities conditional on urn A.)
+
+- For the first draw, the probability of red is 4 in 10, or  0.4.
+- Conditional on the first draw being red, the probability of the second draw being red is 3 in 9, or $\frac{1}{3}$.
+- That's because there are now 9 marbles left, and 3 of them are red.
+
+## Continuing the Example
+
+So to work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+\pause
+For example
+
+$$
+\Pr(Red_1 \wedge Red_2 | A) = \Pr(Red_1 | A)\Pr(Red_2 | A \wedge Red_1) = \frac{4}{10} \times \frac{3}{9} = \frac{2}{15}
+$$
+
+## Continuing the Example
+
+So to work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+For example
+
+$$
+\Pr(Red_1 \wedge Red_2 | B) = \Pr(Red_1 | B)\Pr(Red_2 | B \wedge Red_1) = \frac{8}{10} \times \frac{7}{9} = \frac{28}{45}
+$$
+
+## Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **without replacement**.
+
+- If both draws are red, what is the probability that Urn A was selected?
+
+## A Table
+
+|           |        Red-Red                                               |
+|:---------:|:------------------------------------------------------------:|
+| Urn A     | $0.5 \times \frac{4}{10} \times \frac{3}{9} = \frac{1}{15}$  |
+| Urn B     | $0.5 \times \frac{8}{10} \times \frac{7}{9} = \frac{14}{45}$ |
+| **Total** | $\frac{1}{15} + \frac{14}{45} = \frac{17}{45}$               |
+
+\pause
+
+$$
+\Pr(A | Red-Red) = \frac{\Pr(A \wedge Red-Red)}{\Pr(Red-Red)} = \frac{\frac{1}{15}}{\frac{17}{45}} = \frac{3}{17}
+$$
+
+The probability of Urn A fell by a bit more.
+
+## Yet Another Example
+
+There are two urns in front of us.
+
+- One of them - urn A - has 4 red marbles, 3 green marbles, and 3 blue marbles.
+- The other - urn B- has 8 red marbles, 1 green marbles and 1 blue marbles. \pause
+
+One of the urns will be selected at random, and then two marbles drawn from it **with replacement**.
+
+- If the first draw is red and the second green, what is the probability that Urn A was selected?
+
+## The General Conjunction Rule
+
+To work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+\pause
+So in this case we get
+
+$$
+\Pr(Red_1 \wedge Green_2 | A) = \Pr(Red_1 | A)\Pr(Green_2 | A \wedge Red_1) = \frac{4}{10} \times \frac{3}{9} = \frac{2}{15}
+$$
+
+## The General Conjunction Rule
+
+To work out the probability of some sequence of draws $D_1, D_2$ given a hypothesis $X$ about the urn, we need to use the more complicated rule.
+
+$$
+\Pr(D_1 \wedge D_2 | X) = \Pr(D_1 | X) \Pr(D_2 | X \wedge D_1)
+$$
+
+And for Urn B we get
+
+$$
+\Pr(Red_1 \wedge Green_2 | B) = \Pr(Red_1 | B)\Pr(Green_2 | B \wedge Red_1) = \frac{8}{10} \times \frac{1}{9} = \frac{4}{45}
+$$
+
+## A Table
+
+|           |        Red-Green                                             |
+|:---------:|:------------------------------------------------------------:|
+| Urn A     | $0.5 \times \frac{4}{10} \times \frac{3}{9} = \frac{1}{15}$  |
+| Urn B     | $0.5 \times \frac{8}{10} \times \frac{1}{9} = \frac{2}{45}$  |
+| **Total** | $\frac{1}{15} + \frac{2}{45} = \frac{5}{45}$                 |
+
+\pause
+
+$$
+\Pr(A | Red-Green) = \frac{\Pr(A \wedge Red-Red)}{\Pr(Red-Red)} = \frac{\frac{1}{15}}{\frac{5}{45}} = \frac{3}{5}
+$$
+
+Which, interestingly, is exactly the same as in the with replacement case.
+
+## Last (Difficult) Example
+
+- There are four urns in the room, three of type X, one of type Y.
+- The type X urns have 4 blue marbles and 2 yellow marbles.
+- The type Y urn has 5 blue marbles and 3 yellow marbles.
+- One of the four urns was selected at random.
+- Then two marbles were selected **without replacement** from the randomly selected urn.
+- The first was blue, the second was yellow.
+- A third marble is about to be selected.
+- What is the probability that it is blue?
+
+## The Table
+
+|   Urn     |    Blue-then-Yellow                                               |
+|:---------:|:-----------------------------------------------------------------:|
+| Type X    | $\frac{3}{4} \times \frac{4}{6} \times \frac{2}{5} = \frac{1}{5}$ |
+| Type Y    |                                                                   |
+| **Total** |                                                                   |
+
+$$
+\Pr(X \wedge Blue_1 \wedge Yellow_2) = \Pr(X) \times \Pr(Blue_1 | X) \times \Pr(Yellow_2 | X \wedge Blue_1)
+$$
+
+## The Table
+
+|   Urn     |    Blue-then-Yellow                                                  |
+|:---------:|:--------------------------------------------------------------------:|
+| Type X    | $\frac{3}{4} \times \frac{4}{6} \times \frac{2}{5} = \frac{1}{5}$    |
+| Type Y    | $\frac{1}{4} \times \frac{5}{8} \times \frac{3}{7} = \frac{15}{224}$ |
+| **Total** |                                                                      |
+
+$$
+\Pr(Y \wedge Blue_1 \wedge Yellow_2) = \Pr(Y) \times \Pr(Blue_1 | Y) \times \Pr(Yellow_2 | Y \wedge Blue_1)
+$$
+
+## The Table
+
+|   Urn     |  Blue-then-Yellow  |
+|:---------:|:------------------:|
+| Type X    | $\frac{1}{5}$      |
+| Type Y    | $\frac{15}{224}$   |
+| **Total** | $\frac{299}{1120}$ |                                                 |
+
+You should double check this, but I think
+
+$$
+\frac{1}{5} + \frac{15}{224} = \frac{299}{1120}
+$$
+
+So that's $\Pr(Blue_1 \wedge Yellow_2)$
+
+## Conditional Probabilities
+
+$$
+\Pr(X | Blue_1 \wedge Yellow_2) = \frac{\Pr(X \wedge Blue_1 \wedge Yellow_2)}{\Pr(Blue_1 \wedge Yellow_2)} = \frac{\frac{1}{5}}{\frac{299}{1120}} = \frac{224}{299}
+$$
+
+$$
+\Pr(Y | Blue_1 \wedge Yellow_2) = \frac{\Pr(Y \wedge Blue_1 \wedge Yellow_2)}{\Pr(Blue_1 \wedge Yellow_2)} = \frac{\frac{15}{224}}{\frac{299}{1120}} = \frac{75}{299}
+$$
+The probability of Y is ever so fractionally higher than when we started.
+
+## Next Marble
+
+- If X (and Blue-followed-by-Yellow), the probability of next marble being blue is $\frac{3}{4}$.
+- If Y (and Blue-followed-by-Yellow), the probability of next marble being blue is $\frac{2}{3}$. \pause
+- So overall probability of next marble being blue is
+
+$$
+ \frac{224}{299} \times \frac{3}{4} + \frac{75}{299} \times \frac{2}{3} = \frac{218}{299} \approx 0.729
+$$
+
+## General Strategy of Last Slide
+
+- If there are two hypotheses X and Y, and you want to know the probability of some event E, it will be given by
+
+$$
+\Pr(E) = \Pr(X)\Pr(E | X) + \Pr(Y)\Pr(E | Y)
+$$
+
+And that generalises to the case where there are multiple hypotheses $H_1, \dots H_n$
+
+$$
+\Pr(E) = \Pr(H_1)\Pr(E | H_1) + \dots +  \Pr(H_n)\Pr(E | H_n)
+$$
+
+# For Next Week
+
+## For Next Week
+
+We will start part II of _Odds and Ends_, on decision making.
+
+# Expected Values
+
+## Random Variables
+
+- A **random variable**  is simply a variable that takes different numerical values in different states. 
+- In other words, it is a function from possibilities to numbers. 
+- It need not be 'random' in any familiar sense.
+- The function from possible situations to the value of 2 + 2 in that situation is a random variable, albeit a constant one.
+- It's just a slightly confusing term for any variable that takes different, numerical, values in different situations.
+
+## Labels
+
+- Typically, random variables are denoted by capital letters. 
+- So we might have a random variable $X$ whose value is the age of the next President of the United States, and his or her inauguration. 
+- Or we might have a random variable $Y$ that is the number of children you will have in your lifetime. 
+- Basically any mapping from possibilities to numbers can be a random variable. 
+
+## An Example
+
+- You've asked each of your friends who will win the Michigan v Maryland.
+- 12 said Michigan will win.
+- 7 said Maryland will win.  \pause 
+- Then we can let $X$ be a random variable measuring the number of your friends who correctly predicted the result of the game. 
+
+\begin{equation*}
+X = 
+	\begin{cases}
+		12,& \text{if the home team wins} ,\\ 
+		7,& \text{if the away team wins} .
+	\end{cases}
+\end{equation*}
+
+
+## Expected Value
+
+- Given a random variable $X$ and a probability function $Pr$, we can work out the **expected value** of that random variable with respect to that probability function. 
+- Intuitively, the expected value of $X$ is a weighted average of the possible values of $X$, where the weights are given by the probability (according to $Pr$) of each value coming about. 
+
+## Calculating Expected Value
+
+- More formally, we work out the expected value of $X$ this way. 
+- For each possibility, we multiply the value of $X$ in that case by the probability of the possibility obtaining. 
+- Then we sum the numbers we've got, and the result is the expected value of $X$. 
+- We'll write the expected value of $X$ as $Exp(X)$. 
+
+## Back to the Example
+
+- So if the probability that Michigan wins is 0.7, and the probability that Maryland wins is 0.2, then
+
+\begin{align*}
+Exp(X) &= 12 \times 0.7 + 7 \times 0.3 \\
+ &= 8.4 + 2.1 \\
+ &= 10.5
+\end{align*} 
+
+
+## Notes
+
+1. The expected value of $X$ isn't in any sense the value that we expect $X$ to take. It's more like an average.
+2. If this kind of situation recurs a lot, you would expect the long run average value $X$ takes to be roundabout the expected value.
+3. That's a better way of conceptualising what expected values are.
+
+# States and Choices
+
+## States and Choices
+
+- We're interested in what to do when the outcomes of your actions depend on some external facts about which you are uncertain, e.g., 
+
+|          | State 1 | State 2 |
+|---------:|:-------:|:-------:|
+| Choice 1 | $a$     | $b$     |
+| Choice 2 | $c$     | $d$     |
+
+## States and Choices
+
+- The **choices** are the options you can take. 
+- The **states** are the ways the world can be that affect how good an outcome you'll get. 
+- A choice plus a state determines an **outcome**
+- And the variables, $a$, $b$, $c$ and $d$ are numbers measuring how good those outcomes are. 
+- We'll call this the **utility** of the outcome.
+- The higher the number, the better.
+
+## What is Utility
+
+- The book spends one chapter on cases where value is easy to measure - it's something like dollars won or lost, or time spent.
+- Then it spends the next chapter on cases where value is more abstract.
+- I'm not going to carve things up this way.
+- But I will start with a case where the values are fairly clear.
+
+## An Example
+
+- It's a Sunday afternoon in Fall, and your friend, who is a big Packers fan, has the choice between watching the Packers game and finishing a paper due on Monday. 
+- It will be a little painful for them to do the paper after the football, but not impossible. 
+- It will be fun to watch football, at least if the Packers wins.
+- But if the Packers lose they'll have spent the afternoon watching them lose, and still have the paper to write. 
+- On the other hand, your friend will feel bad if they skip the game and the Packers win. So we might have the decision table on the next slide.
+
+## Decision Table for the Example
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      4      |      1       |
+| Work on Paper  |      3      |      2       |
+
+- The numbers come from the preferences.
+- We're assuming (for now) that what one wants is better for one.
+- That assumption could get either conceptual backing (utility is defined in terms of preference) or empirical backing.
+
+## Changing Preferences
+
+- The numbers would be different if your friend had different preferences. 
+- Perhaps their desire to watch football is simply stronger than their desire to finish the paper.
+- In that case the table might look like this.
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      4      |      2       |
+| Work on Paper  |      3      |      1       |
+
+# Dominance Reasoning
+
+## Dominance Reasoning
+
+- The simplest rule we can use for decision making is **never choose dominated options**. 
+- There is a stronger and a weaker version of this rule.
+
+## Weak and Strong Dominance
+
+- An option $A$ **strongly dominates** another option $B$ no matter which state is actual, A leads to better outcomes than B.  \pause 
+- $A$ **weakly dominates** B if in every state, A leads to at least as good an outcome as B, and in some states it leads to a better outcome.
+
+## Dominance Principles
+
+- Principle 1: If A strongly dominates B, don't choose B.
+- Principle 2: If A weakly dominates B, don't choose B.
+- The second principle is slightly **stronger**; it rules out more things.
+- As such, it is slightly more controversial.
+
+## Using Dominance Principles
+
+- Dominance principles seem very intuitive when applied to everyday decision cases. 
+- Consider, for example, a revised version of our case about choosing whether to watch football or work on a term paper. 
+- Imagine that your friend will do very badly on the term paper if they leave it to the last minute. 
+- And imagine that the term paper is vitally important for something that matters to their future. 
+- Then we might set up the decision table as on the next slide.
+
+## Football Example with Dominance
+
+|                | Packers Win | Packers Lose |
+|---------------:|:-----------:|:------------:|
+| Watch Football |      3      |      1       |
+| Work on Paper  |      4      |      2       |
+
+- They are better off working on the paper if the Packers win.
+- And they are better off working on the paper if the Packers lose.
+- So either way, they should work on the paper!
+
+# Ordinal and Cardinal Utilities
+
+## Ranking
+
+- The dominance view makes recommendations just looking at the **ranking** of various options. 
+- It doesn't look at how much we prefer one  option over another, just on what is preferred to what.
+
+## Ordinal Utility
+
+- To use the technical language, dominance just depends on **ordinal utilities**. 
+- The term **ordinal** here means that we only look at the **order** of the options. 
+
+## Cardinal Utility
+
+- The rules that we'll look at rely on **cardinal utilities**.
+- Whenever we're associating outcomes with numbers in a way that the magnitudes of the differences between the numbers matters, we're using cardinal utilities.
+
+## Why More Than Order Matters (An Example)
+
+- Chris and Robin each have to make a decision between two airlines to fly them from Detroit to Los Angeles. 
+- One airline is more expensive, the other is more reliable. 
+- To oversimplify things, let's say the unreliable airline runs well in good weather, but in bad weather, things go wrong. 
+- And Chris and Robin have no way of finding out what the weather along the way will be. 
+- They would prefer to save money, but they'd certainly not prefer for things to go badly wrong. 
+
+## A Table
+
+So they face the following decision table.
+
+|                   | Good weather | Bad Weather  |
+|------------------:|:------------:|:------------:|
+| Fly Cheap Airline |      4       |      1       |
+| Fly Good Airline  |      3       |      2       |
+ 
+If we're just looking at the ordering of outcomes, that is the decision problem facing both Chris and Robin.
+
+## Filling in Details
+
+- The cheap airline that Chris might fly has a problem with luggage. 
+- If the weather is bad, their passengers' luggage will be a day late getting to Los Angeles.  \pause 
+- The cheap airline that Robin might fly has a problem with staying in the air. 
+- If the weather is bad, their plane will crash.
+
+## Details Matter
+
+- Those seem like very different decision problems. 
+- It might be worth risking one's luggage being a day late in order to get a cheap plane ticket. 
+- It's not worth risking, seriously risking, a plane crash. 
+- That's to say, Chris and Robin are facing very different decision problems, even though the ranking of the four possible outcomes is the same in each of their cases. 
+- So it seems like some decision rules should be sensitive to magnitudes of differences between options.
+
+## Utility
+
+- Intuitively, think of utilities as measuring how good an outcome is. 
+- The theory we're building towards is thoroughly subjectivist, so think of 'how good' as meaning 'how good along all and only dimensions the agent making the decision cares about'. 
+
+## Scale
+
+- Utilities aren't really measured on any scale. 
+- Indeed, like temperature measures, they don't even have a fixed zero point. 
+- It is usually convenient to associate 0 utility with the status quo, and then have negative numbers for outcomes worse than status quo, and positive numbers for outcomes better than status quo. 
+- But that's just a convention; you can set the 0 wherever you like. 
+- And you can set the utility 1 point at anything better than 0.
+
+## Scale (continued)
+
+- But that's where the convention stops.
+- Once you fix the 0 and 1 points, nothing else is fixed by pure convention.
+- Temperatures are like this too.
+
+## Dollars and Utility
+
+Orthodox utility theory takes the following two facts to be important, and in need of explanation, and to ultimately have the same explanation:
+
+1. If you or I got a windfall prize of $1,000,000, it would be an enormous, life-altering, change. But if Mark Zuckerberg got a windfall prize of $1,000,000, he'd barely notice it.
+2. If given a choice between a guaranteed $1,000,000, and a 50/50 chance of winning $2,000,000, you would almost certainly take the $1,000,000. Indeed, most of you would do so with barely a moment's hesitation.
+
+## The Explanation
+
+- The more money you have, the less utility you get from each extra dollar.
+- There is a **declining marginal utility** to money.
+- The marginal utility of a good is how much utility a person gets, relative to where they are now, from a little extra of that good.
+- For most goods, the more of them you have, the less useful an extra one is.
+- This is especially true for money.
+
+# Maximise Expected Utility Rule
+
+## The Rule
+
+- The orthodox view in modern decision theory is that the right decision is the one that maximises the expected utility of your choice. 
+- The rational decision maximises not actual utility, but expected utility.
+
+## Airline Example (Several Variants)
+
+It turns out that what to do turns on three factors.
+
+1. How likely bad weather is.
+2. How much you have to gain by flying the cheaper airline in good weather.
+3. How much you have to lose by flying the cheaper airline in bad weather.
+
+It is plausible, I think, that these three should matter.
+
+## Version One
+
+Lots to gain, relatively little to lose, high probability of good weather.
+
+-------------------------------------------------
+                     Good weather   Bad Weather   
+                       Pr=0.8         Pr=0.2      
+------------------- -------------- --------------
+ Fly Cheap Airline        10             0       
+ 
+ Fly Good Airline         6              5       
+-------------------------------------------------
+
+## Utility Calculation
+
+We can work out the expected utility of each action fairly easily.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times 0 \\
+ &= 8 + 0 \\
+ &= 8 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 6 + 0.2 \times 5 \\
+ &= 4.8 + 1 \\
+ &= 5.8 
+\end{align*} 
+
+- So the cheap airline has an expected utility of 8, the reliable airline has an expected utility of 5.8. 
+- The cheap airline has a higher expected utility, so it is what should be taken.
+
+## Other versions
+
+- We'll now look at three changes to the example. 
+- Each change should intuitively change the correct decision, and we'll see that the maximise expected utility rule does change in each case. 
+
+## More Downside if Bad Weather
+
+-------------------------------------------------
+                     Good weather   Bad Weather   
+                       Pr=0.3         Pr=0.7      
+------------------- -------------- --------------
+ Fly Cheap Airline        10             -20   
+ 
+ Fly Good Airline         6              5       
+-------------------------------------------------
+
+
+## Utility Calculations
+
+Here are the new expected utility considerations.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times -20 \\
+ &= 8 + (-4) \\
+ &= 4 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 6 + 0.2 \times 5 \\
+ &= 4.8 + 1 \\
+ &= 5.8 
+\end{align*}
+
+- Now the expected utility of catching the reliable airline is higher than the expected utility of catching the cheap airline. 
+- So it is better to catch the reliable airline.
+
+## Less to Gain by Cheaper Airline
+
+-------------------------------------------------
+                     Good weather   Bad Weather   
+                       Pr=0.8         Pr=0.2      
+------------------- -------------- --------------
+ Fly Cheap Airline        10             0       
+ 
+ Fly Good Airline         9              8       
+-------------------------------------------------
+
+## Utility Calculations
+
+Here are the revised expected utility considerations.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.8 \times 10 + 0.2 \times 0 \\
+ &= 8 + 0 \\
+ &= 8 \\
+Exp(\text{Reliable Airline}) &= 0.8 \times 9 + 0.2 \times 8 \\
+ &= 7.2 + 1.6 \\
+ &= 8.8 
+\end{align*}
+
+And again this is enough to make the reliable airline the better choice.
+
+## Bad Weather More Likely
+
+-------------------------------------------------
+                     Good weather   Bad Weather   
+                       Pr=0.3         Pr=0.7      
+------------------- -------------- --------------
+ Fly Cheap Airline        10             0       
+ 
+ Fly Good Airline         6              5       
+-------------------------------------------------
+
+## Utility Calculations
+
+We can work out the expected utility of each action fairly easily.
+
+\begin{align*}
+Exp(\text{Cheap Airline}) &= 0.3 \times 10 + 0.7 \times 0 \\
+ &= 3 + 0 \\
+ &= 3 \\
+Exp(\text{Reliable Airline}) &= 0.3 \times 6 + 0.7 \times 5 \\
+ &= 1.8 + 3.5 \\
+ &= 5.3 
+\end{align*}
+
+## Summarising the Cases
+
+We've looked at four versions of the same case. In each case the ordering of the outcomes, from best to worst, was:
+
+1. Cheap airline and good weather
+2. Reliable airline and good weather
+3. Reliable airline and bad weather
+4. Cheap airline and bad weather
+
+But this doesn't settle what to do; these three factors all matter.
+
+# Expected Utility and Money
+
+## Marginal Utility and Decision Making
+
+- Getting $2x is not twice as valuable as getting $x.
+- That's because it's like getting $x, then getting $x again.
+- And after you get the first $x, you're richer, and getting $x is (in general) less valuable to richer people.
+
+## A Model
+
+
+- We'll start with the idea that the utility of wealth level $w$ is $w^{\frac{1}{2}}$
+- That is a function that rises with increasing wealth, but rises more slowly as you get more wealth.
+- The marginal utility decreases quite dramatically.
+- It might not be dramatic enough to capture the real curve; which may be logarithmic.
+- But it will do, and it is easy to work with.
+
+## Expected Dollars and Expected Utility
+
+- Imagine our person (with the square root utility function) starts with $64.
+- How much is the following bet worth to them?
+- It pays $36 if a coin lands heads, and nothing otherwise.
+
+## Expected Dollars and Expected Utility
+
+- Initial utility is 8 (since $64^{0.5}=8$).
+- They will end up with either utility 8 (because $64) or utility 10.
+- Each of these is equally likely.
+- So their expected utility, if they are given the bet, is 9.
+- That's because it is $0.5 \times 8 + 0.5 \times 10$.
+- And utility of 9 is as good as having $81.
+- So the bet is worth $17 to them; it's as good as moving from wealth $64 to wealth $81.
+
+## Expected Dollars and Expected Utility
+
+That's the general way to work out how much a risky bet is worth to someone.
+
+- Work out their initial utility.
+- Work out their expected utility on taking the bet.
+- Work out how much fixed gain (or loss) would get to the very same utility.
+- That's the value of the bet.
+
+## Expected Dollars and Expected Utility
+
+The expected dollar value of the bet is something different.
+
+- There is a 1 in 2 chance the bet is worth $36.
+- There is a 1 in 2 chance it is worth nothing.
+- So the expected value of the bet, in dollars, is $18.
+- But the expected utility of the bet is the same as being given $17.
+- That's not a huge difference, but it is a difference.
+- And if the sums involved are larger, or the utility curve slopes more steeply, the differences can be greater.
+
+## Insurance
+
+- The declining marginal utility of money explains why there can be such a thing as an insurance industry.
+- It's worth reflecting for a minute on what it would take for such an industry to even exist.
+- It looks like insurance firms are constantly making bets.
+- Those bets either have a positive expected dollar value to the insurer, or a positive expected dollar value to the customer, but they can't have a positive expected dollar value to both.
+- So why are the bets worthwhile?
+
+## Insurance
+
+- Answer: They could have positive expected **utility** to both.
+- Over the next couple of slides, we'll work out an example using the idea that utility is square root of wealth.
+
+## Starting Points
+
+
+- $u = w^{0.5}$
+- If no catastrophe, $w = 90,000$, so $u = 300$.
+- If catastrophe, $w = 14,400$ so $u = 120$.
+- Probability of catastrophe = 0.05
+- So expected value of $u$ is $0.95 \times 300 + 0.05 \times 120 = 291$.
+- That's the same utility as they'd have with a guaranteed $w$ of $84,861.
+
+
+## Insurance Offer
+
+- You pay insurance company $4,736.
+- If catastrophe happens, they pay $75,600.
+- That's the difference between high $w$ and low $w$.
+- Claim: This is a good deal for insurance company, and good deal for customer.
+
+
+## Customer Point of View
+
+- Now $w$ is guaranteed to be 85,264.
+- So $u$ is guaranteed to be 292.
+- That's higher than 291.
+- So the insurance increased their (expected) utility.
+
+## Company Point of View
+
+- Assume (for now) that they have a constant marginal utility of money.
+- So all that matters is that the policy has a positive dollar value.
+- Well, they receive 4736 for sure.
+- They pay out 75,600, with probability 0.05.
+- So their expected payout is 3780.
+- And that's much less than what they receive.
+- So it's a good deal for both.
+
+## Possibility Constraints
+
+- This is only possible because the two sides have different utility curves, at least locally.
+- That's what makes the conflicting interests (in dollar terms) into a possible mutual interest.
+- Someone with a less steeply sloping utility curve (i.e., with more resources) is in a better position to absorb certain risks.
+- It is worth paying over the odds to them to absorb that risk.
+
+## Curves (Almost) Always Slope Down
+
+- But eventually, the insurance company has risks it shudders at as well.
+- This only happens on enormous scale, but it happens.
+- And it's why insurance companies won't (happily) offer insurance against correlated risks, like floods or invasion.
+
+# For Next Time
+
+## For Next Time
+
+asfdasdfafsdfdsa
+# Declining Marginal Utility of Money
+
+## Marginal Utility and Decision Making
+
+- Getting $2x is not twice as valuable as getting $x.
+- That's because it's like getting $x, then getting $x again.
+- And after you get the first $x, you're richer, and getting $x is (in general) less valuable to richer people.
+
+## Utility as Square Root
+
+
+```{r setup, include=FALSE}
+require(tidyverse)
+```
+
+\begin{center}
+
+```{r echo=FALSE, out.width = "90%"}
+p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
+fun.1 <- function(x) sqrt(x)
+p + stat_function(fun = fun.1) + 
+  xlim(0,1000000) + 
+  labs(x = "Dollars", y = "Utility") + 
+  theme_bw() +
+  theme(text = element_text(size=20))
+```
+
+\end{center}
+
+## Utility as Square Root
+
+- The slides I did on Monday used that function, but you can see it doesn't really curve down that quickly.
+- Let's try a different function.
+- I'll use a logarithmic function, but I'll ignore values below $1,000 because the numbers get weird.
+- This is obviously a big thing to ignore!
+
+## Utility as Log10
+
+\begin{center}
+
+```{r echo=FALSE, out.width = "90%"}
+p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
+fun.1 <- function(x) log10(x)
+p + stat_function(fun = fun.1) + 
+  xlim(1000,1000000) + 
+  labs(x = "Dollars", y = "Utility") + 
+  theme_bw() +
+  theme(text = element_text(size=20))
+```
+
+\end{center}
+
+## Utility as Log10
+
+- This is a bit more plausible.
+- But what about all those dollars below $1,000?
+- Big thing about way to understand these graphs.
+- The x-axis measure net total wealth.
+- It does not measure size of bank account.
+- It includes things like the value of clothes in one's wardrobe, food in one's fridge/pantry, dishes/saucepans in one's kitchen etc and, if one is particularly wealthy, any means of transportation one has (car, bike, etc.).
+- Those can fall below $1,000 - but life is hard below that point.
+
+## Expected Value of Bets
+
+- Don't think about how much money the bettor stands to gain or lose.
+- Instead, think about the possible end-states of the bet.
+
+## Example (using Log10 Function)
+
+Imagine that our person currently has $100,000 in net wealth. \pause
+
+- They are offered a bet that has a 50% chance of winning $900,000, and a 50% chance of losing $90,000.
+- What should they think about the bet?
+
+## Example (using Log10 Function)
+
+They should be indifferent between taking and declining the bet.
+
+- Right now, they have utility 5 (i.e., $log(10^5) = 5$.) \pause
+- If they take the bet, they could end up with $10,000 or $1,000,000, with equal probability.
+- That is, they could end up with utility 4 or 6.
+- And each of those are equally likely.
+- So the expected utility of taking the bet is 5 - just like the status quo.
+
+## Is this Realistic?
+
+- I'm not sure!
+- It seems rather risk averse to me, but the difference in quality of life between having $100,000 and having $10,000 is pretty substantial.
+- In one of those you can have a decent car, a nice wardrobe and kitchen, and enough spare cash to make rent each month or handle a small crisis without problems.
+- In the other you can maybe have 1 of those 3.
+
+## Change the Example
+
+Imagine that our person currently has $100,000 in net wealth.
+
+- They are offered a bet that has a 50% chance of winning $800,000, and a 50% chance of losing $90,000.
+- What should they think about the bet? \pause
+- It's worse than the previous one, so they shouldn't take it.
+- That's even though it's expected dollar return is very very positive.
+
+## Inverting the Example
+
+Imagine that our person has $10,000, plus an asset of very uncertain value.
+
+- It's got a 50% chance of being worth nothing, and a 50% chance of being worth $890,000.
+- Someone offers to buy it from them for $90,000, and they will have no other chance to sell it.
+- What should they do?
+
+## Take the Deal
+
+This is just the same as the previous example. They have two choices.
+
+1. A sure $100,000.
+2. A 50/50 chance of either $10,000 or $900,000.
+
+And they should (given this utility function) take option 1.
+
+## Sporting Example
+
+- A young pitcher with not many assets ($10,000 including his old car, his sports gear etc) is offered $90,000 to sign with a pro team.
+- He is told, reliably by an agent, that if he plays college ball for a year, there's a 50/50 chance that he'll get a great deal next year, one worth $890,000.
+- But there's also a 50/50 chance that he'll regress, get injured etc, and get nothing.
+- What should he do?
+- On this model, he should take the deal.
+- And of course the team should offer him the deal, even if they think there is a 50% chance that he's of no value to the team.
+
+## Insurance
+
+Insurance is a funny business.
+
+- Every insurance contract is a bet, with you and the insurance company on opposite sides of it.
+- The bet can't, as a matter of almost mathematical necessity, have a positive expected dollar return for both of you.
+- And given it involves some transaction costs, it could have a negative expected dollar return for both of you.
+- So why does the industry even exist?
+
+## Declining Marginal Utility
+
+Well let's work through an example.
+
+- Assume our person has assets of $100,000, including a car worth $30,000.
+- They live in a risky area, so there is a 1 in 10 chance the car will fall in value to 0 over the next 12 months.
+- They are offered an insurance contract with the following terms.
+- They pay $3,200.
+- If the risky thing happens and the car value falls to 0, the insurance company will reimburse them, so they will get the $30,000 back.
+
+## Should They Take the Deal
+
+Outcome if they take the deal
+
+- A guaranteed $96,800. \pause
+
+Outcome if they don't take the deal.
+
+- A 90% chance of $100,000.
+- A 10% chance of $70,000. \pause
+
+The latter outcome has an expected dollar return of $97,000 - that's $0.9 \times 100,000 + 0.1 \times 70,000$.
+
+## Should They Take the Deal
+
+- But this doesn't settle the matter. We care about utility not dollars.
+- Let's re-run the question using utility.
+
+## Should They Take the Deal
+
+Outcome if they take the deal
+
+- A guaranteed $96,800, which has utility roughly 4.986  \pause
+
+Outcome if they don't take the deal.
+
+- A 90% chance of $100,000, which has utility 5.
+- A 10% chance of $70,000, which has utility roughly 4.845 \pause
+
+The latter outcome has an expected utility return of roughly $0.9 \times 5 + 0.1 \times 4.845 \approx 4.984$. Option 1 is better - not by much, but better.
+
+## Company Point of View
+
+- Assume (for now) that they have a constant marginal utility of money.
+- So all that matters is that the policy has a positive dollar value.
+- And the expected dollar return of the deal is +$200, so it's good for the company as well.
+
+## Success!
+
+- We found a case where both parties are rational in taking the bet, even though they are on opposite sides of it.
+- And this doesn't require fraud, or misperception of the odds for either party.
+
+## Possibility Constraints
+
+- This is only possible because the two sides have different utility curves, at least locally.
+- That's what makes the conflicting interests (in dollar terms) into a possible mutual interest.
+- Someone with a less steeply sloping utility curve (i.e., with more resources) is in a better position to absorb certain risks.
+- It is worth paying over the odds to them to absorb that risk.
+
+## Curves (Almost) Always Slope Down
+
+- But eventually, the insurance company has risks it shudders at as well.
+- This only happens on enormous scale, but it happens.
+- And it's why insurance companies won't (happily) offer insurance against correlated risks, like floods or invasion.
+
+## A Big Caveat
+
+When you run the numbers on cases like this, three things come out.
+
+1. Sometimes, insurance is good for both parties. \pause
+2. Unless the loss is a huge portion of the customer's wealth, the numbers end up being really close. \pause
+3. Even in those cases, the numbers aren't that different.
+
+So I end up thinking that people probably over-purchase insurance, even though this is a model on which insurance purchase can be rational.
+
+# Allais Paradox
+
+## Sure Thing Principle
+
+Assume two bets A and B have the following characteristic.
+
+- For some proposition $p$, A and B have the exact same return. \pause
+
+Then the Sure Thing Principle says the following.
+
+- Changing what that return is won't change your preference between A and B.
+
+## Intuitive Example
+
+Assume that B is a **conditional bet** - a bet on $q$ that only takes place if $p$ is true. So if you take the bet, the following things happen.
+
+- So if $p$ is true, and $q$ is true, you win, let's say, $10.
+- If $p$ is true, and $q$ is false, you lose $10.
+- But if $p$ is false, then the bet is called off.
+
+E.g., you might bet a friend that if Biden is the Democratic nominee, he wins the election. The bet is simply called off if he isn't the nominee. Let A be the action of simply not taking this bet, and staying at the status quo.
+
+## A Change
+
+You find out, apparently because you've been doing more gambling in your spare time than is good for you, that you have another bet that wins $5 if _p_, and returns nothing otherwise.
+
+- Could this change your preferences over A vs B?
+
+## The Argument for No
+
+Either $p$ is true or it isn't.
+
+- If it is, then you should still be indifferent between A and B.
+- If it is not, then what outcome you would have gotten if $p$ were true shouldn't make a difference to whether you prefer A or B.
+- And this doesn't look like it just applies to this case.
+- It looks like a perfectly general weak dominance argument.
+
+## Expected Utility Theory and Constraints on Choice
+
+- Orthodox expected utility theory, the theory that says you should maximise expected utility, puts very few constraints on individual choices.
+- But it puts quite striking constraints on sets of choices.
+- It says you can't prefer A to B, and B to C, and C to A, for example.
+- And it says that the Sure Thing Principle, a principle about what changes in payouts licence a change of preferences, holds.
+
+## Allais
+
+Maurice Allais (1911-2010) developed the most famous objection to the Sure Thing Principle.
+
+- It is a pair of two-way choices, and an intuitively rational pair of preferences among them.
+- Expected utility can make sense of either one of the pair, but not both.
+
+## Allais - First Part
+
+You have a choice between:
+
+A. A 10% chance of $5,000,000.
+B. An 11% chance of $1,000,000.
+
+What do you choose?
+
+## Allais - Second Part
+
+That was a hypothetical. Now for real you have a choice between:
+
+C. A 10% chance of $5,000,000, an 89% chance of $1,000,000, and a 1% chance of nothing.
+D. $1,000,000.
+
+What do you choose?
+
+## Allais's Argument
+
+- It is rational to prefer A to B, and D to C. \pause
+- Expected utility theory says that you can't prefer both A to B, and D to C. \pause
+- So expected utility theory is false.
+
+## Allais Table
+
+Imagine you have 10 blue marbles in an urn, 89 maize marbles, and 1 scarlet marble.
+
+|   | Blue | Maize | Scarlet |
+|:-:|:----:|:-----:|:-------:|
+| A | 5M   |  0    |   0     |
+| B | 1M   |  0    |   1M    |
+|   |      |       |         |
+| C | 5M   |  1M   |   0     |
+| D | 1M   |  1M   |   1M    |
+
+
+All that changed from AB to CD was that we changed how much the payout was if Maize, without changing the fact that it was equal.
+
+## Why Expected Utility Theory Can't Handle This
+
+Let $u(5M) = x$ and $u(1M) = y$.
+
+- If A is preferred to B, then $0.1x > 0.11y$, since those are the expected utilities of A and B. \pause
+- So adding $0.89y$ to both sides, we get $0.1x + 0.89y > y$. \pause
+- But those just are the expected utilities of C and D.
+- So if A is preferred to B, then C is preferred to D.
+
+## An argument against Allais
+
+Assume you'll find out, both in the AB case and the CD case, whether the marble was maize, or not-maize before you are told its color.
+
+- At that point, in the AB case, what will you wish you'd chosen? \pause
+- If B, or you are indifferent, then you shouldn't have preferred A in the first place. \pause
+- If A, then do the same thing in the CD case.
+- If you find out the marble is maize, you don't care.
+- If you find out it's not maize, then you're back in the exact same puzzle, so you should prefer C to D.
+- So by weak dominance, you should prefer C to D overall.
+
+## Decision Theory for Allais Agents
+
+- This was originally developed by the Australian economist John Quiggin, and recently expanded by the American philosopher Lara Buchak.
+- Very roughly, you replace the $Pr$ in expected utility theory with some function $f(Pr)$ where $f$ measures the agent's attitude to risk.
+- If $f(x) < x$, the agent is risk averse, if $f(x) > x$ they are risk seeking.
+- If you let $f(x) = x^2$, it's easy to model the Allais preferences.
+
+# For Next Time
+
+## Induction
+
+We'll look at how probability can help us think about famous philosophical problems.
+- Question: Could this change y
+
+# Announcements
+
+## Quiz
+
+- No weekly quiz this week.
+- Relatedly, not really doing puzzles this week.
+
+# Interpretations of Probability
+
+## Two Questions
+
+1. What do we mean by saying that something is probable, or that it is 80% likely, or that its probability is 40%? \pause
+2. What should we mean by those things? What meanings would be mostly useful for conversational purposes, scientific purposes, etc?
+
+## Caveats
+
+First, a caveat.
+
+- There probably isn't a single good answer to either of these questions.
+- That we actually do things a certain way is some evidence that that's a good way to do it, but far from compelling evidence.
+- And what is useful in the context of physical science is probably different to what's useful in social science and is probbably different again to what's useful in everyday life. \pause
+
+But let's see how we can do by ignoring all this and finding a single meaning for probability.
+
+## Probability is Everywhere
+
+- Most, maybe all, human languages have terms for something like probability. \pause
+- Saying "Probably" feels like an answer, and not just a response, to being asked whether $p$ is true.
+
+## Objective or Subjective
+
+- Objective theories say that probability is something about the world.
+- Subjective theories say that probability is something about minds.
+
+## One Paradigm Objective Theory
+
+Probability is frequency.
+
+- To say that the probability the roulette wheel will land 17 is $\frac{1}{38}$ just is to say that the proportion of spins that land 17 is $\frac{1}{38}$.
+
+## Advantages
+
+- Makes probability something observable. \pause
+- Makes probability something we clearly care about. \pause
+- Explains why we connect probability to action.
+
+## Disadvantages
+
+- Need extra complications to deal with cyclic events. The probability that it's now daytime is not 0.5, although the proportions of times that are daytime is 0.5. \pause
+- Implies that one-off events do not have a defined probablity. But we can say, for instance, that it is very probable that Oswald killed Kennedy.
+
+## Reference Class
+
+Thinking of probabilities as frequencies requires a reference class.
+
+- Think about what the probability is that I'm right handed.
+- Is it the frequency of right-handedness amongst:
+    - Humans? \pause
+    - Adult male humans? \pause
+    - Australians? \pause
+    - Michigan faculty? \pause
+    - Philosophy faculty? \pause
+    - Australians who are on the philosophy faculty at Michigan?
+    
+The last of these is a singleton class, so the probability is 0 or 1.
+
+## Subjective Theory
+
+Probability is degree of confidence.
+
+## Two Questions
+
+1. Whose confidence? \pause
+2. Actual confidence or idealised confidence?
+
+## Actual
+
+Question 2 seems easiest to answer.
+
+- No matter how confident you or I am that the moon is made of green cheese, it is not probable that the moon is made of green cheese.
+- If we're really confident that it is, then we're getting something very badly wrong.
+- But if probability just was how confident we actually are in something, then it would be probable that the moon is made of green cheese.
+
+## Idealised
+
+A better view is, as the textbook says, that 
+
+> Probability is ultimately about belief. It's about how certain you should be that something is true.
+
+So not what you actually believe, but what you should believe. This gets out of the green cheese problem.
+
+## Several Challenges
+
+1. Why think that 'how certain you should be that something is true' obeys these rules? \pause
+2. Who is the 'you' in how certain you should be that something is true? \pause
+3. What happens if rationality is **permissive**; there are several attitudes you can rationally have about how likely something is? \pause
+4. Especially if that last one is true, how does probability have a role to play in objective science? \pause
+5. How do we even measure how confident people, real or idealised, are in propositions? \pause
+
+We could do weeks on every one of these questions, but I'll focus on 3/4.
+
+## Bayesianism
+
+The main subjective theory is known as Bayesianism.
+
+- The name comes from the Rev. Thomas Bayes, an 18th century mathematician.
+- Just what is and is not a form of Bayesianism is a slightly contested, though mostly terminological question.
+
+## Conditionalisation
+
+The core principle behind Bayesianism is that updating is by conditionalisation.
+
+- That is, the new $\Pr(H)$ after getting evidence $E$ is the old $\Pr(H | E)$.
+- And $\Pr(H | E)$ is given by the formula.
+
+$$
+\Pr(H | E) = \frac{\Pr(E | H)\Pr(H)}{\Pr(E)}
+$$
+
+## Problem of the Priors
+
+- That tells you how to convert an old probability into a new probability given some evidence $E$.
+- That is, it tells you how to generate a **posterior** probability. \pause
+- But it does not tell you where the **prior** probability comes from.
+- And this question is one that Bayesians have never quite had a good answer to.
+
+## Green Cheese
+
+To make the problem vivid, imagine that I start out with the following probabilities.
+
+- The probability that the moon is made of green cheese is 0.99.
+- The things that happen around here are probabilistically independent of hypotheses about the material composition of the moon.
+
+The first of these is absurd, but the second isn't ridiculous I suppose.
+
+## Updating
+
+Now some stuff happens, I get evidence $E$.
+
+- Let $H$ be that the moon is made of green cheese.
+- Since $\Pr(H) = 0.99$, and $H$ is independent of $E$, it follows that $\Pr(H | E) = 0.99$. \pause
+- So the Bayesians' favourite updating rule says that the new probability for $H$ should be 0.99. \pause
+- But that's fairly absurd - what could it mean to say that I **should** have probability 0.99 in $H$?
+
+## Two Available Moves Here
+
+1. Say what the one true prior is - and say that there are two rules: use the one true prior, and update it by conditionalisation. \pause
+2. Say that there are a large class of acceptable priors, and argue that conditionalising any of them with enough evidence will produce a rational outcome. \pause
+
+The very rough history of this is that 19th century folks were sympathetic to option 1, but in the 20th century, most of the focus was on option 2.
+
+# One True Prior
+
+## Symmetry
+
+There is a natural way to start looking for the one true prior.
+
+- When we do probabilities involving games of chance, we naturally take the different possibilities as having equal probability.
+- So when we give equal probability to heads and tails, or to each marble being drawn, or each side of the die coming up, that doesn't seem to be based on a careful analysis of coins, marbles or dice.
+- Rather, it's just natural to divide probability evenly among the possibilities.
+
+## A Caveat
+
+There is one way in which it is more complicated than that.
+
+- We don't give any probability to the coin landing on its edge, or the die landing on a corner.
+- I suspect this is because we've observed a lot about the world from a very young age, and noticed things like that just don't happen.
+- This complicates the narrative that we're just using some natural principle of prior probability.
+
+## Logical Probability
+
+The very rough idea is that there are logical symmetry principles, and the prior probability function is one that respects these symmetries.
+
+- If $p$ is a proposition that things are one side of one of these lines of symmetry in logical space, the prior probability of $p$ is 0.5. \pause
+- Don't think about this too hard because it isn't actually going to work.
+- The problem is that there are too many symmetries.
+
+## The Cube Factory
+
+- Imagine that all you know about a factory is that it makes cubes with side lengths between 0 and 2cm. 
+- What is the probability that the next cube will have a side length less than or equal to 1cm? \pause
+- Intuitively, it's 0.5, right?
+
+## The Cube Factory (reprise)
+
+- Imagine that all you know about a factory is that it makes cubes with volumes between 0 and 8cm$^3$. 
+- What is the probability that the next cube will have a volume less than or equal to 1cm$^3$? \pause
+- Intuitively, it's 1 in 8, right?
+
+## Problem
+
+- These are the same question!
+- To say the sides are between 0 and 2 just is to say the volume is between 0 and 8.
+- And to say that the side length is at most 1 just is to say that the volume is at most 1.
+- If we try to respect all intuitive symmetries, we are led into inconsistency.
+
+## Principle of Indifference
+
+The intuitive rule we've been discussing here has a name, the Principle of Indifference.
+
+- It says that given a partition of possibility space into $n$ possibilities, and no reason to give higher probability to any one of them, give each of them probability $\frac{1}{n}$.
+- But this is incoherent - since the possibility that the cubes are under 1 is both part of a 2-way partition (the partition by side lengths) and an 8-way partitio (the partition by volumes).
+
+# Convergence
+
+## Big Picture
+
+- Maybe there is no one true prior.
+- But not anything goes.
+- And the ones that are ok are all such that they will converge to the truth given enough evidence.
+
+## Convergence
+
+- I am really not going to go over the details of this.
+- But it turns out there are a large class of functions with the following feature.
+- According to any function in the class, the probability that evidence will come in that makes every function in the class get arbitrarily close is very high.
+
+## Intuitive Case
+
+Imagine that I know a coin is biased in 1 of 2 ways.
+
+1. Each flip has probability 0.8 of landing heads.
+2. Each flip has probability 0.2 of landing heads.
+
+Then I get to flip the coin 100 times. What will happen?
+
+## Convergence
+
+- On scenario 1, the probability that I'll get at least 60 heads is greater than 0.99999.
+- But on scenaio 2, the probability of that is less than $10^{-10}$.
+- So if I start out 50/50 between the options, and get more than 60 heads, I'll end up massively leaning towards scenario 1. \pause
+- But imagine Calum starts out thinking that option 2 is really likely - 0.99 likely and option 1 only 0.01.
+- He will also get to the right view after 100 trials - even 60 heads (which is really low on scenario 1) would be enough to change the probabilities.
+
+## General Principle
+
+As long as we don't start with probability 0 for one or other scenario, get enough evidence and we'll converge to the correct scenario.
+
+## Two Problem Cases
+
+1. There isn't enough evidence around. This is a big problem in thinking about history, and also about social sciences.
+2. People do start with probability 0 for various scenarios.
+
+## Optimistic Take
+
+- These two problems won't arise very often.
+- So updating by conditionalisation will lead us to converge.
+- That's the sense in which we get objectivity; subjective priors that are sufficiently responsive to the evidence end up being objective enough.
+
+## For Next Time
+
+We'll look at attempts to get considerably more objectivity, focussing on chapter 19 of _Odds and Ends_.
+
+
+# Subjective Theories of Probability
+
+## Bayesianism
+
+The main subjective theory is known as Bayesianism.
+
+- The name comes from the Rev. Thomas Bayes, an 18th century mathematician.
+- Just what is and is not a form of Bayesianism is a slightly contested, though mostly terminological question.
+
+## Conditionalisation
+
+The core principle behind Bayesianism is that updating is by conditionalisation.
+
+- That is, the new $\Pr(H)$ after getting evidence $E$ is the old $\Pr(H | E)$.
+- And $\Pr(H | E)$ is given by the formula.
+
+$$
+\Pr(H | E) = \frac{\Pr(E | H)\Pr(H)}{\Pr(E)}
+$$
+
+## Problem of the Priors
+
+- That tells you how to convert an old probability into a new probability given some evidence $E$.
+- That is, it tells you how to generate a **posterior** probability. \pause
+- But it does not tell you where the **prior** probability comes from.
+- And this question is one that Bayesians have never quite had a good answer to.
+
+## Green Cheese
+
+To make the problem vivid, imagine that I start out with the following probabilities.
+
+- The probability that the moon is made of green cheese is 0.99.
+- The things that happen around here are probabilistically independent of hypotheses about the material composition of the moon.
+
+The first of these is absurd, but the second isn't ridiculous I suppose.
+
+## Updating
+
+Now some stuff happens, I get evidence $E$.
+
+- Let $H$ be that the moon is made of green cheese.
+- Since $\Pr(H) = 0.99$, and $H$ is independent of $E$, it follows that $\Pr(H | E) = 0.99$. \pause
+- So the Bayesians' favourite updating rule says that the new probability for $H$ should be 0.99. \pause
+- But that's fairly absurd - what could it mean to say that I **should** have probability 0.99 in $H$?
+
+## Two Available Moves Here
+
+1. Say what the one true prior is - and say that there are two rules: use the one true prior, and update it by conditionalisation. \pause
+2. Say that there are a large class of acceptable priors, and argue that conditionalising any of them with enough evidence will produce a rational outcome. \pause
+
+The very rough history of this is that 19th century folks were sympathetic to option 1, but in the 20th century, most of the focus was on option 2.
+
+# One True Prior
+
+## Symmetry
+
+There is a natural way to start looking for the one true prior.
+
+- When we do probabilities involving games of chance, we naturally take the different possibilities as having equal probability.
+- So when we give equal probability to heads and tails, or to each marble being drawn, or each side of the die coming up, that doesn't seem to be based on a careful analysis of coins, marbles or dice.
+- Rather, it's just natural to divide probability evenly among the possibilities.
+
+## A Caveat
+
+There is one way in which it is more complicated than that.
+
+- We don't give any probability to the coin landing on its edge, or the die landing on a corner.
+- I suspect this is because we've observed a lot about the world from a very young age, and noticed things like that just don't happen.
+- This complicates the narrative that we're just using some natural principle of prior probability.
+
+## Logical Probability
+
+The very rough idea is that there are logical symmetry principles, and the prior probability function is one that respects these symmetries.
+
+- If $p$ is a proposition that things are one side of one of these lines of symmetry in logical space, the prior probability of $p$ is 0.5. \pause
+- Don't think about this too hard because it isn't actually going to work.
+- The problem is that there are too many symmetries.
+
+## The Cube Factory
+
+- Imagine that all you know about a factory is that it makes cubes with side lengths between 0 and 2cm. 
+- What is the probability that the next cube will have a side length less than or equal to 1cm? \pause
+- Intuitively, it's 0.5, right?
+
+## The Cube Factory (reprise)
+
+- Imagine that all you know about a factory is that it makes cubes with volumes between 0 and 8cm$^3$. 
+- What is the probability that the next cube will have a volume less than or equal to 1cm$^3$? \pause
+- Intuitively, it's 1 in 8, right?
+
+## Problem
+
+- These are the same question!
+- To say the sides are between 0 and 2 just is to say the volume is between 0 and 8.
+- And to say that the side length is at most 1 just is to say that the volume is at most 1.
+- If we try to respect all intuitive symmetries, we are led into inconsistency.
+
+## Principle of Indifference
+
+The intuitive rule we've been discussing here has a name, the Principle of Indifference.
+
+- It says that given a partition of possibility space into $n$ possibilities, and no reason to give higher probability to any one of them, give each of them probability $\frac{1}{n}$.
+- But this is incoherent - since the possibility that the cubes are under 1 is both part of a 2-way partition (the partition by side lengths) and an 8-way partitio (the partition by volumes).
+
+# Convergence
+
+## Big Picture
+
+- Maybe there is no one true prior.
+- But not anything goes.
+- And the ones that are ok are all such that they will converge to the truth given enough evidence.
+
+## Convergence
+
+- I am really not going to go over the details of this.
+- But it turns out there are a large class of functions with the following feature.
+- According to any function in the class, the probability that evidence will come in that makes every function in the class get arbitrarily close is very high.
+
+## Intuitive Case
+
+Imagine that I know a coin is biased in 1 of 2 ways.
+
+1. Each flip has probability 0.8 of landing heads.
+2. Each flip has probability 0.2 of landing heads.
+
+Then I get to flip the coin 100 times. What will happen?
+
+## Convergence
+
+- On scenario 1, the probability that I'll get at least 60 heads is greater than 0.99999.
+- But on scenaio 2, the probability of that is less than $10^{-10}$.
+- So if I start out 50/50 between the options, and get more than 60 heads, I'll end up massively leaning towards scenario 1. \pause
+- But imagine Calum starts out thinking that option 2 is really likely - 0.99 likely and option 1 only 0.01.
+- He will also get to the right view after 100 trials - even 60 heads (which is really low on scenario 1) would be enough to change the probabilities.
+
+## General Principle
+
+As long as we don't start with probability 0 for one or other scenario, get enough evidence and we'll converge to the correct scenario.
+
+## Two Problem Cases
+
+1. There isn't enough evidence around. This is a big problem in thinking about history, and also about social sciences.
+2. People do start with probability 0 for various scenarios.
+
+## Optimistic Take
+
+- These two problems won't arise very often.
+- So updating by conditionalisation will lead us to converge.
+- That's the sense in which we get objectivity; subjective priors that are sufficiently responsive to the evidence end up being objective enough.
+
+# Classical Statistics
+
+## Significance Testing
+
+- The subjective approach is very popular within philosophy, but not within statistics or a lot of social sciences.
+- This is in part because of its subjectivity.
+- A lot of sciences want methods that are more objective.
+
+## Significance Testing
+
+What is known as 'classical statistics' is based around the idea of significance testing.
+
+- The intuitive idea is that we say that a correlation reflects a real pattern in the underlying data if (but only if) it would be really improbable if we got the data we did by chance.
+- Intuitively, three heads in a row might be a coincidence, but ten heads in a row suggests something odd is going on.
+
+## Significance Testing
+
+So say that we want to argue that two things are connected.
+
+- To make this concrete, say that we want to argue that the survival rates for people who take our company's drug are higher than for people who do not.
+- What we do is give a bunch of people the drug (after getting all the approvals!)
+- We then look at their survival rates, and ask _How likely would this data be if our drug had no effect at all_?
+- If that number is low enough, we conclude that our drug works. (Profit!)
+
+## Significance Testing
+
+- That is, we work out something like $\Pr(E | H_0)$, where $E$ is the data that we get, and $H_0$ is a **null hypothesis** that says there is nothing of interest here.
+- If $\Pr(E | H_0)$ is low enough, we conclude that $H_0$ is false, and hopefully there is a natural alternative to $H_0$, such as that the drug works, that we infer.
+- In those cases, we will say that the data shows a significant correlation between taking the drug and survival rates.
+- This literally means that it would be really improbable to get this data by chance.
+
+## Significance Testing
+
+How low is 'really low'?
+
+- As the book says, this is mostly a matter of convention.
+- Which is ironic given the whole point was to get away from subjectivity.
+- But a common idea is that it is less than 5%.
+- So a correlation is significant if it is outside the central 95% of the distribution.
+
+## Inverting
+
+- Isn't this all wrong though?
+- Isn't it inferring from the fact that $\Pr(E | H_0)$ is low to the conclusion that $\Pr(H_0 | E)$ is low, something that we've said over and over again not to do? \pause
+- Yes, but... \pause
+- In practice the method is supplemented by practical rules that avoid the worst consequences of allowing these inversions.
+
+## Stopping Rules
+
+- As it stands, this method leads to all sorts of nonsense and, frankly, fraud. 
+- It needs to be supplemented with extra rules to avoid obvious mistakes.
+- The first thing that is needed, as was realised fairly early on, was a commitment to external 'stopping rules'.
+- If you are allowed to keep collecting data until the probability of the evidence given the null is low, you will almost always get to reject the null.
+
+## An Experiment
+
+- This is actually an experiment; the data are randomly generated anew every time I compile these slides.
+- So it could go horribly wrong!
+
+## An Experiment
+
+- I'm going to simulate tossing a coin 100,000 times.
+- It uses the computer's random number generator, and it is set up so the probability of heads on each toss is 0.5, and the tosses are independent.
+- But I'm going to measure the probability of the evidence given the null after each toss, not just at the end.
+- And by 'the probability of the evidence', I mean the probability of getting at least that many heads.
+- If that is outside $[0.025, 0.975]$ then we have, at this point, a rejection of the null.
+- This is absurd of course; the null is programmed to be true.
+- I'll run it five times to see how it goes.
+
+## Take One
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Here t is the trial number, result is how the coin landed on that trial, heads is how many heads to that point, frequency is frequency of heads to that point, prob is probability of getting at least that many heads, and distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Two
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Here t is the trial number, result is how the coin landed on that trial, heads is how many heads to that point, frequency is frequency of heads to that point, prob is probability of getting at least that many heads, and distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Three
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Here t is the trial number, result is how the coin landed on that trial, heads is how many heads to that point, frequency is frequency of heads to that point, prob is probability of getting at least that many heads, and distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Four
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Here t is the trial number, result is how the coin landed on that trial, heads is how many heads to that point, frequency is frequency of heads to that point, prob is probability of getting at least that many heads, and distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Take Five
+
+```{r include = FALSE}
+require(tidyverse)
+require(knitr)
+
+trials <- tibble(t = 1:100000)
+trials <- trials %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+trials <- trials %>%
+  mutate(heads = cumsum(result))
+trials <- trials %>%
+  mutate(frequency = heads/t) %>%
+  mutate(prob = pbinom(heads, t, 0.5)) %>%
+  mutate(distance = case_when(t > 1000 ~ abs(prob - 0.5), TRUE ~ 0)) %>%
+  arrange(desc(distance))
+shorttrials <- slice(trials, 1:5)
+```
+
+```{r echo= FALSE, results = 'asis'}
+kable(shorttrials)
+```
+
+Here t is the trial number, result is how the coin landed on that trial, heads is how many heads to that point, frequency is frequency of heads to that point, prob is probability of getting at least that many heads, and distance is the distance of that number from 0.5. In this trial, we ended up with this many heads.
+
+```{r echo = FALSE}
+sum(trials$result)
+```
+
+## Stopping Rules
+
+- As I said, this is a known bug in significance testing, and every responsible scientist who uses it knows that you aren't meant to stop just when you get the data you want.
+- But there is another kind of problem that we've recently discovered the importance of.
+- Here I was testing just one hypothesis.
+- What if we try to test many more hypotheses at once?
+
+## P-Hacking
+
+- This practice is known as **p-hacking**.
+- It is the tactic of looking at results within all sorts of sub-groups within the data in the hope of finding a significant correlation somewhere.
+- And with enough subgroups, the odds are pretty good that you'll find one.
+
+## Another Experiment
+
+- Here I'm doing 32000 coin flips, but each flip is randomly assigned to either having or not having three different characteristics: C1, C2 and C3.
+- In medical contexts, think of these as being like sex, age, race, etc.
+- Again, I'm just doing coin flips here.
+- And I'm going to run the trials to completion.
+- But we're going to look for significant correlations among each group.
+- I'll walk through three attempts to see how likely it is we get one.
+- I haven't seen the data, so there isn't commentary on the slides, but it is quite unlikely that we'll get a significant correlation on the whole set. On the sub-samples though...
+
+## Experiment One
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment One - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+## Experiment One - With Two Characteristics
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+## Experiment One - With All Three Characteristics
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Experiment Two
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment Two - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+## Experiment Two - With Two Characteristics
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+## Experiment Two - With All Three Characteristics
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Experiment Three
+
+```{r include = FALSE}
+require(tidyverse)
+
+trials <- tibble(t = 1:32000)
+trials <- trials %>%
+  mutate(c1 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c2 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(c3 = sample(0:1, n(), replace=TRUE)) %>%
+  mutate(result = sample(0:1, n(), replace=TRUE))
+
+big_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "All", sum(trials$result), nrow(trials), 0, 0
+)
+
+big_table <- big_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability))
+
+t1 <- trials %>% filter(c1 == 1)
+t2 <- trials %>% filter(c1 == 0)
+t3 <- trials %>% filter(c2 == 1)
+t4 <- trials %>% filter(c2 == 0)
+t5 <- trials %>% filter(c3 == 1)
+t6 <- trials %>% filter(c3 == 0)
+
+one_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "Yes C1", sum(t1$result), nrow(t1), 0, 0,
+  "No C1", sum(t2$result), nrow(t2), 0, 0,
+  "Yes C2", sum(t3$result), nrow(t3), 0, 0,
+  "No C2", sum(t4$result), nrow(t4), 0, 0,
+  "Yes C3", sum(t4$result), nrow(t5), 0, 0,
+  "No C3", sum(t4$result), nrow(t6), 0, 0
+)
+
+one_char_table <- one_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t11 <- trials %>% filter(c1 == 1, c2 == 1)
+t12 <- trials %>% filter(c1 == 1, c2 == 0)
+t13 <- trials %>% filter(c1 == 0, c2 == 1)
+t14 <- trials %>% filter(c1 == 0, c2 == 0)
+t21 <- trials %>% filter(c1 == 1, c3 == 1)
+t22 <- trials %>% filter(c1 == 1, c3 == 0)
+t23 <- trials %>% filter(c1 == 0, c3 == 1)
+t24 <- trials %>% filter(c1 == 0, c3 == 0)
+t31 <- trials %>% filter(c3 == 1, c2 == 1)
+t32 <- trials %>% filter(c3 == 1, c2 == 0)
+t33 <- trials %>% filter(c3 == 0, c2 == 1)
+t34 <- trials %>% filter(c3 == 0, c2 == 0)
+
+two_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2", sum(t11$result), nrow(t11), 0, 0,
+  "+C1-C2", sum(t12$result), nrow(t12), 0, 0,
+  "-C1+C2", sum(t13$result), nrow(t13), 0, 0,
+  "-C1-C2", sum(t14$result), nrow(t14), 0, 0,
+  "+C1+C3", sum(t21$result), nrow(t21), 0, 0,
+  "+C1-C3", sum(t22$result), nrow(t22), 0, 0,
+  "-C1+C3", sum(t23$result), nrow(t23), 0, 0,
+  "-C1-C3", sum(t24$result), nrow(t24), 0, 0,
+  "+C3+C2", sum(t31$result), nrow(t31), 0, 0,
+  "+C3-C2", sum(t32$result), nrow(t32), 0, 0,
+  "-C3+C2", sum(t33$result), nrow(t33), 0, 0,
+  "-C3-C2", sum(t34$result), nrow(t34), 0, 0
+)
+
+two_char_table <- two_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+
+t41 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 1)
+t42 <- trials %>% filter(c1 == 1, c2 == 1, c3 == 0)
+t43 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 1)
+t44 <- trials %>% filter(c1 == 1, c2 == 0, c3 == 0)
+t45 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 1)
+t46 <- trials %>% filter(c1 == 0, c2 == 1, c3 == 0)
+t47 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 1)
+t48 <- trials %>% filter(c1 == 0, c2 == 0, c3 == 0)
+
+three_char_table <- tribble(
+  ~Characteristic, ~Heads, ~Trials, ~Probability, ~Distance,
+  "+C1+C2+C3", sum(t41$result), nrow(t41), 0, 0,
+  "+C1+C2-C3", sum(t42$result), nrow(t42), 0, 0,
+  "+C1-C2+C3", sum(t43$result), nrow(t43), 0, 0,
+  "+C1-C2-C3", sum(t44$result), nrow(t44), 0, 0,
+  "-C1+C2+C3", sum(t45$result), nrow(t45), 0, 0,
+  "-C1+C2-C3", sum(t46$result), nrow(t46), 0, 0,
+  "-C1-C2+C3", sum(t47$result), nrow(t47), 0, 0,
+  "-C1-C2-C3", sum(t48$result), nrow(t48), 0, 0
+)
+
+three_char_table <- three_char_table %>%
+  mutate(Probability = pbinom(Heads, Trials, 0.5), Distance = abs(0.5 - Probability)) %>%
+  arrange(desc(Distance))
+```
+
+```{r echo = FALSE}
+kable(big_table)
+```
+
+## Experiment Three - With One Characteristic
+
+```{r echo = FALSE}
+kable(one_char_table)
+```
+
+## Experiment Three - With Two Characteristics
+
+```{r echo = FALSE}
+kable(two_char_table)
+```
+
+## Experiment Three - With All Three Characteristics
+
+```{r echo = FALSE}
+kable(three_char_table)
+```
+
+## Pre-Registration
+
+- The solution to this problem (which I hope the numbers came out right on!) is to require that scientists **pre-register** their hypotheses.
+- So you can't collect data then see what it supports, but have to say that one particular thing is what you're testing.
+- This is still in the process of becoming a universal requirement in respectable science; it was very much not part of standard scientific practice 10-20 years ago.
+
+## Philosophical Question
+
+- Should we trust a method if it requires these ad hoc rules like announced stopping rules and pre-registration? \pause
+- Maybe! It depends on the alternatives.
+- But when you see a report on a statistical finding, you should really check if it satisfies these conditions.
+- And if it comes from a for-profit entity, you should be really sceptical that it does unless they are super transparent.
