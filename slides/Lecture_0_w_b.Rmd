@@ -11,6 +11,14 @@ output:
       in_header: 305-beamer-header.tex
 ---
 
+## Plan for This Lecture
+
+We're discussing the nature of arguments, and in particular, the role of premises and conclusions.
+
+## Associated Reading
+
+Carnap book, chapter 1, section "Arguments and Reasoning".
+
 ## Arguments
 
 Logic studies certain properties of arguments.

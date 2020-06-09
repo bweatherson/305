@@ -15,6 +15,10 @@ output:
 
 - We're going to look at how and why we can iterate the translation procedures we've been investigating.
 
+## Associated Reading
+
+This is still connected to the "English to Symbols" part of chapter 2, though it goes into more detail than the book.
+
 ## Recursion
 
 The language of propositional logic has some fairly simple composition rules.

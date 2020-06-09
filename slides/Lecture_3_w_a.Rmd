@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 31 - Independence"
+title: "305 Lecture 29 - Independence"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

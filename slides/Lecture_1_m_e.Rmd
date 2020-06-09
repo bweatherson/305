@@ -11,6 +11,14 @@ output:
       in_header: 305-beamer-header.tex
 ---
 
+## Plan
+
+To introduce the idea of an **Indirect Derivation**, which is the next most complicated form of derivation we'll look at.
+
+## Associated Reading
+
+Carnap book, chapter 4.
+
 ## Proving a Conditional
 
 Intuitively, they way to show $A \rightarrow B$ is to imagine/assume/suppose $A$ is true, and show that then $B$ will be true as well.

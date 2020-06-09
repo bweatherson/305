@@ -16,6 +16,10 @@ output:
 - Some revision of the notion of validity
 - A discussion of which aspects of arguments we formalise, and why we do this.
 
+## Associated Reading
+
+This doesn't correspond to any section in the book, but it helps to understand the transition from chapter 1 to chapter 3.
+
 ## Definition
 
 An argument is valid when

@@ -15,6 +15,10 @@ output:
 
 This lecture is about how we use truth tables to check for logical properties.
 
+## Associated Reading
+
+Carnap Book, Chapter 10, section "Truth Values, Truth Tables, Tautologies".
+
 ## Tautologies
 
 We are going to start with a particular kind of sentence, a **tautology**.

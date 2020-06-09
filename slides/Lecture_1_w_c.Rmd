@@ -15,6 +15,10 @@ output:
 
 We're going to go over an important general fact about conditional in Carnap - the conditional theorem. This is going to be very short.
 
+## Associated Reading
+
+This isn't covered in Carnap, but it's relevant to our work later in the course, so I'm introducing it now.
+
 ## The Conditional Theorem
 
 These two things are equivalent in Carnap for any $A, B, C$.

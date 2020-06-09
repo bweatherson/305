@@ -11,6 +11,14 @@ output:
       in_header: 305-beamer-header.tex
 ---
 
+## Plan for This Lecture
+
+We're introducing propositional logic, and talking about what it is.
+
+## Associated Reading
+
+Carnap book, chapter 1, section "Our Formal Language".
+
 ## Key Assumption
 
 We start with one key assumption:

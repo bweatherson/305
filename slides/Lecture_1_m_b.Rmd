@@ -15,6 +15,10 @@ output:
 
 - We're going to look at how to translate English sentences into a form where we can use the tools of propositional logic on them.
 
+## Associated Reading
+
+Carnap book, chapter 2, section "English to Symbols". (This isn't part of the required reading; what I cover in the slides is enough.)
+
 ## Sentence Letters
 
 - We use letters, usually starting with $p$ and then continuing through the alphabet, for 'atomic' sentences. 

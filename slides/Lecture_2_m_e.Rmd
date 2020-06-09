@@ -15,6 +15,10 @@ output:
 
 This lecture finishes our discussion of truth tables by looking at the role truth tables play in determining validity.
 
+## Associated Reading
+
+Carnap Book, Chapter 10, second half
+
 ## The Rules
 
 - An argument is **invalid** if there is a row on the truth table where all the premises are true and the conclusion is false. (Roughly!)

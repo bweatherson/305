@@ -17,6 +17,10 @@ output:
 - The first is that the rules validate explosion, the idea that everything follows from a contradiction.
 - The second is that they validate all four of what are called DeMorgan's Laws.
 
+## Associated Reading
+
+No associated reading, but again, this will be relevant to our later work.
+
 # Explosion
 
 ## What It is

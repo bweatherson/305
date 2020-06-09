@@ -15,6 +15,10 @@ output:
 
 This lecture is about how we build truth tables.
 
+## Associated Reading
+
+We're still working through the first half of Carnap book, Chapter 10.
+
 ## Four Main Connectives
 
 - Building truth tables requires, unfortunately, a small amount of memorization.

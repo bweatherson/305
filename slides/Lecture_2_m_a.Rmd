@@ -11,6 +11,14 @@ output:
       in_header: 305-beamer-header.tex
 ---
 
+## Plan for Today
+
+Introducing truth tables.
+
+## Associated Reading
+
+Carnap book, chapter 10, first half.
+
 ## Conceptual Idea
 
 > - Think about all the combinations of truth values for the atomic sentences in a longer sentence, or in an argument.

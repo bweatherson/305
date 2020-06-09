@@ -13,7 +13,11 @@ output:
 
 ## Plan
 
-We're going to go over whathappens when there are multiple indirect derivations in a single argument.
+We're going to go over what happens when there are multiple indirect derivations in a single argument.
+
+## Associated Reading
+
+Carnap Book, chapter 5.
 
 ## Using Conditionals
 

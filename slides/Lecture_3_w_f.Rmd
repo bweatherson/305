@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 36 - Base Rates"
+title: "305 Lecture 34 - Base Rates"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

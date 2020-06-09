@@ -15,6 +15,10 @@ output:
 
 This lecture is about how to build more complicated truth tables than we have looked at so far.
 
+## Associated Reading
+
+No new reading; we're just going to do a more complicated example than the book goes over.
+
 ## The Example
 
 We are going to work out the truth table for this sentence:

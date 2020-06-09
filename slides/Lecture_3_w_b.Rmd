@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 32 - Inverting Conditional Probability"
+title: "305 Lecture 30 - Inverting Conditional Probability"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

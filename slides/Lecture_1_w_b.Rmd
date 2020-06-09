@@ -15,6 +15,10 @@ output:
 
 We're going to introduce how we prove negations in Carnap.
 
+## Associated Reading
+
+Carnap book, chapter 6.
+
 ## How to Prove a Negation
 
 Show that if it were true, something absurd would follow.

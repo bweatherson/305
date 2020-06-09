@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 33 - Probability Revision"
+title: "305 Lecture 31 - Probability Revision"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

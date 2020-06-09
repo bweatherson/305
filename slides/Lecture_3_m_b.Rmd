@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 26 - Introducing Probability"
+title: "305 Lecture 27 - About Probability Functions"
 author: "Brian Weatherson"
 date: "July 20, 2020"
 output: 
@@ -13,170 +13,152 @@ output:
 
 ## Plan
 
-- This lecture introduces the basics of probability
+- This lecture looks at some general features of probability functions, and looks at some ways to think probabilistically about real world events.
 
-## Basic Idea
+## Scale
 
-- A probability function is a mapping from possibilities to numbers.
-- The numbers must sum to one.
-- Intuitively, the numbers measure how likely the possibilities are.
+$$
+0 \leq \Pr(A) \leq 1
+$$
 
-## Sum to One
+## Negation
 
-The math of probability functions is just the math of proportions. Ultimately, all we'll be doing is the same kind of math that you would do when thinking about things like
+$$
+\Pr(\neg A) = 1 - \Pr(A)
+$$
 
-- What proportion of UM students are from North Carolina?
-- What proportion of UM undergraduates are Tigers fans?
+## Excluded Middle
 
-etc.
+$$
+\Pr(A) + \Pr(\neg A) = 1
+$$
 
-## Three Big Questions
+## Partition
 
-> 1. What to do with these numbers?
-> 2. Where these numbers come from?
-> 3. What do the numbers even mean?
+Some events $A_1, \dots A_n$ form a partition if, necessarily, exactly one of them is true.
 
-## A Simple Case
+- So they are **exclusive** - you can't have any two of them both be true.
+- And they are **exhaustive** - you have to have at least one true.
 
-- Imagine that it is basketball season, and UM has planned to have both the women's and men's teams play on the same night.
-- So at the end of the night there are four possible outcomes.
+## Partition
 
-## Made Up Probabilities
+If $A_1, \dots A_n$ form a partition then
 
-I'll stipulate that the probabilities of the four possible outcomes are given by this table.
+$$
+\Pr(A_1) + \dots + \Pr(A_n) = 1
+$$
 
-              Men Win   Men Lose
------------  --------- ----------
-Women Win       0.45      0.25
-Women Lose      0.20      0.10
+## Exclusive
 
-## Another Representation
+If $A, B$ are exclusive
 
-Here are the same numbers written a different way.
+$$
+\Pr(A \vee B) = \Pr(A) + \Pr(B)
+$$
 
- Women   Men    Probability
-------- ------ -------------
-  Win    Win        0.45
-  Win    Lose       0.25
-  Lose   Win        0.20
-  Lose   Lose       0.10
-  
-## Possibilities
+## General Principle
 
-Say a possibility (for current purposes) is one of these maximally specific things that the probability is defined over.
-
-- It is not really a complete possibility.
-- It doesn't tell us the score, or the weather, or the results of the next election, or for that matter the results of the last election.
-- But it tells us everything that's relevant to a particular inquiry.
-- It is a lot like a line on a truth table.
-  
-## Events
-
-We will say an **event** is a proposition that can be defined using these possibilities. So here are some sample events.
-
-- The women's team wins.
-- The men's team wins.
-- At least one Michigan team wins.
-- The two teams have the same result.
-
-## Probability of Events
-
-- An event is true at some possibilities, false at others.
-- Each possibility gets a probability.
-- The probability of an event is the sum of the probabilities of the possibilities where it is true.
-
-## Examples - Probability Women's Team Wins
-
-\begincols
-\begincol{.48\textwidth}
-
- Women   Men    Probability
-------- ------ -------------
-  Win    Win        0.45
-  Win    Lose       0.25
-  Lose   Win        0.20
-  Lose   Lose       0.10
-  
-\endcol
-\begincol{.48\textwidth}
-
-The women's team wins at lines 1 and 2.
-
-- So its probability is 0.45 + 0.25 = $0.7$.
-
-\endcol
-\endcols
-
-## Examples - Probability Men's Team Wins
-
-\begincols
-\begincol{.48\textwidth}
-
- Women   Men    Probability
-------- ------ -------------
-  Win    Win        0.45
-  Win    Lose       0.25
-  Lose   Win        0.20
-  Lose   Lose       0.10
-  
-\endcol
-\begincol{.48\textwidth}
-
-The men's team wins at lines 1 and 3.
-
-- So its probability is 0.45 + 0.20 = $0.65$.
-
-\endcol
-\endcols
-
-## Examples - At Least One Team Wins
-
-\begincols
-\begincol{.48\textwidth}
-
- Women   Men    Probability
-------- ------ -------------
-  Win    Win        0.45
-  Win    Lose       0.25
-  Lose   Win        0.20
-  Lose   Lose       0.10
-  
-\endcol
-\begincol{.48\textwidth}
+$$
+\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+$$
 
 \pause
 
-At least one team wins at lines 1, 2 and 3.
+It's worth thinking through why this is true in terms of possibilities.
 
-- So its probability is 0.45 + 0.25 + 0.20 = $0.90$.
+## Trees
 
-\endcol
-\endcols
+- Often, we can't just write down numbers for the possibilities.
+- But we can write down, or at least make reasonable guesses about, numbers for certain events.
+- And we can think about how things are likely to go given those events happen.
+- This is the tree structure that is used in _Odds and Ends_.
 
-## Examples - Same Result in Each Game
+## Academic Forecasting
 
-\begincols
-\begincol{.48\textwidth}
+- So let's say you're interested in the probability that we have in person classes all the way through Fall semester.
+- It looks like we're going to start with in person classes (at least for some classes), and the virus numbers are falling quickly in Michigan, so maybe this will all work out.
+- Respiratory viruses do tend to get worse in the Fall, so things could get bad in November. 
+- But the vaccine trials are going better than I expected at this point, and that surely matters.
+- But it's hard to put into numbers how it affects things.
 
- Women   Men    Probability
-------- ------ -------------
-  Win    Win        0.45
-  Win    Lose       0.25
-  Lose   Win        0.20
-  Lose   Lose       0.10
+## One Method
+
+- Divide up the state space.
+- Work out the probability of being in one or other part of the space.
+- Work out the probability of classes running all semester in each part of the space.
+- Add things up.
+
+## Nothing is Reliable
+
+> - There are a lot of ways to do this.
+> - You could divide up the space by how many cases there are in Michigan.
+> - Or you could divide up the space by how many other universities shut down.
+> - Or, and let's work with this one, you could divide it up by whether there is a vaccine that's known to work by October.
+
+## Three States
+
+1. No vaccine.
+2. Limited quantities of vaccine.
+3. Readily available vaccine.
+
+## Two Step Process
+
+1. Work out (or at least estimate) probability of each state.
+2. Work out probability of Trump winning within each of those states.
+
+This will involve a lot of guesswork - do not make investment decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
+
+## Probabilities of States
+
+This could be embarrassingly out of date by the time we even do the classes, but let's say the probabilities look like this.
+
+- No vaccine - 70%, or 0.7.
+- Limited quantities of vaccine - 20%, or 0.2.
+- Unlimited quantities of vaccine - 10%, or 0.1
+
+## Class Probabilities
+
+Then we want to work out how likely it is that we get a full semester of classes in given each of these three possibilities.
+
+## No Vaccine
+
+If there's no vaccine, then all that matters is whether we think there will be enough cases in the Fall to cause the university to shut down again. Even with masks, distancing, etc, it's hard to avoid outbreaks on places like college campuses. But maybe we'll be able to isolate anyone who gets sick, so let's be a litle optimistic and say that even without a vaccine, we're 60% likely to get through the semester.
+
+> - I really want to emphasise that I'm making these numbers up for the purposes of an in class example. I have no special insight into either the university's thinking, or epidemiology. If you have any reason to think they are wrong, in either direction, do not change your views on my account.
+
+## Limited Vaccine
+
+This starts to feel more like something where we can get through the term. Would the university risk running classes if it could give vaccines to the old professors and could hope and pray that young people (i.e., students) will only get a bit sick? Or would even a limited vaccine mean that infections wouldn't spread? Maybe!
+
+- But even still, things could go wrong. So let's say there is a 20% chance of a shut down even with a limited vaccine, and so an 80% chance of the semester going ahead.
+
+## Unlimited vaccine
+
+Now it's hard to see why the university would shut down. Rather than fuss about the details, let's just simplify and say that in this (very unlikely) scenario, it's 100% likely that we'll get all classes in.
+
+
+## The Giant Table
+
+                                     Full Semester             Some shutdown
+---------------------------- ------------------------- -------------------------
+No vaccine                    $0.7 \times 0.6 = 0.42$   $0.7 \times 0.4 = 0.28$
+Limited vaccine               $0.2 \times 0.8 = 0.16$   $0.2 \times 0.2 = 0.04$
+Unlimited vaccine             $0.1 \times 1.0 = 0.10$   $0.1 \times 0.0 = 0.00$
   
-\endcol
-\begincol{.48\textwidth}
+So the probability that we get a full semester in (given these literally made up assumptions) is $0.42 + 0.16 + 0.1 = 0.68$, or 68%.
 
-\pause
+## Probabilities and Errors
 
-It is the same result in each game at lines 1 and 4.
+- The error bars on that calculation are massive.
+- But it's a kind of sanity check on how you think things are going.
+- Especially in situations where only a handful of paths lead to a salient result (like in playoffs in sports, or when thinking about the likelihood of a particular challenger winning), doing the tree even with favorable numbers can give you a conservative estimate of some probability.
 
-- So its probability is 0.45 + 0.10 = $0.55$.
+## Three Cases Where This is More Precise
 
-\endcol
-\endcols
+1. Probabilities are stipulated
+2. Probabilities are due to well understood chance processes (like gambling devices)
+3. Probabilities are derived from very large data sets
 
 ## For Next Time
 
-- We will look at some properties that all probability functions share.
+- We will look at an example where the probabilities are indeed stipulated.

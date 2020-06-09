@@ -15,6 +15,10 @@ output:
 
 We're going to talk about how 'and' behaves in Carnap.
 
+## Associated Reading
+
+Carnap book, chapter 8, Section "Simplification and Adjunction" (about 1/3 of the way down).
+
 ## Two Rules for And
 
 The rules for 'and' are really simple; I'm not sure why Carnap doesn't start with them.

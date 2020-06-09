@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 37 - Updating on Multiple Data Points"
+title: "305 Lecture 35 - Updating on Multiple Data Points"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

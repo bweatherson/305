@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 35 - Bayes's Theorem"
+title: "305 Lecture 33 - Bayes's Theorem"
 author: "Brian Weatherson"
 date: "July 22, 2020"
 output: 

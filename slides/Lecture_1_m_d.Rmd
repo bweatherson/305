@@ -11,6 +11,14 @@ output:
       in_header: 305-beamer-header.tex
 ---
 
+## Plan
+
+To introduce the basic idea of a derivation, and start with some simple examples.
+
+## Associated Reading
+
+Carnap book, chapter 3. 
+
 ## Basic Idea
 
 A derivation is a series of steps that get you from the premises to the conclusion, with every step falling into one of a small number of approved kinds of transition.

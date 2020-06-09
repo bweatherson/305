@@ -16,6 +16,10 @@ output:
 - We're going to talk about how 'or' behaves in Carnap.
 - Sentences with 'or' as the main connective are called **disjunctions**, and the parts either side of the 'or' are called disjuncts.
 
+## Associated Reading
+
+Carnap book, chapter 8, section "Modus Tollendo Ponens and Addition" (about 1/2 way down).
+
 ## Two Rules for Or
 
 - Like with 'and', there is a rule for proving an 'or' sentence, and a rule for using an 'or' sentence.

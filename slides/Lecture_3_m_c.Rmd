@@ -1,5 +1,5 @@
 ---
-title: "305 Lecture 27 - About Probability Functions"
+title: "305 Lecture 27 - Probability Trees"
 author: "Brian Weatherson"
 date: "July 20, 2020"
 output: 
@@ -13,152 +13,503 @@ output:
 
 ## Plan
 
-- This lecture looks at some general features of probability functions, and looks at some ways to think probabilistically about real world events.
+- This lecture walks through a worked example of how to use probability trees to calculate a probability.
 
-## Scale
+# A Tree Example
 
-$$
-0 \leq \Pr(A) \leq 1
-$$
+## Soccer Tournament
 
-## Negation
+There is a big soccer tournament this weekend. The teams competing are
 
-$$
-\Pr(\neg A) = 1 - \Pr(A)
-$$
+- Fireflies
+- Penguins
+- Huskies
+- Bluebirds
 
-## Excluded Middle
+## Tournament Structure
 
-$$
-\Pr(A) + \Pr(\neg A) = 1
-$$
+There will be three games.
 
-## Partition
+1. Fireflies vs Penguins
+2. Huskies vs Bluebirds
+3. Winner of Game 1 vs Winner of Game 2
 
-Some events $A_1, \dots A_n$ form a partition if, necessarily, exactly one of them is true.
+Each game will have a winner one way or the other (maybe via penalty kicks or extra time).
 
-- So they are **exclusive** - you can't have any two of them both be true.
-- And they are **exhaustive** - you have to have at least one true.
+## Team Strength
 
-## Partition
+The teams are not all equally good. They each have a 'strength'. Here is their respective strengths
 
-If $A_1, \dots A_n$ form a partition then
+ Team        Strength
+----------- ---------- 
+ Fireflies      5
+ Penguins       4
+ Huskies        3
+ Bluebirds      1
 
-$$
-\Pr(A_1) + \dots + \Pr(A_n) = 1
-$$
+## Win Probabilities
 
-## Exclusive
-
-If $A, B$ are exclusive
-
-$$
-\Pr(A \vee B) = \Pr(A) + \Pr(B)
-$$
-
-## General Principle
+If a team with strength $x$ plays a team with strength $y$, the team with strength $x$ will win with probability
 
 $$
-\Pr(A) + \Pr(B) = \Pr(A \vee B) + \Pr(A \wedge B)
+\frac{x}{x+ y}
 $$
+
+\bigskip
+
+And the team with strength $y$ will win with probability
+
+$$
+\frac{y}{x + y}
+$$
+
+## Question
+
+What is the probability that each team will win the tournament?
+
+> - We will answer this by doing a tree.
+
+## Tournament Tree {.fragile}
+
+\newcommand{\pictext}[3]{
+\put(#1, #2){\makebox(0, 0)[b]{#3}}}
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{215}{20}{P}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
 
 \pause
 
-It's worth thinking through why this is true in terms of possibilities.
+Now we have to add the probabilities to it.
 
-## Trees
+## Tournament Tree {.fragile}
 
-- Often, we can't just write down numbers for the possibilities.
-- But we can write down, or at least make reasonable guesses about, numbers for certain events.
-- And we can think about how things are likely to go given those events happen.
-- This is the tree structure that is used in _Odds and Ends_.
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{130}{55}{B}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{270}{55}{B}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
 
-## Academic Forecasting
+The first game is strength 5 vs strength 4, so the win probability for the stronger team is $\nicefrac{5}{5+4}$, i.e., $\nicefrac{5}{9}$.
 
-- So let's say you're interested in the probability that we have in person classes all the way through Fall semester.
-- It looks like we're going to start with in person classes (at least for some classes), and the virus numbers are falling quickly in Michigan, so maybe this will all work out.
-- Respiratory viruses do tend to get worse in the Fall, so things could get bad in November. 
-- But the vaccine trials are going better than I expected at this point, and that surely matters.
-- But it's hard to put into numbers how it affects things.
+## Tournament Tree {.fragile}
 
-## One Method
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{85}{95}{H}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{155}{95}{B}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{225}{95}{H}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{295}{95}{B}
+\end{picture}
 
-- Divide up the state space.
-- Work out the probability of being in one or other part of the space.
-- Work out the probability of classes running all semester in each part of the space.
-- Add things up.
+The second game is strength 3 vs strength 1, so the win probability for the stronger team is $\nicefrac{3}{3+1}$, i.e., $\nicefrac{3}{4}$. And it doesn't matter how the first game went - that's the probability for the second game.
 
-## Nothing is Reliable
+## Tournament Tree {.fragile}
 
-> - There are a lot of ways to do this.
-> - You could divide up the space by how many cases there are in Michigan.
-> - Or you could divide up the space by how many other universities shut down.
-> - Or, and let's work with this one, you could divide it up by whether there is a vaccine that's known to work by October.
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+%\pictext{230}{125}{$\mathpzc{W}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
 
-## Three States
+And now for each possible match up in game 3, we apply the formula to get the win probability for each team.
 
-1. No vaccine.
-2. Limited quantities of vaccine.
-3. Readily available vaccine.
+## Tournament Tree {.fragile}
 
-## Two Step Process
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+%\pictext{50}{125}{$\mathpzc{L}$}
+\put(70, 82){\line(1, 2){20}}
+%\pictext{90}{125}{$\mathpzc{L}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+%\pictext{120}{125}{$\mathpzc{L}$}
+\put(140, 82){\line(1, 2){20}}
+%\pictext{160}{125}{$\mathpzc{W}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+%\pictext{190}{125}{$\mathpzc{L}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\frac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+%\pictext{260}{125}{$\mathpzc{W}$}
+\put(280, 82){\line(1, 2){20}}
+%\pictext{300}{125}{$\mathpzc{L}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
 
-1. Work out (or at least estimate) probability of each state.
-2. Work out probability of Trump winning within each of those states.
+- The probability of each completed branch is the product of each of the smaller branches.
+- So the one I've marked is $\frac{4}{9} \times \frac{3}{4} \times \frac{3}{7} = \frac{1}{7}$.
 
-This will involve a lot of guesswork - do not make investment decisions on the basis of the numbers I'm about to use because they are really pulled out of the air - but it's a very helpful heuristic to at least approximate the reality.
+## Tournament Tree {.fragile}
 
-## Probabilities of States
+\setlength{\unitlength}{0.9pt}
+\begin{picture}(350, 150)
+\pictext{175}{0}{G1}
+\put(175, 12){\circle{4}}\put(173, 13){\line(-2, 1){69}}
+\put(177, 13){\line(2, 1){69}}
+\pictext{135}{20}{F}
+\pictext{135}{8}{$\nicefrac{5}{9}$}
+\pictext{215}{20}{P}
+\pictext{215}{8}{$\nicefrac{4}{9}$}
+\pictext{105}{35}{G2}
+\put(105, 47){\circle*{4}}
+\put(105, 47){\line(-1, 1){35}}
+\put(105, 47){\line(1, 1){35}}
+\pictext{80}{55}{H}
+\pictext{80}{43}{$\nicefrac{3}{4}$}
+\pictext{130}{55}{B}
+\pictext{130}{43}{$\nicefrac{1}{4}$}
+\pictext{245}{35}{G2}
+\put(245, 47){\circle*{4}}
+\put(245, 47){\line(-1, 1){35}}
+\put(245, 47){\line(1, 1){35}}
+\pictext{220}{55}{H}
+\pictext{220}{43}{$\nicefrac{3}{4}$}
+\pictext{270}{55}{B}
+\pictext{270}{43}{$\nicefrac{1}{4}$}
+\pictext{70}{68}{G3}
+\put(70, 82){\circle*{4}}
+\put(70, 82){\line(-1, 2){20}}
+\pictext{50}{125}{$\frac{25}{96}$}
+\put(70, 82){\line(1, 2){20}}
+\pictext{90}{125}{$\frac{5}{32}$}
+\pictext{55}{95}{F}
+\pictext{55}{83}{$\nicefrac{5}{8}$}
+\pictext{85}{95}{H}
+\pictext{85}{83}{$\nicefrac{3}{8}$}
+\pictext{140}{68}{G3}
+\put(140, 82){\circle*{4}}
+\put(140, 82){\line(-1, 2){20}}
+\pictext{120}{125}{$\frac{25}{216}$}
+\put(140, 82){\line(1, 2){20}}
+\pictext{160}{125}{$\frac{5}{216}$}
+\pictext{125}{95}{F}
+\pictext{125}{83}{$\nicefrac{5}{6}$}
+\pictext{155}{95}{B}
+\pictext{155}{83}{$\nicefrac{1}{6}$}
+\pictext{210}{68}{G3}
+\put(210, 82){\circle*{4}}
+\put(210, 82){\line(-1, 2){20}}
+\pictext{190}{125}{$\frac{4}{21}$}
+\put(210, 82){\line(1, 2){20}}
+\pictext{230}{125}{$\frac{1}{7}$}
+\pictext{195}{95}{P}
+\pictext{195}{83}{$\nicefrac{4}{7}$}
+\pictext{225}{95}{H}
+\pictext{225}{83}{$\nicefrac{3}{7}$}
+\pictext{280}{68}{G3}
+\put(280, 82){\circle*{4}}
+\put(280, 82){\line(-1, 2){20}}
+\pictext{260}{125}{$\frac{4}{45}$}
+\put(280, 82){\line(1, 2){20}}
+\pictext{300}{125}{$\frac{1}{45}$}
+\pictext{265}{95}{P}
+\pictext{265}{83}{$\nicefrac{4}{5}$}
+\pictext{295}{95}{B}
+\pictext{295}{83}{$\nicefrac{1}{5}$}
+\end{picture}
 
-This could be embarrassingly out of date by the time we even do the classes, but let's say the probabilities look like this.
+I've included all the others - they usually don't cancel as nicely as that one.
 
-- No vaccine - 70%, or 0.7.
-- Limited quantities of vaccine - 20%, or 0.2.
-- Unlimited quantities of vaccine - 10%, or 0.1
+## Tournament Table
 
-## Class Probabilities
+It might be easier to see the results in a table
 
-Then we want to work out how likely it is that we get a full semester of classes in given each of these three possibilities.
+  Winner     Runner-Up   Probability         Approx
+----------- ----------- ------------------ ------------
+ Fireflies   Huskies     $\frac{25}{96}$     0.260
+ Huskies     Fireflies   $\frac{5}{32}$      0.156
+ Fireflies   Bluebirds   $\frac{25}{216}$    0.116
+ Bluebirds   Fireflies   $\frac{5}{216}$     0.023
+ Penguins    Huskies     $\frac{4}{21}$      0.190
+ Huskies     Penguins    $\frac{1}{7}$       0.143
+ Penguins    Bluebirds   $\frac{4}{45}$      0.089
+ Bluebirds   Penguins    $\frac{1}{45}$      0.022 
+ 
+## Tournament Table
 
-## No Vaccine
+And we can rearrange that so the rows where each team wins are adjacent.
 
-If there's no vaccine, then all that matters is whether we think there will be enough cases in the Fall to cause the university to shut down again. Even with masks, distancing, etc, it's hard to avoid outbreaks on places like college campuses. But maybe we'll be able to isolate anyone who gets sick, so let's be a litle optimistic and say that even without a vaccine, we're 60% likely to get through the semester.
+  Winner     Runner-Up   Probability         Approx
+----------- ----------- ------------------ ------------
+ Fireflies   Huskies     $\frac{25}{96}$     0.260
+ Fireflies   Bluebirds   $\frac{25}{216}$    0.116
+ Huskies     Fireflies   $\frac{5}{32}$      0.156
+ Huskies     Penguins    $\frac{1}{7}$       0.143
+ Penguins    Huskies     $\frac{4}{21}$      0.190
+ Penguins    Bluebirds   $\frac{4}{45}$      0.089
+ Bluebirds   Fireflies   $\frac{5}{216}$     0.023
+ Bluebirds   Penguins    $\frac{1}{45}$      0.022 
 
-> - I really want to emphasise that I'm making these numbers up for the purposes of an in class example. I have no special insight into either the university's thinking, or epidemiology. If you have any reason to think they are wrong, in either direction, do not change your views on my account.
+## Tournament Table
 
-## Limited Vaccine
+And then just adding up the probabilities for the two ways each team can win, we get the actual probabilities of each win. (I'm just doing the decimals now.)
 
-This starts to feel more like something where we can get through the term. Would the university risk running classes if it could give vaccines to the old professors and could hope and pray that young people (i.e., students) will only get a bit sick? Or would even a limited vaccine mean that infections wouldn't spread? Maybe!
+  Winner     Approx Probability
+----------- --------------------
+ Fireflies          0.376
+ Huskies            0.299
+ Penguins           0.279
+ Bluebirds          0.045
+ 
+(Those numbers don't sum to 1 precisely because of rounding.)
 
-- But even still, things could go wrong. So let's say there is a 20% chance of a shut down even with a limited vaccine, and so an 80% chance of the semester going ahead.
-
-## Unlimited vaccine
-
-Now it's hard to see why the university would shut down. Rather than fuss about the details, let's just simplify and say that in this (very unlikely) scenario, it's 100% likely that we'll get all classes in.
-
-
-## The Giant Table
-
-                                     Full Semester             Some shutdown
----------------------------- ------------------------- -------------------------
-No vaccine                    $0.7 \times 0.6 = 0.42$   $0.7 \times 0.4 = 0.28$
-Limited vaccine               $0.2 \times 0.8 = 0.16$   $0.2 \times 0.2 = 0.04$
-Unlimited vaccine             $0.1 \times 1.0 = 0.10$   $0.1 \times 0.0 = 0.00$
-  
-So the probability that we get a full semester in (given these literally made up assumptions) is $0.42 + 0.16 + 0.1 = 0.68$, or 68%.
-
-## Probabilities and Errors
-
-- The error bars on that calculation are massive.
-- But it's a kind of sanity check on how you think things are going.
-- Especially in situations where only a handful of paths lead to a salient result (like in playoffs in sports, or when thinking about the likelihood of a particular challenger winning), doing the tree even with favorable numbers can give you a conservative estimate of some probability.
-
-## Three Cases Where This is More Precise
-
-1. Probabilities are stipulated
-2. Probabilities are due to well understood chance processes (like gambling devices)
-3. Probabilities are derived from very large data sets
 
 ## For Next Time
 
-- We will look at an example where the probabilities are indeed stipulated.
+- We will talk about a well known piece of fallacious reasoning: the gamblers' fallacy.
