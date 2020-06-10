@@ -17,6 +17,10 @@ output:
 - To do that, I need to explain what a base rate is.
 - And to do that, it helps to start with a famous example.
 
+## Associated Reading
+
+Odds and Ends, section 8.1
+
 ## The Blue and Green Example
 
 Plan

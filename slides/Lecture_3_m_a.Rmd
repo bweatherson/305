@@ -15,6 +15,10 @@ output:
 
 - This lecture introduces the basics of probability.
 
+## Associated Reading
+
+Odds and Ends, Chapter 1
+
 ## Basic Idea
 
 - A probability function is a mapping from possibilities to numbers.

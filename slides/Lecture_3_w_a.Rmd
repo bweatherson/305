@@ -15,6 +15,10 @@ output:
 
 - To introduce a the idea that some events are independent according to a probability function.
 
+## Associated Reading
+
+Odds and Ends, Chapter 6.5
+
 ## Independence
 
 $A$ and $B$ are independent if (and only if)

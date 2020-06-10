@@ -15,6 +15,10 @@ output:
 
 - This lecture will go over one of the most famous theorems in probability: Bayes's Theorem.
 
+## Associated Reading
+
+Still chapter 8 of Odds and Ends
+
 ## One Important Equivalence
 
 $$

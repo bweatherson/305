@@ -14,7 +14,10 @@ output:
 ## Plan
 
 - In this lecture we'll talk about the relationship between money and utility.
-- This is section 12.5 of _Odds and Ends_.
+
+## Associated Reading
+
+Section 12.5 of _Odds and Ends_.
 
 ## Marginal Utility and Decision Making
 

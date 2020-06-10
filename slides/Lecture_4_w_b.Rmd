@@ -1,7 +1,7 @@
 ---
-title: "305 Lecture xx - The Gambler's Fallacy"
+title: "305 Lecture 40 - The Gambler's Fallacy"
 author: "Brian Weatherson"
-date: "July 20, 2020"
+date: "July 29, 2020"
 output: 
   beamer_presentation:
     md_extensions: +link_attributes
@@ -15,6 +15,10 @@ output:
 
 - In this lecture we're going to go over one bad way to learn from experience - the Gambler's Fallacy.
 - This requires jumping back in the book, back in fact to Chapter 4.
+
+## Associated Reading
+
+Odds and Ends, chapter 4.
 
 ## Abstract Setup
 

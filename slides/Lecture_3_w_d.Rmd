@@ -15,7 +15,9 @@ output:
 
 - This lecture will go over exercise 8.8 in the book, as an illustration of how to invert conditional probabilities in a slightly more complicated case.
 
-# Another Worked Example
+## Associated Reading
+
+Odds and Ends, Chapter 8
 
 ## Odds and Ends 8.8
 

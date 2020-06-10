@@ -15,6 +15,10 @@ output:
 
 - To introduce a key new concept: **conditional probability**.
 
+## Associated Reading
+
+Odds and Ends, Chapter 6
+
 ## What it is
 
 - Sometimes we don't just care about how likely something is.

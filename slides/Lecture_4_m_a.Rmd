@@ -16,6 +16,10 @@ output:
 - Today we're going to talk about the role of probability in decision making.
 - And to do this, we need to introduce a new concept, **Expected Value**.
 
+## Associated Reading
+
+Odds and Ends, chapter 11; though like with chapter 8 I'm going to take a different path through the material to the book.
+
 ## Random Variables
 
 - A **random variable**  is simply a variable that takes different numerical values in different states. 

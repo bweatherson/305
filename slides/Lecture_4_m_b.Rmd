@@ -16,6 +16,10 @@ output:
 - In this lecture we'll talk about how to formulate decision problems.
 - And we'll talk about one simple way to analyse these problems, using so-called dominance reasoning.
 
+## Associated Reading
+
+Odds and Ends, Chapter 12
+
 ## States and Choices
 
 - We're interested in what to do when the outcomes of your actions depend on some external facts about which you are uncertain, e.g., 

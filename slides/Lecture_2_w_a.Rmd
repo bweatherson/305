@@ -15,6 +15,10 @@ output:
 
 This lecture introduces a new way of testing for validity - truth trees.
 
+## Associated Reading
+
+Boxes and Diamonds, section 2.1
+
 ## What Tableaux Are
 
 - A way for determining whether some combinations are logically possible.

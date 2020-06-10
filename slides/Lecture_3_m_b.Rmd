@@ -15,6 +15,10 @@ output:
 
 - This lecture looks at some general features of probability functions, and looks at some ways to think probabilistically about real world events.
 
+## Associated Reading
+
+Odds and Ends, Chapter 5
+
 ## Scale
 
 $$

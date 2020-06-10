@@ -15,7 +15,9 @@ output:
 
 - In this lecture we'll talk about the core rule of formal decision theory: Maximise Expected Utility.
 
-# Maximise Expected Utility Rule
+## Associated Reading
+
+Odds and Ends, Chapter 12
 
 ## The Rule
 

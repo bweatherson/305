@@ -15,6 +15,10 @@ output:
 
 - This lecture walks through a worked example of how to use probability trees to calculate a probability.
 
+## Associated Reading
+
+Odds and Ends, section 1.2.
+
 # A Tree Example
 
 ## Soccer Tournament

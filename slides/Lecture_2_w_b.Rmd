@@ -15,6 +15,10 @@ output:
 
 This lecture introduces the rules we use for building up truth trees.
 
+## Associated Reading
+
+Boxes and Diamonds, sections 2.2-2.3.
+
 ## What Rules Do
 
 The rules tell you what new lines to write down given the lines you've already got.

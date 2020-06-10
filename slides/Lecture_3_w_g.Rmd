@@ -15,6 +15,10 @@ output:
 
 - We will end the week by looking at some examples of updating on multiple data points.
 
+## Associated Reading
+
+Odds and Ends, Chapter 9
+
 ## Conditional Independence
 
 In a lot of cases, the two data points we get will not be probabilistically independent, but they will be **conditionally independent**.

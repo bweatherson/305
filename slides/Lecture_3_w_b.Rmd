@@ -15,6 +15,13 @@ output:
 
 - This lecture talks about how and when you can flip conditional probabilities around.
 
+## Associated Reading
+
+Odds and Ends, chapter 8 
+
+- Note I'm going to start with a somewhat different approach to these problems, before ending up in the same place as the book.
+- Very roughly, I'm going to cover the contents of chapter 8 in reverse order, so we'll end up at 8.1 in a few lectures time.
+
 ## A Real World Problem
 
 - Imagine that 3% of men have disease D. 

@@ -15,6 +15,10 @@ output:
 
 - In this lecture we'll talk about a famous puzzle for the story I've been telling you about the relationship between utility and money: the Allais paradox.
 
+## Associated Reading
+
+Odds and Ends, section 13.1.
+
 ## Sure Thing Principle
 
 Assume two bets A and B have the following characteristic.

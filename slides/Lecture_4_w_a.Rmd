@@ -1,7 +1,7 @@
 ---
-title: "305 Lecture xx - Learning from Evidence"
+title: "305 Lecture 39 - Learning from Evidence"
 author: "Brian Weatherson"
-date: "July 20, 2020"
+date: "July 29, 2020"
 output: 
   beamer_presentation:
     md_extensions: +link_attributes
@@ -17,6 +17,11 @@ output:
 - We've talked a bit about the mathematics of how to update in clear cases.
 - Today we're going to talk about less clear cases.
 - And to do that, it helps to start with a story.
+
+## Associated Reading
+
+- This is a build up to part 3 of Odds and Ends, but this particular story isn't in the book.
+- It's too good a story to leave out though.
 
 ## Abraham Wald
 

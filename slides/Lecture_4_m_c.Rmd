@@ -14,6 +14,11 @@ output:
 ## Plan
 
 - In this lecture we'll talk about the notion of utility, the idea that we can numerically measure how good an option is for a chooser.
+
+## Associated Reading
+
+Odds and Ends, chapter 12
+
 # Ordinal and Cardinal Utilities
 
 ## Ranking
