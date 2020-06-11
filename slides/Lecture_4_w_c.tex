@@ -75,18 +75,12 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 37 - Utilities},
+  pdftitle={305 Lecture 41 - Objective Theories of Probability},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
-\usepackage{longtable,booktabs}
-\usepackage{caption}
-% Make caption package work with longtable
-\makeatletter
-\def\fnum@table{\tablename~\thetable}
-\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -257,9 +251,9 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 37 - Utilities}
+\title{305 Lecture 41 - Objective Theories of Probability}
 \author{Brian Weatherson}
-\date{July 27, 2020}
+\date{July 29, 2020}
 
 \begin{document}
 \frame{\titlepage}
@@ -270,8 +264,10 @@
 \begin{itemize}
 \tightlist
 \item
-  In this lecture we'll talk about the notion of utility, the idea that
-  we can numerically measure how good an option is for a chooser.
+  In this lecture we're going to start talking about interpretations of
+  probability.
+\item
+  And we'll go over so called `objective' interpretations.
 \end{itemize}
 
 \end{frame}
@@ -279,237 +275,154 @@
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Odds and Ends, chapter 12
+Odds and Ends, chapter 15.
 
 \end{frame}
 
-\hypertarget{ordinal-and-cardinal-utilities}{%
-\section{Ordinal and Cardinal
-Utilities}\label{ordinal-and-cardinal-utilities}}
-
-\begin{frame}{Ranking}
-\protect\hypertarget{ranking}{}
-
-\begin{itemize}
-\tightlist
-\item
-  The dominance view makes recommendations just looking at the
-  \textbf{ranking} of various options.
-\item
-  It doesn't look at how much we prefer one option over another, just on
-  what is preferred to what.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Ordinal Utility}
-\protect\hypertarget{ordinal-utility}{}
-
-\begin{itemize}
-\tightlist
-\item
-  To use the technical language, dominance just depends on
-  \textbf{ordinal utilities}.
-\item
-  The term \textbf{ordinal} here means that we only look at the
-  \textbf{order} of the options.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Cardinal Utility}
-\protect\hypertarget{cardinal-utility}{}
-
-\begin{itemize}
-\tightlist
-\item
-  The rules that we'll look at rely on \textbf{cardinal utilities}.
-\item
-  Whenever we're associating outcomes with numbers in a way that the
-  magnitudes of the differences between the numbers matters, we're using
-  cardinal utilities.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Why More Than Order Matters (An Example)}
-\protect\hypertarget{why-more-than-order-matters-an-example}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Chris and Robin each have to make a decision between two airlines to
-  fly them from Detroit to Los Angeles.
-\item
-  One airline is more expensive, the other is more reliable.
-\item
-  To oversimplify things, let's say the unreliable airline runs well in
-  good weather, but in bad weather, things go wrong.
-\item
-  And Chris and Robin have no way of finding out what the weather along
-  the way will be.
-\item
-  They would prefer to save money, but they'd certainly not prefer for
-  things to go badly wrong.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{A Table}
-\protect\hypertarget{a-table}{}
-
-So they face the following decision table.
-
-\begin{longtable}[]{@{}rcc@{}}
-\toprule
-& Good weather & Bad Weather\tabularnewline
-\midrule
-\endhead
-Fly Cheap Airline & 4 & 1\tabularnewline
-Fly Good Airline & 3 & 2\tabularnewline
-\bottomrule
-\end{longtable}
-
-If we're just looking at the ordering of outcomes, that is the decision
-problem facing both Chris and Robin.
-
-\end{frame}
-
-\begin{frame}{Filling in Details}
-\protect\hypertarget{filling-in-details}{}
-
-\begin{itemize}
-\tightlist
-\item
-  The cheap airline that Chris might fly has a problem with luggage.
-\item
-  If the weather is bad, their passengers' luggage will be a day late
-  getting to Los Angeles. \pause 
-\item
-  The cheap airline that Robin might fly has a problem with staying in
-  the air.
-\item
-  If the weather is bad, their plane will crash.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Details Matter}
-\protect\hypertarget{details-matter}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Those seem like very different decision problems.
-\item
-  It might be worth risking one's luggage being a day late in order to
-  get a cheap plane ticket.
-\item
-  It's not worth risking, seriously risking, a plane crash.
-\item
-  That's to say, Chris and Robin are facing very different decision
-  problems, even though the ranking of the four possible outcomes is the
-  same in each of their cases.
-\item
-  So it seems like some decision rules should be sensitive to magnitudes
-  of differences between options.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Utility}
-\protect\hypertarget{utility}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Intuitively, think of utilities as measuring how good an outcome is.
-\item
-  The theory we're building towards is thoroughly subjectivist, so think
-  of `how good' as meaning `how good along all and only dimensions the
-  agent making the decision cares about'.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Scale}
-\protect\hypertarget{scale}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Utilities aren't really measured on any scale.
-\item
-  Indeed, like temperature measures, they don't even have a fixed zero
-  point.
-\item
-  It is usually convenient to associate 0 utility with the status quo,
-  and then have negative numbers for outcomes worse than status quo, and
-  positive numbers for outcomes better than status quo.
-\item
-  But that's just a convention; you can set the 0 wherever you like.
-\item
-  And you can set the utility 1 point at anything better than 0.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Scale (continued)}
-\protect\hypertarget{scale-continued}{}
-
-\begin{itemize}
-\tightlist
-\item
-  But that's where the convention stops.
-\item
-  Once you fix the 0 and 1 points, nothing else is fixed by pure
-  convention.
-\item
-  Temperatures are like this too.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Dollars and Utility}
-\protect\hypertarget{dollars-and-utility}{}
-
-Orthodox utility theory takes the following two facts to be important,
-and in need of explanation, and to ultimately have the same explanation:
+\begin{frame}{Two Questions}
+\protect\hypertarget{two-questions}{}
 
 \begin{enumerate}
 \tightlist
 \item
-  If you or I got a windfall prize of \$1,000,000, it would be an
-  enormous, life-altering, change. But if Mark Zuckerberg got a windfall
-  prize of \$1,000,000, he'd barely notice it.
+  What do we mean by saying that something is probable, or that it is
+  80\% likely, or that its probability is 40\%? \pause
 \item
-  If given a choice between a guaranteed \$1,000,000, and a 50/50 chance
-  of winning \$2,000,000, you would almost certainly take the
-  \$1,000,000. Indeed, most of you would do so with barely a moment's
-  hesitation.
+  What should we mean by those things? What meanings would be mostly
+  useful for conversational purposes, scientific purposes, etc?
 \end{enumerate}
 
 \end{frame}
 
-\begin{frame}{The Explanation}
-\protect\hypertarget{the-explanation}{}
+\begin{frame}{Caveats}
+\protect\hypertarget{caveats}{}
+
+First, a caveat.
 
 \begin{itemize}
 \tightlist
 \item
-  The more money you have, the less utility you get from each extra
-  dollar.
+  There probably isn't a single good answer to either of these
+  questions.
 \item
-  There is a \textbf{declining marginal utility} to money.
+  That we actually do things a certain way is some evidence that that's
+  a good way to do it, but far from compelling evidence.
 \item
-  The marginal utility of a good is how much utility a person gets,
-  relative to where they are now, from a little extra of that good.
-\item
-  For most goods, the more of them you have, the less useful an extra
-  one is.
-\item
-  This is especially true for money.
+  And what is useful in the context of physical science is probably
+  different to what's useful in social science and is probbably
+  different again to what's useful in everyday life. \pause
 \end{itemize}
+
+But let's see how we can do by ignoring all this and finding a single
+meaning for probability.
+
+\end{frame}
+
+\begin{frame}{Probability is Everywhere}
+\protect\hypertarget{probability-is-everywhere}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Most, maybe all, human languages have terms for something like
+  probability. \pause
+\item
+  Saying ``Probably'' feels like an answer, and not just a response, to
+  being asked whether \(p\) is true.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Objective or Subjective}
+\protect\hypertarget{objective-or-subjective}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Objective theories say that probability is something about the world.
+\item
+  Subjective theories say that probability is something about minds.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{One Paradigm Objective Theory}
+\protect\hypertarget{one-paradigm-objective-theory}{}
+
+Probability is frequency.
+
+\begin{itemize}
+\tightlist
+\item
+  To say that the probability the roulette wheel will land 17 is
+  \(\frac{1}{38}\) just is to say that the proportion of spins that land
+  17 is \(\frac{1}{38}\).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Advantages}
+\protect\hypertarget{advantages}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Makes probability something observable. \pause
+\item
+  Makes probability something we clearly care about. \pause
+\item
+  Explains why we connect probability to action.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Disadvantages}
+\protect\hypertarget{disadvantages}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Need extra complications to deal with cyclic events. The probability
+  that it's now daytime is not 0.5, although the proportions of times
+  that are daytime is 0.5. \pause
+\item
+  Implies that one-off events do not have a defined probablity. But we
+  can say, for instance, that it is very probable that Oswald killed
+  Kennedy.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reference Class}
+\protect\hypertarget{reference-class}{}
+
+Thinking of probabilities as frequencies requires a reference class.
+
+\begin{itemize}
+\tightlist
+\item
+  Think about what the probability is that I'm right handed.
+\item
+  Is it the frequency of right-handedness amongst:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Humans? \pause
+  \item
+    Adult male humans? \pause
+  \item
+    Australians? \pause
+  \item
+    Michigan faculty? \pause
+  \item
+    Philosophy faculty? \pause
+  \item
+    Australians who are on the philosophy faculty at Michigan?
+  \end{itemize}
+\end{itemize}
+
+The last of these is a singleton class, so the probability is 0 or 1.
 
 \end{frame}
 
@@ -519,8 +432,7 @@ and in need of explanation, and to ultimately have the same explanation:
 \begin{itemize}
 \tightlist
 \item
-  We will look at how to think about decisions where dominance reasoning
-  doesn't apply.
+  We will move on to looking at subjective theories.
 \end{itemize}
 
 \end{frame}

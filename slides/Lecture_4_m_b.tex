@@ -75,7 +75,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 37 - Utilities},
+  pdftitle={305 Lecture 37 - States and Choices},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -257,7 +257,7 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 37 - Utilities}
+\title{305 Lecture 37 - States and Choices}
 \author{Brian Weatherson}
 \date{July 27, 2020}
 
@@ -270,8 +270,10 @@
 \begin{itemize}
 \tightlist
 \item
-  In this lecture we'll talk about the notion of utility, the idea that
-  we can numerically measure how good an option is for a chooser.
+  In this lecture we'll talk about how to formulate decision problems.
+\item
+  And we'll talk about one simple way to analyse these problems, using
+  so-called dominance reasoning.
 \end{itemize}
 
 \end{frame}
@@ -279,236 +281,245 @@
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Odds and Ends, chapter 12
+Odds and Ends, Chapter 12
 
 \end{frame}
 
-\hypertarget{ordinal-and-cardinal-utilities}{%
-\section{Ordinal and Cardinal
-Utilities}\label{ordinal-and-cardinal-utilities}}
-
-\begin{frame}{Ranking}
-\protect\hypertarget{ranking}{}
+\begin{frame}{States and Choices}
+\protect\hypertarget{states-and-choices}{}
 
 \begin{itemize}
 \tightlist
 \item
-  The dominance view makes recommendations just looking at the
-  \textbf{ranking} of various options.
-\item
-  It doesn't look at how much we prefer one option over another, just on
-  what is preferred to what.
+  We're interested in what to do when the outcomes of your actions
+  depend on some external facts about which you are uncertain, e.g.,
 \end{itemize}
-
-\end{frame}
-
-\begin{frame}{Ordinal Utility}
-\protect\hypertarget{ordinal-utility}{}
-
-\begin{itemize}
-\tightlist
-\item
-  To use the technical language, dominance just depends on
-  \textbf{ordinal utilities}.
-\item
-  The term \textbf{ordinal} here means that we only look at the
-  \textbf{order} of the options.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Cardinal Utility}
-\protect\hypertarget{cardinal-utility}{}
-
-\begin{itemize}
-\tightlist
-\item
-  The rules that we'll look at rely on \textbf{cardinal utilities}.
-\item
-  Whenever we're associating outcomes with numbers in a way that the
-  magnitudes of the differences between the numbers matters, we're using
-  cardinal utilities.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Why More Than Order Matters (An Example)}
-\protect\hypertarget{why-more-than-order-matters-an-example}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Chris and Robin each have to make a decision between two airlines to
-  fly them from Detroit to Los Angeles.
-\item
-  One airline is more expensive, the other is more reliable.
-\item
-  To oversimplify things, let's say the unreliable airline runs well in
-  good weather, but in bad weather, things go wrong.
-\item
-  And Chris and Robin have no way of finding out what the weather along
-  the way will be.
-\item
-  They would prefer to save money, but they'd certainly not prefer for
-  things to go badly wrong.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{A Table}
-\protect\hypertarget{a-table}{}
-
-So they face the following decision table.
 
 \begin{longtable}[]{@{}rcc@{}}
 \toprule
-& Good weather & Bad Weather\tabularnewline
+& State 1 & State 2\tabularnewline
 \midrule
 \endhead
-Fly Cheap Airline & 4 & 1\tabularnewline
-Fly Good Airline & 3 & 2\tabularnewline
+Choice 1 & \(a\) & \(b\)\tabularnewline
+Choice 2 & \(c\) & \(d\)\tabularnewline
 \bottomrule
 \end{longtable}
 
-If we're just looking at the ordering of outcomes, that is the decision
-problem facing both Chris and Robin.
-
 \end{frame}
 
-\begin{frame}{Filling in Details}
-\protect\hypertarget{filling-in-details}{}
+\begin{frame}{States and Choices}
+\protect\hypertarget{states-and-choices-1}{}
 
 \begin{itemize}
 \tightlist
 \item
-  The cheap airline that Chris might fly has a problem with luggage.
+  The \textbf{choices} are the options you can take.
 \item
-  If the weather is bad, their passengers' luggage will be a day late
-  getting to Los Angeles. \pause 
+  The \textbf{states} are the ways the world can be that affect how good
+  an outcome you'll get.
 \item
-  The cheap airline that Robin might fly has a problem with staying in
-  the air.
+  A choice plus a state determines an \textbf{outcome}
 \item
-  If the weather is bad, their plane will crash.
+  And the variables, \(a\), \(b\), \(c\) and \(d\) are numbers measuring
+  how good those outcomes are.
+\item
+  We'll call this the \textbf{utility} of the outcome.
+\item
+  The higher the number, the better.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Details Matter}
-\protect\hypertarget{details-matter}{}
+\begin{frame}{What is Utility}
+\protect\hypertarget{what-is-utility}{}
 
 \begin{itemize}
 \tightlist
 \item
-  Those seem like very different decision problems.
+  The book spends one chapter (11) on cases where value is easy to
+  measure - it's something like dollars won or lost, or time spent.
 \item
-  It might be worth risking one's luggage being a day late in order to
-  get a cheap plane ticket.
+  Then it spends the next chapter (i.e., 12) on cases where value is
+  more abstract.
 \item
-  It's not worth risking, seriously risking, a plane crash.
+  I'm not going to carve things up this way.
 \item
-  That's to say, Chris and Robin are facing very different decision
-  problems, even though the ranking of the four possible outcomes is the
-  same in each of their cases.
-\item
-  So it seems like some decision rules should be sensitive to magnitudes
-  of differences between options.
+  But I will start with a case where the values are fairly clear.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Utility}
-\protect\hypertarget{utility}{}
+\begin{frame}{An Example}
+\protect\hypertarget{an-example}{}
 
 \begin{itemize}
 \tightlist
 \item
-  Intuitively, think of utilities as measuring how good an outcome is.
+  It's a Sunday afternoon in Fall, and your friend, who is a big Packers
+  fan, has the choice between watching the Packers game and finishing a
+  paper due on Monday.
 \item
-  The theory we're building towards is thoroughly subjectivist, so think
-  of `how good' as meaning `how good along all and only dimensions the
-  agent making the decision cares about'.
+  It will be a little painful for them to do the paper after the
+  football, but not impossible.
+\item
+  It will be fun to watch football, at least if the Packers wins.
+\item
+  But if the Packers lose they'll have spent the afternoon watching them
+  lose, and still have the paper to write.
+\item
+  On the other hand, your friend will feel bad if they skip the game and
+  the Packers win. So we might have the decision table on the next
+  slide.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Scale}
-\protect\hypertarget{scale}{}
+\begin{frame}{Decision Table for the Example}
+\protect\hypertarget{decision-table-for-the-example}{}
+
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Packers Win & Packers Lose\tabularnewline
+\midrule
+\endhead
+Watch Football & 4 & 1\tabularnewline
+Work on Paper & 3 & 2\tabularnewline
+\bottomrule
+\end{longtable}
 
 \begin{itemize}
 \tightlist
 \item
-  Utilities aren't really measured on any scale.
+  The numbers come from the preferences.
 \item
-  Indeed, like temperature measures, they don't even have a fixed zero
-  point.
+  We're assuming (for now) that what one wants is better for one.
 \item
-  It is usually convenient to associate 0 utility with the status quo,
-  and then have negative numbers for outcomes worse than status quo, and
-  positive numbers for outcomes better than status quo.
-\item
-  But that's just a convention; you can set the 0 wherever you like.
-\item
-  And you can set the utility 1 point at anything better than 0.
+  That assumption could get either conceptual backing (utility is
+  defined in terms of preference) or empirical backing.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Scale (continued)}
-\protect\hypertarget{scale-continued}{}
+\begin{frame}{Changing Preferences}
+\protect\hypertarget{changing-preferences}{}
 
 \begin{itemize}
 \tightlist
 \item
-  But that's where the convention stops.
+  The numbers would be different if your friend had different
+  preferences.
 \item
-  Once you fix the 0 and 1 points, nothing else is fixed by pure
-  convention.
+  Perhaps their desire to watch football is simply stronger than their
+  desire to finish the paper.
 \item
-  Temperatures are like this too.
+  In that case the table might look like this.
+\end{itemize}
+
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Packers Win & Packers Lose\tabularnewline
+\midrule
+\endhead
+Watch Football & 4 & 2\tabularnewline
+Work on Paper & 3 & 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{frame}
+
+\begin{frame}{Dominance Reasoning}
+\protect\hypertarget{dominance-reasoning}{}
+
+\begin{itemize}
+\tightlist
+\item
+  The simplest rule we can use for decision making is \textbf{never
+  choose dominated options}.
+\item
+  There is a stronger and a weaker version of this rule.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Dollars and Utility}
-\protect\hypertarget{dollars-and-utility}{}
-
-Orthodox utility theory takes the following two facts to be important,
-and in need of explanation, and to ultimately have the same explanation:
-
-\begin{enumerate}
-\tightlist
-\item
-  If you or I got a windfall prize of \$1,000,000, it would be an
-  enormous, life-altering, change. But if Mark Zuckerberg got a windfall
-  prize of \$1,000,000, he'd barely notice it.
-\item
-  If given a choice between a guaranteed \$1,000,000, and a 50/50 chance
-  of winning \$2,000,000, you would almost certainly take the
-  \$1,000,000. Indeed, most of you would do so with barely a moment's
-  hesitation.
-\end{enumerate}
-
-\end{frame}
-
-\begin{frame}{The Explanation}
-\protect\hypertarget{the-explanation}{}
+\begin{frame}{Weak and Strong Dominance}
+\protect\hypertarget{weak-and-strong-dominance}{}
 
 \begin{itemize}
 \tightlist
 \item
-  The more money you have, the less utility you get from each extra
-  dollar.
+  An option \(A\) \textbf{strongly dominates} another option \(B\) no
+  matter which state is actual, A leads to better outcomes than B.
+  \pause 
 \item
-  There is a \textbf{declining marginal utility} to money.
+  \(A\) \textbf{weakly dominates} B if in every state, A leads to at
+  least as good an outcome as B, and in some states it leads to a better
+  outcome.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Dominance Principles}
+\protect\hypertarget{dominance-principles}{}
+
+\begin{itemize}
+\tightlist
 \item
-  The marginal utility of a good is how much utility a person gets,
-  relative to where they are now, from a little extra of that good.
+  Principle 1: If A strongly dominates B, don't choose B.
 \item
-  For most goods, the more of them you have, the less useful an extra
-  one is.
+  Principle 2: If A weakly dominates B, don't choose B.
 \item
-  This is especially true for money.
+  The second principle is slightly \textbf{stronger}; it rules out more
+  things.
+\item
+  As such, it is slightly more controversial.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Using Dominance Principles}
+\protect\hypertarget{using-dominance-principles}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Dominance principles seem very intuitive when applied to everyday
+  decision cases.
+\item
+  Consider, for example, a revised version of our case about choosing
+  whether to watch football or work on a term paper.
+\item
+  Imagine that your friend will do very badly on the term paper if they
+  leave it to the last minute.
+\item
+  And imagine that the term paper is vitally important for something
+  that matters to their future.
+\item
+  Then we might set up the decision table as on the next slide.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Football Example with Dominance}
+\protect\hypertarget{football-example-with-dominance}{}
+
+\begin{longtable}[]{@{}rcc@{}}
+\toprule
+& Packers Win & Packers Lose\tabularnewline
+\midrule
+\endhead
+Watch Football & 3 & 1\tabularnewline
+Work on Paper & 4 & 2\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  They are better off working on the paper if the Packers win.
+\item
+  And they are better off working on the paper if the Packers lose.
+\item
+  So either way, they should work on the paper!
 \end{itemize}
 
 \end{frame}
