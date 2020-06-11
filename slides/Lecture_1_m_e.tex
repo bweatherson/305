@@ -75,7 +75,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 03 - Propositional Logic},
+  pdftitle={305 Lecture 08 - Indirect Derivations},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -251,156 +251,270 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 03 - Propositional Logic}
+\title{305 Lecture 08 - Indirect Derivations}
 \author{Brian Weatherson}
-\date{July 1, 2020}
+\date{July 8, 2020}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan for This Lecture}
-\protect\hypertarget{plan-for-this-lecture}{}
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
 
-We're introducing propositional logic, and talking about what it is.
+To introduce the idea of an \textbf{Indirect Derivation}, which is the
+next most complicated form of derivation we'll look at.
 
 \end{frame}
 
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Carnap book, chapter 1, section ``Our Formal Language''.
+Carnap book, chapter 4.
 
 \end{frame}
 
-\begin{frame}{Key Assumption}
-\protect\hypertarget{key-assumption}{}
+\begin{frame}{Proving a Conditional}
+\protect\hypertarget{proving-a-conditional}{}
 
-We start with one key assumption:
+Intuitively, they way to show \(A \rightarrow B\) is to
+imagine/assume/suppose \(A\) is true, and show that then \(B\) will be
+true as well.
 
 \begin{itemize}
 \tightlist
 \item
-  Every sentence has precisely one of the two truth values: TRUE, FALSE.
-\item
-  I will often follow \emph{Boxes and Diamonds} as writing these values
-  as \(\True\) and \(\False\).
+  That's what we'll do in Carnap.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Unpacking the Assumption}
-\protect\hypertarget{unpacking-the-assumption}{}
+\begin{frame}{Three New Tricks}
+\protect\hypertarget{three-new-tricks}{}
 
 \begin{enumerate}
 \tightlist
 \item
-  There are just two truth values: \(\True\), \(\False\).\\
+  Having the `Show' be a conditional.
 \item
-  Every sentence has one of them. There are no truth-value \emph{gaps}.
+  Starting with `AS' not `PR'.
 \item
-  No sentence has both of them. There are no truth-value \emph{gluts}.
+  Ending with Conditional Derivation - CD.
 \end{enumerate}
 
 \end{frame}
 
-\begin{frame}{Two Parts of Classical Logic}
-\protect\hypertarget{two-parts-of-classical-logic}{}
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Traditionally, classical logic is divided into two parts.
-\item
-  We're just going to look at the first part here.
-\item
-  The parts differ on what counts as a \textbf{structural} feature of a
-  sentence.
-\end{itemize}
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
 
-\end{frame}
+\bigskip
 
-\begin{frame}{Classical Propositional Logic}
-\protect\hypertarget{classical-propositional-logic}{}
+\begincols
+\begincol{.48\textwidth}
 
-The structural features are just five sentential connectives:
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
 
-\begin{itemize}
-\tightlist
-\item
-  And
-\item
-  Or
-\item
-  Not
-\item
-  If
-\item
-  If and only if; usually written iff.
-\end{itemize}
+\endcol
+\begincol{.48\textwidth}
 
-The result is a very simple, but very weak, logic. It doesn't even tell
-us that the arguments about Skippy and Lucky are structurally valid.
+What goes in `Show' is still the conclusion, but it isn't what we end
+the proof with.
+
+\endcol
+\endcols
 
 \end{frame}
 
-\begin{frame}{Classical Predicate Logic}
-\protect\hypertarget{classical-predicate-logic}{}
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-1}{}
 
-As well as those structural features, we add:
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
 
-\begin{itemize}
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+We start with two kinds of underived lines.
+
+\begin{enumerate}
 \tightlist
 \item
-  The division of parts of sentences into names, variables, predicates,
-  and logical terms.
+  Assumptions
 \item
-  The addition of the logical terms \textbf{All} and \textbf{Some}.
-\end{itemize}
+  Premises
+\end{enumerate}
+
+\endcol
+\endcols
 
 \end{frame}
 
-\begin{frame}{Symbols}
-\protect\hypertarget{symbols}{}
+\begin{frame}[fragile]{Premises}
+\protect\hypertarget{premises}{}
 
-The only symbols we need for classical propositional logic are sentence
-letters, which stand for sentences, and symbols for the five
-connectives:
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
 
-\begin{itemize}
-\tightlist
-\item
-  And - \(\wedge\)
-\item
-  Or - \(\vee\)
-\item
-  Not - \(\neg\)
-\item
-  If - \(\lif\)
-\item
-  Iff - \(\leftrightarrow\)
-\end{itemize}
+\bigskip
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The premises, in this case line 3, you are used to already.
+
+\endcol
+\endcols
 
 \end{frame}
 
-\begin{frame}{Examples}
-\protect\hypertarget{examples}{}
+\begin{frame}[fragile]{Assumption}
+\protect\hypertarget{assumption}{}
 
-If \(A\) = \emph{Lucky is a koala} and \(B\) = \emph{Skippy is a
-kangaroo}, then
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
 
-\begin{itemize}[<+->]
-\tightlist
-\item
-  \(\neg A\) = \emph{Lucky is not a koala}.
-\item
-  \(A \vee B\) = \emph{Lucky is a koala or Skippy is a kangaroo}.
-\item
-  \(\neg B \wedge A\) = \emph{Skippy is not a kangaroo and Lucky is a
-  koala}.
-\item
-  \((A \vee B) \lif (A \wedge B)\) = \emph{If Lucky is a koala or Skippy
-  is a kangaroo, then Lucky is a koala and Skippy is a kangaroo}.
-\end{itemize}
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The assumption is the thing on the left of what you're trying to prove -
+the \textbf{antecedent} of the conditional.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Conditional Proof}
+\protect\hypertarget{conditional-proof}{}
+
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+Then you can use all the regular rules that you've used so far, with the
+same constraints.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Conditional Proof}
+\protect\hypertarget{conditional-proof-1}{}
+
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+The big difference is that you end with the \textbf{consequent} of what
+you're trying to show; the thing to the right of the \(\rightarrow\).
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Conditional Proof}
+\protect\hypertarget{conditional-proof-2}{}
+
+To prove: \(P \rightarrow Q \vdash P \rightarrow \neg \neg Q\)
+
+\bigskip
+
+\begincols
+\begincol{.48\textwidth}
+
+\begin{verbatim}
+1. Show: P -> ~~Q
+2.     P          :AS
+3.     P -> Q     :PR
+4.     Q          :MP 3, 2
+5.     ~~Q        :DNI 4
+6. :CD 5
+\end{verbatim}
+
+\endcol
+\begincol{.48\textwidth}
+
+And then (and this is a bit distinctive to Carnap), you write `CD' for
+Conditional Derivation, not `DD' for Direct Derivation.
+
+\endcol
+\endcols
 
 \end{frame}
 
@@ -410,11 +524,12 @@ kangaroo}, then
 \begin{itemize}
 \tightlist
 \item
-  Read chapters 1 and 3 of \emph{The Carnap Book}.
+  Read chapters 4 and 5.
 \item
-  Go to \url{http://carnap.io} and register for this course
+  We will talk especially about what happens when these conditional
+  derivations get \textbf{nested}.
 \item
-  The course name is ``University of Michigan - S20 - PHIL305''
+  Finish the first assignment - the exercises from chapters 1 and 3.
 \end{itemize}
 
 \end{frame}

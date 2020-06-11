@@ -75,12 +75,25 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 03 - Propositional Logic},
+  pdftitle={305 Lecture 13 - Disjunction},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -251,171 +264,300 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 03 - Propositional Logic}
+\title{305 Lecture 13 - Disjunction}
 \author{Brian Weatherson}
-\date{July 1, 2020}
+\date{July 8, 2020}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan for This Lecture}
-\protect\hypertarget{plan-for-this-lecture}{}
+\begin{frame}{Plan for Today}
+\protect\hypertarget{plan-for-today}{}
 
-We're introducing propositional logic, and talking about what it is.
+\begin{itemize}
+\tightlist
+\item
+  We're going to talk about how `or' behaves in Carnap.
+\item
+  Sentences with `or' as the main connective are called
+  \textbf{disjunctions}, and the parts either side of the `or' are
+  called disjuncts.
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Carnap book, chapter 1, section ``Our Formal Language''.
+Carnap book, chapter 8, section ``Modus Tollendo Ponens and Addition''
+(about 1/2 way down).
 
 \end{frame}
 
-\begin{frame}{Key Assumption}
-\protect\hypertarget{key-assumption}{}
-
-We start with one key assumption:
+\begin{frame}{Two Rules for Or}
+\protect\hypertarget{two-rules-for-or}{}
 
 \begin{itemize}
 \tightlist
 \item
-  Every sentence has precisely one of the two truth values: TRUE, FALSE.
+  Like with `and', there is a rule for proving an `or' sentence, and a
+  rule for using an `or' sentence.
 \item
-  I will often follow \emph{Boxes and Diamonds} as writing these values
-  as \(\True\) and \(\False\).
+  The first is easy; the second is not so easy.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Unpacking the Assumption}
-\protect\hypertarget{unpacking-the-assumption}{}
+\begin{frame}{Proving a Disjunction}
+\protect\hypertarget{proving-a-disjunction}{}
+
+\begin{itemize}
+\tightlist
+\item
+  If you have \(A\), or for that matter if you have \(B\), you can infer
+  \(A \vee B\).
+\item
+  The rule is called `Addition', and abbreviated `ADD'.
+\item
+  You cite the line that \(A\) (or \(B\), if you are doing
+  `left-addition') appears on.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Using a Disjunction}
+\protect\hypertarget{using-a-disjunction}{}
+
+The idea here is to take the following argument as a basic valid
+argument.
+
+\begin{quote}
+\(P \vee Q, \neg Q \vdash P\)
+\end{quote}
+
+This is sometimes called \textbf{disjunctive syllogism}.
+
+\end{frame}
+
+\begin{frame}{Example}
+\protect\hypertarget{example}{}
 
 \begin{enumerate}
 \tightlist
 \item
-  There are just two truth values: \(\True\), \(\False\).\\
+  Either the butler did it or the gardener did it.
 \item
-  Every sentence has one of them. There are no truth-value \emph{gaps}.
+  The gardener didn't do it.
 \item
-  No sentence has both of them. There are no truth-value \emph{gluts}.
+  So, the butler did it.
 \end{enumerate}
 
 \end{frame}
 
-\begin{frame}{Two Parts of Classical Logic}
-\protect\hypertarget{two-parts-of-classical-logic}{}
+\begin{frame}{Another Example}
+\protect\hypertarget{another-example}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  The cat raced down the left alley or the right alley.
+\item
+  The cat did not race down the right alley.
+\item
+  So, the cat raced down the left alley.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Both Directions}
+\protect\hypertarget{both-directions}{}
+
+This looks just as plausible a bit of reasoning.
+
+\begin{enumerate}
+\tightlist
+\item
+  Either the butler did it or the gardener did it.
+\item
+  The butler didn't do it.
+\item
+  So, the gardener did it.
+\end{enumerate}
+
+It doesn't seem like whether we negate the first or second disjunct
+matters.
+
+\end{frame}
+
+\begin{frame}{The Rule (first version)}
+\protect\hypertarget{the-rule-first-version}{}
 
 \begin{itemize}
 \tightlist
 \item
-  Traditionally, classical logic is divided into two parts.
+  Given \(A \vee B\) and \(\neg B\), we can infer \(A\).
 \item
-  We're just going to look at the first part here.
+  The rule has a Latin name and abbreviated `MTP'. (I'm just calling it
+  disjunctive syllogism.)
 \item
-  The parts differ on what counts as a \textbf{structural} feature of a
-  sentence.
+  You cite the lines where \(A \vee B\) and \(\neg B\) appear.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Classical Propositional Logic}
-\protect\hypertarget{classical-propositional-logic}{}
-
-The structural features are just five sentential connectives:
+\begin{frame}{The Rule (second version)}
+\protect\hypertarget{the-rule-second-version}{}
 
 \begin{itemize}
 \tightlist
 \item
-  And
+  Given \(A \vee B\) and \(\neg A\), we can infer \(B\).
 \item
-  Or
+  The rule has a Latin name and abbreviated `MTP'. (I'm just calling it
+  disjunctive syllogism.)
 \item
-  Not
-\item
-  If
-\item
-  If and only if; usually written iff.
+  You cite the lines where \(A \vee B\) and \(\neg A\) appear.
 \end{itemize}
-
-The result is a very simple, but very weak, logic. It doesn't even tell
-us that the arguments about Skippy and Lucky are structurally valid.
 
 \end{frame}
 
-\begin{frame}{Classical Predicate Logic}
-\protect\hypertarget{classical-predicate-logic}{}
-
-As well as those structural features, we add:
+\begin{frame}{Caveat}
+\protect\hypertarget{caveat}{}
 
 \begin{itemize}
 \tightlist
 \item
-  The division of parts of sentences into names, variables, predicates,
-  and logical terms.
+  You must have the `positive' form in the disjunction and the negative
+  form on a separate line.
 \item
-  The addition of the logical terms \textbf{All} and \textbf{Some}.
+  So the argument on the next slide will not be marked as correct by
+  Carnap.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Symbols}
-\protect\hypertarget{symbols}{}
+\begin{frame}[fragile]{Bad Use of Disjunctive Syllogism}
+\protect\hypertarget{bad-use-of-disjunctive-syllogism}{}
 
-The only symbols we need for classical propositional logic are sentence
-letters, which stand for sentences, and symbols for the five
-connectives:
-
-\begin{itemize}
-\tightlist
-\item
-  And - \(\wedge\)
-\item
-  Or - \(\vee\)
-\item
-  Not - \(\neg\)
-\item
-  If - \(\lif\)
-\item
-  Iff - \(\leftrightarrow\)
-\end{itemize}
+\begin{verbatim}
+6. P \/ ~Q
+7. Q
+8. P         :MTP 6, 7
+\end{verbatim}
 
 \end{frame}
 
-\begin{frame}{Examples}
-\protect\hypertarget{examples}{}
+\begin{frame}[fragile]{Correct Use of Disjunctive Syllogism}
+\protect\hypertarget{correct-use-of-disjunctive-syllogism}{}
 
-If \(A\) = \emph{Lucky is a koala} and \(B\) = \emph{Skippy is a
-kangaroo}, then
+\begin{verbatim}
+6. P \/ ~Q
+7. Q
+8. ~~Q       :DNI 7
+9. P         :MTP 6, 8
+\end{verbatim}
 
-\begin{itemize}[<+->]
+\end{frame}
+
+\begin{frame}{A Core Argument}
+\protect\hypertarget{a-core-argument}{}
+
+The following two claims look like they should be equivalent.
+
+\begin{enumerate}
 \tightlist
 \item
-  \(\neg A\) = \emph{Lucky is not a koala}.
+  \((P \vee Q) \rightarrow R\)
 \item
-  \(A \vee B\) = \emph{Lucky is a koala or Skippy is a kangaroo}.
-\item
-  \(\neg B \wedge A\) = \emph{Skippy is not a kangaroo and Lucky is a
-  koala}.
-\item
-  \((A \vee B) \lif (A \wedge B)\) = \emph{If Lucky is a koala or Skippy
-  is a kangaroo, then Lucky is a koala and Skippy is a kangaroo}.
-\end{itemize}
+  \((P \rightarrow R) \wedge (Q \rightarrow R)\)
+\end{enumerate}
+
+Substitute some real sentences for \(P, Q, R\) to see if this sounds
+right.
+
+\end{frame}
+
+\begin{frame}{Exercise}
+\protect\hypertarget{exercise}{}
+
+Prove each of these
+
+\begin{quote}
+\((P \vee Q) \rightarrow R \vdash (P \rightarrow R) \wedge (Q \rightarrow R)\)
+\((P \rightarrow R) \wedge (Q \rightarrow R) \vdash (P \vee Q) \rightarrow R\)
+\end{quote}
+
+\end{frame}
+
+\begin{frame}{First One}
+\protect\hypertarget{first-one}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-1.png}
+\caption{\((P \vee Q) \rightarrow R \vdash (P \rightarrow R) \wedge (Q \rightarrow R)\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{Text Version of Proof}
+\protect\hypertarget{text-version-of-proof}{}
+
+\begin{verbatim}
+1.  Show: (P -> R) /\ (Q -> R)
+2.      (P \/ Q) -> R          :PR
+3.     Show: P -> R
+4.         P                  :AS
+5.         P \/ Q             :ADD 4
+6.         R                  :MP 2, 5
+7.     :CD 6
+8.     Show: Q -> R
+9.         Q                  :AS
+10.        P \/ Q             :ADD 9
+11.        R                  :MP 2, 10
+12.    :CD 11
+13.    (P -> R) /\ (Q -> R)   :ADJ 3, 8
+14. :DD 13
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Reverse Direction}
+\protect\hypertarget{reverse-direction}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-2.png}
+\caption{\((P \rightarrow R) \wedge (Q \rightarrow R) \vdash (P \vee Q) \rightarrow R\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{Text Version of Proof}
+\protect\hypertarget{text-version-of-proof-1}{}
+
+\begin{verbatim}
+1. Show: (P \/ Q) -> R
+2.       (P -> R) /\ (Q -> R) :PR
+3.       P -> R               :S 2
+4.       Q -> R               :S 2
+5.       P \/ Q               :AS
+6.       Show: ~~R
+7.            ~R              :AS
+8.            ~P              :MT 3, 7
+9.            Q               :MTP 5, 8
+10.           R               :MP 4, 9
+11.      :ID 7 10
+12.      R                    :DNE 6
+13. :CD 12
+\end{verbatim}
 
 \end{frame}
 
 \begin{frame}{For Next Time}
 \protect\hypertarget{for-next-time}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Read chapters 1 and 3 of \emph{The Carnap Book}.
-\item
-  Go to \url{http://carnap.io} and register for this course
-\item
-  The course name is ``University of Michigan - S20 - PHIL305''
-\end{itemize}
+We'll talk about how `and' and `or' interact.
 
 \end{frame}
 

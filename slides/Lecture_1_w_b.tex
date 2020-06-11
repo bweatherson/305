@@ -75,7 +75,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 03 - Propositional Logic},
+  pdftitle={305 Lecture 10 - Indirect Proof},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -251,171 +251,136 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 03 - Propositional Logic}
+\title{305 Lecture 10 - Indirect Proof}
 \author{Brian Weatherson}
-\date{July 1, 2020}
+\date{July 8, 2020}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan for This Lecture}
-\protect\hypertarget{plan-for-this-lecture}{}
+\begin{frame}{Plan for Today}
+\protect\hypertarget{plan-for-today}{}
 
-We're introducing propositional logic, and talking about what it is.
+We're going to introduce how we prove negations in Carnap.
 
 \end{frame}
 
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Carnap book, chapter 1, section ``Our Formal Language''.
+Carnap book, chapter 6.
 
 \end{frame}
 
-\begin{frame}{Key Assumption}
-\protect\hypertarget{key-assumption}{}
+\begin{frame}{How to Prove a Negation}
+\protect\hypertarget{how-to-prove-a-negation}{}
 
-We start with one key assumption:
-
-\begin{itemize}
-\tightlist
-\item
-  Every sentence has precisely one of the two truth values: TRUE, FALSE.
-\item
-  I will often follow \emph{Boxes and Diamonds} as writing these values
-  as \(\True\) and \(\False\).
-\end{itemize}
+Show that if it were true, something absurd would follow.
 
 \end{frame}
 
-\begin{frame}{Unpacking the Assumption}
-\protect\hypertarget{unpacking-the-assumption}{}
-
-\begin{enumerate}
-\tightlist
-\item
-  There are just two truth values: \(\True\), \(\False\).\\
-\item
-  Every sentence has one of them. There are no truth-value \emph{gaps}.
-\item
-  No sentence has both of them. There are no truth-value \emph{gluts}.
-\end{enumerate}
-
-\end{frame}
-
-\begin{frame}{Two Parts of Classical Logic}
-\protect\hypertarget{two-parts-of-classical-logic}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Traditionally, classical logic is divided into two parts.
-\item
-  We're just going to look at the first part here.
-\item
-  The parts differ on what counts as a \textbf{structural} feature of a
-  sentence.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Classical Propositional Logic}
-\protect\hypertarget{classical-propositional-logic}{}
-
-The structural features are just five sentential connectives:
-
-\begin{itemize}
-\tightlist
-\item
-  And
-\item
-  Or
-\item
-  Not
-\item
-  If
-\item
-  If and only if; usually written iff.
-\end{itemize}
-
-The result is a very simple, but very weak, logic. It doesn't even tell
-us that the arguments about Skippy and Lucky are structurally valid.
-
-\end{frame}
-
-\begin{frame}{Classical Predicate Logic}
-\protect\hypertarget{classical-predicate-logic}{}
-
-As well as those structural features, we add:
-
-\begin{itemize}
-\tightlist
-\item
-  The division of parts of sentences into names, variables, predicates,
-  and logical terms.
-\item
-  The addition of the logical terms \textbf{All} and \textbf{Some}.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Symbols}
-\protect\hypertarget{symbols}{}
-
-The only symbols we need for classical propositional logic are sentence
-letters, which stand for sentences, and symbols for the five
-connectives:
-
-\begin{itemize}
-\tightlist
-\item
-  And - \(\wedge\)
-\item
-  Or - \(\vee\)
-\item
-  Not - \(\neg\)
-\item
-  If - \(\lif\)
-\item
-  Iff - \(\leftrightarrow\)
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Examples}
-\protect\hypertarget{examples}{}
-
-If \(A\) = \emph{Lucky is a koala} and \(B\) = \emph{Skippy is a
-kangaroo}, then
+\begin{frame}{Absurdity}
+\protect\hypertarget{absurdity}{}
 
 \begin{itemize}[<+->]
 \tightlist
 \item
-  \(\neg A\) = \emph{Lucky is not a koala}.
+  In engineering, a perpetual motion machine, or some other kind of free
+  energy.
 \item
-  \(A \vee B\) = \emph{Lucky is a koala or Skippy is a kangaroo}.
+  In finance, a risk-free way to make a guaranteed profit.
 \item
-  \(\neg B \wedge A\) = \emph{Skippy is not a kangaroo and Lucky is a
-  koala}.
-\item
-  \((A \vee B) \lif (A \wedge B)\) = \emph{If Lucky is a koala or Skippy
-  is a kangaroo, then Lucky is a koala and Skippy is a kangaroo}.
+  In logic, a sentence and its negation.
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Structure of Proof}
+\protect\hypertarget{structure-of-proof}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Say that we will show \(\neg X\)
+\item
+  Assume \(X\)
+\item
+  Derive some pair of sentences, \(Y\) and \(\neg Y\)
+\item
+  Close the indirect proof by listing the lines where \(Y\) and
+  \(\neg Y\) appear.
+\item
+  Say that \(\neg X\) has been shown at the `show' line, and not citing
+  any of the lines between it and the `Indirect Proof' line.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example}{}
+
+To prove: \(P \rightarrow Q, P \rightarrow \neg Q \vdash \neg P\)
+
+\begin{verbatim}
+1. Show: ~P
+2.     P         :AS
+3.     P -> Q    :PR
+4.     P -> ~Q   :PR
+5.     Q         :MP 2, 3
+6.     ~Q        :MP 2, 4
+7. :ID 5 6
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Notes}
+\protect\hypertarget{notes}{}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  We indent all the lines between `show' and `id' - this is a subproof
+  just like in conditional derivation.
+\item
+  The pair of lines cited have to be one sentence, and the negation of
+  that very sentence.
+\item
+  Oddly, we don't put a comma between the lines cited at the end.
+\item
+  Once you end the sub-proof, you can't cite lines from in it again.
+\item
+  But in the sub-proof, you can cite lines from earlier; they could even
+  be one of the pair of lines that make up the absurdity.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{One More Example}
+\protect\hypertarget{one-more-example}{}
+
+To prove:
+\(P \rightarrow Q, R \rightarrow \neg Q \vdash R \rightarrow \neg P\)
+
+\begin{verbatim}
+1. Show: R -> ~P
+2.     R                 :AS
+3.     P -> Q            :PR
+4.     R -> ~Q           :PR
+5.     ~Q                :MP 2, 4
+6.     Show: ~P
+7.         P             :AS
+8.         Q             :MP 3,7
+9.     :ID 5 8
+10. :CD 6
+\end{verbatim}
 
 \end{frame}
 
 \begin{frame}{For Next Time}
 \protect\hypertarget{for-next-time}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Read chapters 1 and 3 of \emph{The Carnap Book}.
-\item
-  Go to \url{http://carnap.io} and register for this course
-\item
-  The course name is ``University of Michigan - S20 - PHIL305''
-\end{itemize}
+We will talk about an interesting general fact about what you can prove
+in Carnap.
 
 \end{frame}
 

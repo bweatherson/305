@@ -75,12 +75,25 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 03 - Propositional Logic},
+  pdftitle={305 Lecture 12 - Conjunction},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -251,171 +264,230 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 03 - Propositional Logic}
+\title{305 Lecture 12 - Conjunction}
 \author{Brian Weatherson}
-\date{July 1, 2020}
+\date{July 8, 2020}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan for This Lecture}
-\protect\hypertarget{plan-for-this-lecture}{}
+\begin{frame}{Plan for Today}
+\protect\hypertarget{plan-for-today}{}
 
-We're introducing propositional logic, and talking about what it is.
+We're going to talk about how `and' behaves in Carnap.
 
 \end{frame}
 
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Carnap book, chapter 1, section ``Our Formal Language''.
+Carnap book, chapter 8, Section ``Simplification and Adjunction'' (about
+1/3 of the way down).
 
 \end{frame}
 
-\begin{frame}{Key Assumption}
-\protect\hypertarget{key-assumption}{}
+\begin{frame}{Two Rules for And}
+\protect\hypertarget{two-rules-for-and}{}
 
-We start with one key assumption:
+The rules for `and' are really simple; I'm not sure why Carnap doesn't
+start with them.
+
+\end{frame}
+
+\begin{frame}{Proving a Conjunction}
+\protect\hypertarget{proving-a-conjunction}{}
 
 \begin{itemize}
 \tightlist
 \item
-  Every sentence has precisely one of the two truth values: TRUE, FALSE.
+  If you have a line that says \(A\), and another line that says \(B\),
+  you can infer \(A \wedge B\). (Note that I'm using `conjunction' to
+  just mean a sentence with `and' as the main connective.)
 \item
-  I will often follow \emph{Boxes and Diamonds} as writing these values
-  as \(\True\) and \(\False\).
+  The rule is called `Adjunction', and abbreviated `ADJ'.
+\item
+  You cite the lines that \(A\) and \(B\) appear on.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Unpacking the Assumption}
-\protect\hypertarget{unpacking-the-assumption}{}
+\begin{frame}{Using a Conjunction}
+\protect\hypertarget{using-a-conjunction}{}
+
+\begin{itemize}
+\tightlist
+\item
+  If you have a line that says \(A \wedge B\), you can derive \(A\), and
+  you can (separately) derive \(B\).
+\item
+  The rule is called `Simplification', and abbreviated `S'.
+\item
+  You cite the line that \(A \wedge B\) appears on.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{A Little More MetaLogic}
+\protect\hypertarget{a-little-more-metalogic}{}
+
+\begin{itemize}
+\tightlist
+\item
+  I won't go through even an informal proof, but you should convince
+  yourself that these two things are equivalent.
+\end{itemize}
 
 \begin{enumerate}
 \tightlist
 \item
-  There are just two truth values: \(\True\), \(\False\).\\
+  \(A, B \vdash C\)
 \item
-  Every sentence has one of them. There are no truth-value \emph{gaps}.
-\item
-  No sentence has both of them. There are no truth-value \emph{gluts}.
+  \(A \wedge B \vdash C\)
 \end{enumerate}
 
 \end{frame}
 
-\begin{frame}{Two Parts of Classical Logic}
-\protect\hypertarget{two-parts-of-classical-logic}{}
+\begin{frame}{A Translation Exercise}
+\protect\hypertarget{a-translation-exercise}{}
+
+Conditionals intersect with conjunction in an interesting way. To see
+this, think about how to translate the following sentence.
+
+If we win, and if Michigan State loses, then we're going to the Big Ten
+Championship Game.
+
+\end{frame}
+
+\begin{frame}{Question}
+\protect\hypertarget{question}{}
+
+Using the dictionary
 
 \begin{itemize}
 \tightlist
 \item
-  Traditionally, classical logic is divided into two parts.
+  \(P\) = We win
 \item
-  We're just going to look at the first part here.
+  \(Q\) = Michigan State loses
 \item
-  The parts differ on what counts as a \textbf{structural} feature of a
-  sentence.
+  \(R\) = We're going to the Big Ten Championship Game
 \end{itemize}
+
+How would you translate this?
 
 \end{frame}
 
-\begin{frame}{Classical Propositional Logic}
-\protect\hypertarget{classical-propositional-logic}{}
+\begin{frame}{Two Answers}
+\protect\hypertarget{two-answers}{}
 
-The structural features are just five sentential connectives:
-
-\begin{itemize}
+\begin{enumerate}
 \tightlist
 \item
-  And
+  \(P \rightarrow (Q \rightarrow R)\)
 \item
-  Or
-\item
-  Not
-\item
-  If
-\item
-  If and only if; usually written iff.
-\end{itemize}
-
-The result is a very simple, but very weak, logic. It doesn't even tell
-us that the arguments about Skippy and Lucky are structurally valid.
+  \((P \wedge Q) \rightarrow R\)
+\end{enumerate}
 
 \end{frame}
 
-\begin{frame}{Classical Predicate Logic}
-\protect\hypertarget{classical-predicate-logic}{}
+\begin{frame}{Fun Fact}
+\protect\hypertarget{fun-fact}{}
 
-As well as those structural features, we add:
+The two answers
 
-\begin{itemize}
+\begin{enumerate}
 \tightlist
 \item
-  The division of parts of sentences into names, variables, predicates,
-  and logical terms.
+  \(P \rightarrow (Q \rightarrow R)\)
 \item
-  The addition of the logical terms \textbf{All} and \textbf{Some}.
-\end{itemize}
+  \((P \wedge Q) \rightarrow R\)
+\end{enumerate}
+
+are equivalent
 
 \end{frame}
 
-\begin{frame}{Symbols}
-\protect\hypertarget{symbols}{}
+\begin{frame}{Exercise}
+\protect\hypertarget{exercise}{}
 
-The only symbols we need for classical propositional logic are sentence
-letters, which stand for sentences, and symbols for the five
-connectives:
+Prove that
 
-\begin{itemize}
+\begin{enumerate}
 \tightlist
 \item
-  And - \(\wedge\)
+  \(P \rightarrow (Q \rightarrow R)\)
 \item
-  Or - \(\vee\)
-\item
-  Not - \(\neg\)
-\item
-  If - \(\lif\)
-\item
-  Iff - \(\leftrightarrow\)
-\end{itemize}
+  \((P \wedge Q) \rightarrow R\)
+\end{enumerate}
+
+are equivalent. That is, prove
+
+\begin{quote}
+\(P \rightarrow (Q \rightarrow R) \vdash (P \wedge Q) \rightarrow R\)
+\((P \wedge Q) \rightarrow R \vdash P \rightarrow (Q \rightarrow R)\)
+\end{quote}
 
 \end{frame}
 
-\begin{frame}{Examples}
-\protect\hypertarget{examples}{}
+\begin{frame}{First One}
+\protect\hypertarget{first-one}{}
 
-If \(A\) = \emph{Lucky is a koala} and \(B\) = \emph{Skippy is a
-kangaroo}, then
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-4.png}
+\caption{\(P \rightarrow (Q \rightarrow R) \vdash (P \wedge Q) \rightarrow R\)}
+\end{figure}
 
-\begin{itemize}[<+->]
-\tightlist
-\item
-  \(\neg A\) = \emph{Lucky is not a koala}.
-\item
-  \(A \vee B\) = \emph{Lucky is a koala or Skippy is a kangaroo}.
-\item
-  \(\neg B \wedge A\) = \emph{Skippy is not a kangaroo and Lucky is a
-  koala}.
-\item
-  \((A \vee B) \lif (A \wedge B)\) = \emph{If Lucky is a koala or Skippy
-  is a kangaroo, then Lucky is a koala and Skippy is a kangaroo}.
-\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Text Version of Proof}
+\protect\hypertarget{text-version-of-proof}{}
+
+\begin{verbatim}
+1. Show: (P /\ Q) -> R
+2.    P /\ Q   :AS
+3.    P -> (Q -> R)   :PR
+4.    P               :S 2
+5.    Q               :S 2
+6.    Q -> R          :MP 3, 4
+7.    R               :MP 5, 6
+8. :CD 7
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Reverse Direction}
+\protect\hypertarget{reverse-direction}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-3.png}
+\caption{\((P \wedge Q) \rightarrow R \vdash P \rightarrow (Q \rightarrow R)\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{Text Version of Proof}
+\protect\hypertarget{text-version-of-proof-1}{}
+
+\begin{verbatim}
+1. Show: P -> (Q -> R)
+2.     P                  :AS
+3.     Show: Q -> R
+4.         Q :AS
+5.         (P /\ Q) -> R  :PR
+6.         P /\Q          :ADJ 2, 4
+7.         R              :MP 5, 6
+8.     :CD 7
+9. :CD 3
+\end{verbatim}
 
 \end{frame}
 
 \begin{frame}{For Next Time}
 \protect\hypertarget{for-next-time}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Read chapters 1 and 3 of \emph{The Carnap Book}.
-\item
-  Go to \url{http://carnap.io} and register for this course
-\item
-  The course name is ``University of Michigan - S20 - PHIL305''
-\end{itemize}
+We'll talk about the rules for disjunction.
 
 \end{frame}
 

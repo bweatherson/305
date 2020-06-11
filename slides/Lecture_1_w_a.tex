@@ -1,0 +1,948 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={305 Lecture 09 - Nested Derivations},
+  pdfauthor={Brian Weatherson},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\let\Tiny=\tiny
+
+ \setbeamertemplate{navigation symbols}{} 
+
+% \usetheme{Madrid}
+ \usetheme[numbering=none, progressbar=foot]{metropolis}
+ \usecolortheme{wolverine}
+ \usepackage{color}
+ \usepackage{MnSymbol}
+% \usepackage{movie15}
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+% \usepackage{tikz-qtree}
+% \usepackage{markdown}
+% \usepackage{prooftrees}
+% \forestset{not line numbering, close with = x}
+% Allow for easy commas inside trees
+\renewcommand{\,}{\text{, }}
+
+
+\usepackage{tabulary}
+
+\usepackage{open-logic-config}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\AtBeginSection[]
+{
+\begin{frame}
+	\Huge{\color{darkblue} \insertsection}
+\end{frame}
+}
+
+\renewenvironment*{quote}	
+	{\list{}{\rightmargin   \leftmargin} \item } 	
+	{\endlist }
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+
+\newcommand{\starttab}{\begin{center}
+\vspace{6pt}
+\begin{tabular}}
+
+\newcommand{\stoptab}{\end{tabular}
+\vspace{6pt}
+\end{center}
+\noindent}
+
+
+\newcommand{\sif}{\rightarrow}
+\newcommand{\siff}{\leftrightarrow}
+\newcommand{\EF}{\end{frame}}
+
+
+\newcommand{\TreeStart}[1]{
+%\end{frame}
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=north}}
+%\Tree
+}
+
+\newcommand{\TreeEnd}{
+\end{tikzpicture}
+%\end{center}
+}
+
+\newcommand{\DisplayArg}[2]{
+\begin{enumerate}
+{#1}
+\end{enumerate}
+\vspace{-6pt}
+\hrulefill
+
+%\hspace{14pt} #2
+%{\addtolength{\leftskip}{14pt} #2}
+\begin{quote}
+{\normalfont #2}
+\end{quote}
+\vspace{12pt}
+}
+
+\newenvironment{ProofTree}[1][1]{
+\begin{center}
+\begin{tikzpicture}[scale=#1]
+\tikzset{every tree node/.style={align=center,anchor=south}}
+}
+{
+\end{tikzpicture}
+\end{center}
+}
+
+\newcommand{\TreeFrame}[2]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\begin{prooftree}{}
+#1
+\end{prooftree}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#2
+%\end{markdown}
+\end{columns}
+}
+
+\newcommand{\ScaledTreeFrame}[3]{
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}
+\scalebox{#1}{
+\begin{prooftree}{}
+#2
+\end{prooftree}
+}
+\end{center}
+\column{0.45\textwidth}
+%\begin{markdown}
+#3
+%\end{markdown}
+\end{columns}
+}
+
+\usepackage[bb=boondox]{mathalfa}
+\DeclareMathAlphabet{\mathbx}{U}{BOONDOX-ds}{m}{n}
+\SetMathAlphabet{\mathbx}{bold}{U}{BOONDOX-ds}{b}{n}
+\DeclareMathAlphabet{\mathbbx} {U}{BOONDOX-ds}{b}{n}
+
+\RequirePackage{bussproofs}
+\RequirePackage[tableaux]{prooftrees}
+
+\newenvironment{oltableau}{\center\tableau{}} %wff format={anchor = base west}}}
+       {\endtableau\endcenter}
+       
+\newcommand{\formula}[1]{$#1$}
+
+\usepackage{tabulary}
+\usepackage{booktabs}
+
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+\usepackage[italic]{mathastext}
+\usepackage{nicefrac}
+
+\definecolor{mygreen}{RGB}{0, 100, 0}
+\definecolor{mypink2}{RGB}{219, 48, 122}
+\definecolor{dodgerblue}{RGB}{30,144,255}
+
+\def\True{\textcolor{dodgerblue}{\text{T}}}
+\def\False{\textcolor{red}{\text{F}}}
+
+\title{305 Lecture 09 - Nested Derivations}
+\author{Brian Weatherson}
+\date{July 8, 2020}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+\protect\hypertarget{plan}{}
+
+We're going to go over what happens when there are multiple indirect
+derivations in a single argument.
+
+\end{frame}
+
+\begin{frame}{Associated Reading}
+\protect\hypertarget{associated-reading}{}
+
+Carnap Book, chapter 5.
+
+\end{frame}
+
+\begin{frame}{Using Conditionals}
+\protect\hypertarget{using-conditionals}{}
+
+Sometimes we need to prove conditionals along the way of an argument.
+
+\begin{itemize}
+\tightlist
+\item
+  The big picture is that we can introduce `Show' lines at any stage.
+\item
+  These will introduce what I'll call a `sub-proof'.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+There is a lot to unpack here, and we'll spend some time going over it
+all.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-1}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+The first line is simply the conclusion of the argument - that's nothing
+new.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-2}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+The next two lines are the premises of the argument - again nothing new
+here.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-3}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+The big new step is at line 4.
+
+\begin{itemize}
+\tightlist
+\item
+  This is the first use of `Show' after line 1 we've seen.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{Proving a Conditional}
+\protect\hypertarget{proving-a-conditional}{}
+
+The way you prove a conditional that you need along the way is to:
+
+\begin{enumerate}
+\tightlist
+\item
+  Use `Show' to say you're going to prove it.
+\item
+  Assume the antecedent.
+\item
+  Derive the consequent.
+\item
+  End the subproof with a CD statement.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-4}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 4 we say what we're doing.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-5}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 5 we assume the antecedent of the conditional - the left-hand
+side.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-6}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+From here we just start using familiar rules.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-7}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+It turns out we just need one step - MT gets from 2 and 5 to \(P\).
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-8}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+Note that these are doubly indented.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-9}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+Every time we start a sub-proof, we indent by more spaces. I'm using
+four, though I don't think it insists.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-10}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+Now we've got from antecedent to consequent, so we can end.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-11}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+At line 7 we record that we've got from \(\neg Q\) to \(\neg P\), so we
+can say we've shown that \(\neg Q \rightarrow \neg P\).
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-12}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+We are done with that part of the proof, so we can go back to normal
+indenting.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-13}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+Given \(\neg Q \rightarrow \neg P\) we can apply MP to line 3, and
+that's what we do at line 8.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-14}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+The next bit is one I didn't expect - we cite the `show' line, not the
+CD line.
+
+\begin{itemize}
+\tightlist
+\item
+  That is, at line 8 we don't cite line 7 - just the `show' at line 4.
+\end{itemize}
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\protect\hypertarget{example-15}{}
+
+To prove:
+\(P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R\)
+
+\bigskip
+
+\begincols
+\begincol{.6\textwidth}
+
+\begin{verbatim}
+1. Show: R
+2.     P -> Q            :PR
+3.     (~Q -> ~P) -> R   :PR
+4.     Show: ~Q -> ~P
+5.         ~Q            :AS
+6.         ~P            :MT 2, 5
+7.     :CD 6
+8.     R                 :MP 3, 4
+9. :DD 8
+\end{verbatim}
+
+\endcol
+\begincol{.36\textwidth}
+
+And now we're done - we've proven R as required.
+
+\endcol
+\endcols
+
+\end{frame}
+
+\begin{frame}{A Big Restriction}
+\protect\hypertarget{a-big-restriction}{}
+
+When you do this kind of nesting, the `nested' lines are not available
+for later reasoning.
+
+\begin{itemize}
+\tightlist
+\item
+  Anything between `Show' and `CD' is off-limits for later reasoning.
+\item
+  That's why we are indenting those lines - to say that they are all a
+  bit of suppositional reasoning that is out-of-bounds once the
+  supposition has been lifted.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{A Bad Attempt at a Proof}
+\protect\hypertarget{a-bad-attempt-at-a-proof}{}
+
+To prove:
+\(P \rightarrow (P \rightarrow Q), Q \rightarrow (P \rightarrow R) \vdash (P \rightarrow Q) \rightarrow R\)
+
+\begin{verbatim}
+1. Show: (P -> Q) -> R
+2.     P -> Q             :AS
+3.     P -> (P -> Q)      :PR
+4.     Q -> (P -> R)      :PR
+5.     Show: P -> Q
+6.         P              :AS
+7.         P -> Q         :MP 3, 6
+8.         Q              :MP 6, 7
+9.         P -> R         :MP 6, 7
+10.    :CD 8
+11.    P -> R             :MP 4, 8
+12.    R                  :MP 6, 11
+13.    :CD 12
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{A Bad Attempt at a Proof}
+\protect\hypertarget{a-bad-attempt-at-a-proof-1}{}
+
+Three mistakes on previous slide.
+
+\begin{enumerate}
+\tightlist
+\item
+  No reason to try to show something that you already have.
+\item
+  At line 11, cite a line inside a subproof.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It's to prove something already seen but that's actually ok; getting
+    something outside of the subproof could be useful. But it's an
+    illegal step.
+  \end{itemize}
+\item
+  At line 12, cite a line inside a subproof.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Subproof}
+\protect\hypertarget{subproof}{}
+
+The Carnap book doesn't use the term `subproof', but I find it useful.
+
+\begin{itemize}
+\tightlist
+\item
+  I mean the lines from one of these `show' statements not on line 1
+  until the `:CD' that closes it off.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{For Next Time}
+\protect\hypertarget{for-next-time}{}
+
+We'll start talking about how to do something that pop culture sometimes
+says is impossible: prove a negative.
+
+\end{frame}
+
+\end{document}

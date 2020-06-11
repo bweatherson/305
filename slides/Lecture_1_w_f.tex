@@ -75,12 +75,25 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={305 Lecture 03 - Propositional Logic},
+  pdftitle={305 Lecture 14 - Explosion},
   pdfauthor={Brian Weatherson},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -251,171 +264,246 @@
 \def\True{\textcolor{dodgerblue}{\text{T}}}
 \def\False{\textcolor{red}{\text{F}}}
 
-\title{305 Lecture 03 - Propositional Logic}
+\title{305 Lecture 14 - Explosion}
 \author{Brian Weatherson}
-\date{July 1, 2020}
+\date{July 8, 2020}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan for This Lecture}
-\protect\hypertarget{plan-for-this-lecture}{}
+\begin{frame}{Plan for Today}
+\protect\hypertarget{plan-for-today}{}
 
-We're introducing propositional logic, and talking about what it is.
+\begin{itemize}
+\tightlist
+\item
+  We're going to talk two interesting consequences of the rules we've
+  produced so far.
+\item
+  The first is that the rules validate explosion, the idea that
+  everything follows from a contradiction.
+\item
+  The second is that they validate all four of what are called
+  DeMorgan's Laws.
+\end{itemize}
 
 \end{frame}
 
 \begin{frame}{Associated Reading}
 \protect\hypertarget{associated-reading}{}
 
-Carnap book, chapter 1, section ``Our Formal Language''.
+No associated reading, but again, this will be relevant to our later
+work.
 
 \end{frame}
 
-\begin{frame}{Key Assumption}
-\protect\hypertarget{key-assumption}{}
+\hypertarget{explosion}{%
+\section{Explosion}\label{explosion}}
 
-We start with one key assumption:
+\begin{frame}{What It is}
+\protect\hypertarget{what-it-is}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Every sentence has precisely one of the two truth values: TRUE, FALSE.
-\item
-  I will often follow \emph{Boxes and Diamonds} as writing these values
-  as \(\True\) and \(\False\).
-\end{itemize}
+\(P, \neg P \vdash Q\)
 
 \end{frame}
 
-\begin{frame}{Unpacking the Assumption}
-\protect\hypertarget{unpacking-the-assumption}{}
+\begin{frame}{One Weird Thing About it}
+\protect\hypertarget{one-weird-thing-about-it}{}
 
-\begin{enumerate}
-\tightlist
-\item
-  There are just two truth values: \(\True\), \(\False\).\\
-\item
-  Every sentence has one of them. There are no truth-value \emph{gaps}.
-\item
-  No sentence has both of them. There are no truth-value \emph{gluts}.
-\end{enumerate}
+It violates \textbf{relevance} - the constraint that any valid argument
+should have at least some term in common between premise and conclusion.
 
 \end{frame}
 
-\begin{frame}{Two Parts of Classical Logic}
-\protect\hypertarget{two-parts-of-classical-logic}{}
-
-\begin{itemize}
-\tightlist
-\item
-  Traditionally, classical logic is divided into two parts.
-\item
-  We're just going to look at the first part here.
-\item
-  The parts differ on what counts as a \textbf{structural} feature of a
-  sentence.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Classical Propositional Logic}
-\protect\hypertarget{classical-propositional-logic}{}
-
-The structural features are just five sentential connectives:
-
-\begin{itemize}
-\tightlist
-\item
-  And
-\item
-  Or
-\item
-  Not
-\item
-  If
-\item
-  If and only if; usually written iff.
-\end{itemize}
-
-The result is a very simple, but very weak, logic. It doesn't even tell
-us that the arguments about Skippy and Lucky are structurally valid.
-
-\end{frame}
-
-\begin{frame}{Classical Predicate Logic}
-\protect\hypertarget{classical-predicate-logic}{}
-
-As well as those structural features, we add:
-
-\begin{itemize}
-\tightlist
-\item
-  The division of parts of sentences into names, variables, predicates,
-  and logical terms.
-\item
-  The addition of the logical terms \textbf{All} and \textbf{Some}.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Symbols}
-\protect\hypertarget{symbols}{}
-
-The only symbols we need for classical propositional logic are sentence
-letters, which stand for sentences, and symbols for the five
-connectives:
-
-\begin{itemize}
-\tightlist
-\item
-  And - \(\wedge\)
-\item
-  Or - \(\vee\)
-\item
-  Not - \(\neg\)
-\item
-  If - \(\lif\)
-\item
-  Iff - \(\leftrightarrow\)
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Examples}
-\protect\hypertarget{examples}{}
-
-If \(A\) = \emph{Lucky is a koala} and \(B\) = \emph{Skippy is a
-kangaroo}, then
+\begin{frame}{Informal Argument}
+\protect\hypertarget{informal-argument}{}
 
 \begin{itemize}[<+->]
 \tightlist
 \item
-  \(\neg A\) = \emph{Lucky is not a koala}.
+  An argument is valid if it is impossible for the premises to be true
+  and the conclusion false.
 \item
-  \(A \vee B\) = \emph{Lucky is a koala or Skippy is a kangaroo}.
+  In \textbf{Explosion}, it is impossible for the premises to be true.
 \item
-  \(\neg B \wedge A\) = \emph{Skippy is not a kangaroo and Lucky is a
-  koala}.
+  So in \textbf{Explosion}, it is impossible for the premises to be true
+  and the conclusion false.
 \item
-  \((A \vee B) \lif (A \wedge B)\) = \emph{If Lucky is a koala or Skippy
-  is a kangaroo, then Lucky is a koala and Skippy is a kangaroo}.
+  So \textbf{Explosion} is valid.
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Formal Argument}
+\protect\hypertarget{formal-argument}{}
+
+Prove \textbf{Explosion} in Carnap.
+
+\end{frame}
+
+\begin{frame}{First Attempt}
+\protect\hypertarget{first-attempt}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-5.png}
+\caption{\(P, \neg P \vdash Q\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Second Attempt}
+\protect\hypertarget{second-attempt}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-6.png}
+\caption{\(P, \neg P \vdash Q\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Choice Point}
+\protect\hypertarget{choice-point}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Reject Addition
+\item
+  Reject Disjunctive Syllogism
+\item
+  Accept Explosion
+\end{enumerate}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Most people who reject explosion also reject disjunctive syllogism.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why Reject Explosion}
+\protect\hypertarget{why-reject-explosion}{}
+
+\begin{enumerate}[<+->]
+\tightlist
+\item
+  Truth in a Database
+\item
+  Truth in a Story
+\item
+  There are actual true contradictions, but some things are not true.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{My View}
+\protect\hypertarget{my-view}{}
+
+Explosion is fine - we just have to be careful with databases and
+stories.
+
+\end{frame}
+
+\hypertarget{demorgan-laws}{%
+\section{DeMorgan Laws}\label{demorgan-laws}}
+
+\begin{frame}{First Equivalence}
+\protect\hypertarget{first-equivalence}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  \(\neg (P \vee Q)\)
+\item
+  \(\neg P \wedge \neg Q\)
+\end{enumerate}
+
+Prove these are equivalent.
+
+\end{frame}
+
+\begin{frame}{First Direction}
+\protect\hypertarget{first-direction}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-7.png}
+\caption{\(\neg (P \vee Q) \vdash \neg P \wedge \neg Q\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Second Direction}
+\protect\hypertarget{second-direction}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-8.png}
+\caption{\(\neg P \wedge \neg Q \vdash \neg (P \vee Q)\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Second Equivalence}
+\protect\hypertarget{second-equivalence}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  \(\neg P \vee \neg Q\)
+\item
+  \(\neg (P \wedge Q)\)
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{First Direction}
+\protect\hypertarget{first-direction-1}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-9.png}
+\caption{\(\neg (P \wedge Q) \vdash \neg P \vee \neg Q\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Second Direction}
+\protect\hypertarget{second-direction-1}{}
+
+\begin{figure}
+\centering
+\includegraphics{../images/class05/Class-05-10.png}
+\caption{\(\neg (P \wedge Q) \vdash \neg P \vee \neg Q\)}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{General Principle}
+\protect\hypertarget{general-principle}{}
+
+To move a negation from outside the parentheses to inside it, you do two
+things.
+
+\begin{enumerate}
+\tightlist
+\item
+  Negate each of the parts.
+\item
+  Flip the conjunction/disjunction symbol upside down.
+\end{enumerate}
+
+This process is reversible.
 
 \end{frame}
 
 \begin{frame}{For Next Time}
 \protect\hypertarget{for-next-time}{}
 
-\begin{itemize}
-\tightlist
-\item
-  Read chapters 1 and 3 of \emph{The Carnap Book}.
-\item
-  Go to \url{http://carnap.io} and register for this course
-\item
-  The course name is ``University of Michigan - S20 - PHIL305''
-\end{itemize}
+Do the weekly assignment, and we'll start talking about truth tables.
 
 \end{frame}
 
