@@ -85,3 +85,21 @@ The three books are for the three parts of the course.
 - These slides don't have captioning.
 - But the script I'm reading off is available on Canvas, and that should be more reliable than automated captions.
 - The script also says where the slide jumps are, so if you don't want to listen to me, you can just read along the script plus the slides.
+
+## Assessment
+
+- The primary assessment will be weekly assignments, which will be administered through Canvas.
+- These are already all posted, and they will be due each week on Friday at 5pm.
+- There will also be an end of term exam, also through Canvas.
+
+## Office Hours
+
+- The lectures as you can tell are all going to be posted, and can be viewed at any time.
+- There aren't any official discussion sections.
+- But we will need to have some time where we go over stuff.
+- I'm planning to have office hours twice a week: Tuesday and Thursday 10-12. But I'll also be available by appointment if those times don't work, as I'm sure they won't for some people.
+- We'll start with these on Zoom, but maybe it will turn out to be more productive to use something else.
+
+## For Next Time
+
+We'll start on saying what logic is, and why we are studying it.

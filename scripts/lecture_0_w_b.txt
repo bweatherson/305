@@ -1,3 +1,17 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 2: The Nature of Logic
+
+<new slide>
+
+Today we're discussing the nature of arguments, and in particular, the role of premises and conclusions.
+
+<new slide>
+
+We're going to be covering material from the section called "Arguments and Reasoning" in chapter 1 of the Carnap book.
+
+<new slide>
+
 Logic studies whether arguments have a certain good feature.
 
 An argument, in the sense we're interested in, has two parts: premises and conclusion. The premises are things that are offered as reasons, and the conclusion is what is claimed to be supported from the premises.
@@ -139,6 +153,8 @@ But we'll often use the second. On the face of it, it looks more complicated. It
 What it says is that the valid arguments are those such that you cannot have the premises be true and the conclusion false.
 
 And we'll use that a lot, because sometimes it is easier to tell what can't be the case than to tell what must be the case.
+
+<new slide>
 
 That's all for this lecture. In the next lecture, we'll start looking at one important kind of logic: propositional logic.
 

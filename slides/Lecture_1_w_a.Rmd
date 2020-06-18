@@ -272,7 +272,7 @@ To prove: $P \rightarrow Q, (\neg Q \rightarrow \neg P) \rightarrow R \vdash R$
 \endcol
 \begincol{.36\textwidth}
 
-It turns out we just need one step - MT gets from 2 and 5 to $P$.
+It turns out we just need one step - MT gets from 2 and 5 to $\neg P$.
 
 \endcol
 \endcols

@@ -1,8 +1,18 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 8 - Indirect Derivations
+
+<new slide>
+
 This is going to be a bit shorter than last time. The plan is to work through one example of an **indirect** derivation.
 
 <new slide>
 
-Indirect derivations are for proving conditions. Intuitively, the way to show that if A is true, then so is B, is to assume, or imagine, or suppose, that A is true, and see if we can work out B. And that's exactly what we'll do here.
+The material is from chapter 4 of the Carnap book.
+
+<new slide>
+
+In that book, indirect derivations are used for proving conditionals. Intuitively, the way to show that if A is true, then so is B, is to assume, or imagine, or suppose, that A is true, and see if we can work out B. And that's exactly what we'll do here.
 
 <new slide>
 
@@ -46,10 +56,8 @@ And then (and this is a bit distinctive to Carnap), you write 'CD' for Condition
 
 <new slide>
 
-OK, that's enough for this lecture, and indeed for today. For Wednesday, read chapters 4 and 5 of Carnap.
+OK, that's enough for this lecture, and indeed for today. For Wednesday, read chapters 5 and 6 of Carnap.
 
 We're going to talk a bit about what happens when these derivations get nested.
 
-And now we should have gone over enough for you to do the exercises 
-- We will talk especially about what happens when these conditional derivations get **nested**.
-- Finish the first assignment - the exercises from chapters 1 and 3.
+And now we should have gone over enough for you to do at least some of this week's exercises, so you should start on them while this materal is relatively fresh.

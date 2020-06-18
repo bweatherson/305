@@ -243,3 +243,7 @@ Here are some equivalent ways to define validity.
 - An argument is valid if it is impossible for the premises to be true and the conclusion to not be true.
 
 We'll use that last formulation a lot.
+
+## For Next Time
+
+We'll look at the most fundamental kind of logic: propositional logic.

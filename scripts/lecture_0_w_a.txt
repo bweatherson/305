@@ -94,4 +94,20 @@ I don't have captioning for these slides. I don't really trust the automated cap
 
 If you have trouble hearing the lectures, then obviously the scripts are there to help. But they are there for everyone. Personally I prefer reading transcripts to listening to things, and if you're the same, then hopefully the scripts are useful for you too. 
 
-That's all for this recording - in the next recording I'll start on talkinig about what logic is.
+<new slide>
+
+The primary assessment tasks in this course will be weekly assignments, which will be administered through Canvas. These are already all posted, and they will be due each week on Friday at 5pm. There will also be an end of term exam, also through Canvas. All of these are obviously open book, so there won't be any rote memorisation. But that said, the final assessment will be timed, and if you don't remember some stuff the time pressure might be a little tight.
+
+<new slide>
+
+There is nothing for this course that you have to turn up to at a particular time. As you can hear right now, the lectures are recorded, and can be viewed at any time. I will be talking about Monday and Wednesday lectures, and there will be more substantial breaks in the narrative at the end of each day's lectures. But you can listen to them at any time.
+
+There aren't any official discussion sections. But we will need to have some time where we go over stuff. Not everyone can learn this stuff by just having someone talk at them. So I'm planning to have office hours twice a week: Tuesday and Thursday 10-12. But I'll also be available by appointment if those times don't work, as I'm sure they won't for some people. We'll start with these on Zoom, but maybe it will turn out to be more productive to use something else. 
+
+There is a tricky technical challenge here. I'm sure a lot of you will have questions of the form "What am I doing wrong here?" But the 'here' will refer to a bit of work that isn't easy to translate into digital form. So we'll have to figure out how things go, between screen sharing, taking pictures of pages and mailing them, and perhaps really blunt techniques like holding bits of paper up to cameras. We're still learning how to make this work, and we'll see how it goes.
+
+For what it's worth, my plan is to do a lot of events via an iPad, and I have a stylus for writing on screen with it. So if I can share its screen, I'll have something like paper to work on, or something like a whiteboard. But I don't expect everyone to have access to that kind of resource, and if you don't we'll make do with whatever you have.
+
+<new slide>
+
+That's all for this recording - in the next recording I'll start on talking about what logic is.

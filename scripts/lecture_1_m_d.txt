@@ -1,8 +1,18 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 7 - Direct Derivations
+
+<new slide>
+
 This is going to be a longer than usual lecture, introducing how derivations work in Carnap. The reason that it's long is that I wanted to work through one full example from start to finish, and there weren't any natural breaks in the middle of it.
 
 <new slide>
 
-A derivation is a series of steps that get you from the premises to the conclusion, with every step being an instance of one of a small number of approved kinds of transition. I'll illustrate this, and explain some of the rules.
+The material here is from chapter 3 of the Carnap book.
+
+<new slide>
+
+In the system that book uses, a derivation is a series of steps that get you from the premises to the conclusion, with every step being an instance of one of a small number of approved kinds of transition. I'll illustrate this, and explain some of the rules.
 
 <new slide>
 

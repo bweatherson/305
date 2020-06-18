@@ -1,4 +1,14 @@
-I'm going to start today with a bit of revision, going over the notion of validity that I introduced last week. And then I'll spend more time on the idea of formalisation. I'll spend a bit of time on what parts of sentences, and hence of arguments, we formalise, and a bit on why we formalise.
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 4 - Argument Forms
+
+<new slide>
+
+In this lecture I'll briefly revise the notion of validity I talked about last week, and then move on to a discussion of formalisation.
+
+<new slide>
+
+This doesn't correspond to any particular part of the book, but I think it helps provide a connection between what goes on in chapter 1 of the Carnap book and what goes on in chapter 3.
 
 <new slide>
 

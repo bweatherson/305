@@ -1,0 +1,95 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 10 - Indirect Proof
+
+<new slide>
+
+This lecture is about how we prove negated sentences in Carnap. We're doing to prove negatives.
+
+<new slide> Associated Reading
+
+The material for this lecture is all in chapter 6 of the Carnap book.
+
+<new slide>
+
+The way we prove negatives is to assume the positive version, and show that an absurdity follows. If I want to prove that my little brother did not steal the cookies, I assume that he did steal the cookies, and show that something absurd follows from that.
+
+<new slide> 
+
+This is what we do in logic, but it's not only something we do in logic. The same kind of strategy - assume the opposite of what you're trying to prove and show that an absurdity follows - is common across disciplines.
+
+<new slide>
+
+For example, in engineering you can show that something can't work by showing that if it did work, we'd have a perpetual motion machine.
+
+<new slide>
+
+And in finance, you show that a scheme won't work because if it worked, there would be a way to make risk-free profits.
+
+In both cases, we have independent reason to think these are absurd. There is no free energy, so a machine that worked without an energy input is absurd. The sources of free money are all tapped out (if they ever existed), so we can safely assume in finance theory that a new one doesn't exist.
+
+<new slide>
+
+In logic there is a very special kind of absurdity we focus on. For us, an absurdity is a sentence and its negation. Nothing else is absurd. For all we care about, maybe there is a risk-free way to invest in a perpetual motion machine. The only thing we treat as absurd is that something both is and is not the case.
+
+<new slide> 
+
+More precisely, this is how we prove negations.
+
+First, we say what we're doing - proving that X is not the case.
+
+Second, we do what looks like the complete opposite - assuming that X is indeed the case.
+
+Third, we derive some pair of opposite sentences - Y and Not Y - from the assumption X.
+
+Fourth, we close off this assumption and note that we did what we promised - derive opposite sentences.
+
+Fifth, we say that this means we've shown Not X.
+
+And then we close off the derivation we just did. Y, Not Y, and anything else we derived after assuming Not X is now off limits for later in the proof.
+
+<new slide>
+
+Let's work through an example of that.
+
+From premises if P then Q, and if P then not Q, we are trying to derive Not P.
+
+So at line 1 we say what we're up to - trying to derive not P.
+
+At line 2 we assume the opposite thing - that is, P.
+
+At lines 3 and 4 we list the premises. We could have done this before the assumption if we'd felt like it, but it doesn't matter here.
+
+At line 5 we derive Q from P and If P then Q.
+
+At line 6 we derive Not Q from P and If P then Not Q.
+
+And at line 7 we take a victory lap - we note that we've proven the pair of contradictory things we promised.
+
+<new slide>
+
+What comes after the assumption is a subproof, just like in the proofs of conditionals, so we indent it.
+
+<new slide>
+
+The pair of sentences can't just be things that are in some kind of tension. They have to literally be a sentence and the negation of that very sentence.
+
+<new slide>
+
+For reasons I don't understand, Carnap just puts a space not a comma between the lines that you cite at line 7. I don't know why that is, but it's just a rule. Sometimes when you're trying to figure out a way to talk to computers - and logics are ultimately ways to talk to computers - you just have to learn rules like this.
+
+<new slide>
+
+It's a sub-proof here, so you can't cite lines in it later in the proof.
+
+<new slide>
+
+But note that this is asymmetric. In the sub-proof you totally can (and often should) cite lines from earlier in the proof. It's just a restriction on what you can do later.
+
+<new slide> 
+
+Here is an example where we do that. The opposite lines are 5 - not Q, and 7 - Q. And one of those we got before we even assumed P. That's totally fine. Assuming P has gotten us to absurdity, so P is false.
+
+<new slide>
+
+Next time, we'll change tack a bit and talk about some general features of the proof system in Carnap.

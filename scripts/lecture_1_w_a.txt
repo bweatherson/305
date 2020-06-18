@@ -1,0 +1,140 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 9 - Nested Derivations
+
+<new slide> 
+
+We're going to start today with derivations that involve multiple indirect derivations.
+
+<new slide>
+
+The material in this lecture is from chapter 5 of the Carnap Book.
+
+<new slide>
+
+One of the characteristic features of deduction proofs is that every conclusion can be the premise for the next bit of reasoning. That's nice for a couple of reasons. It lets you build up knowledge one step at a time. And it mirrors how we actually think, reason and argue.
+
+But this raises a problem. The way we set of proofs of conditionals, it seems like a whole proof has to go to proving this one thing. In general we don't want that; we should be able to prove conditionals that we then use later in the argument.
+
+To do this requires a bit more machinery. The way Carnap does this is that it lets you introduce these 'Show' lines at any stage of the proof - provided you back them up eventually. These new 'Show' lines introduce what I call sub-proofs.
+
+<new slide>
+
+The book describes the rules for applying these properly, and I don't think it would add much value for me to simply repeat what it says. What I will do is show you how the rules are to be applied.
+
+We're doing to prove this quite complicated thing.
+
+The first premise is easy: It just says if p then q.
+
+The second premise is a litle more complicated. It's a conditional, so it has a left hand side and a right hand side. I've been calling these the antecedent and consequent of the conditional. What's complicated is that in this case the left hand side, the antecedent, is itself a conditional.
+
+Now I should note that it is very hard, some people think impossible, to come up with ordinary English conditionals that have conditionals on their left hand side. It is really easy to have cases that have conditionals on the right hand side. Towards the end of a baseball season we might hear a commentator say something like "If the Tigers lose, then if the Twins win the Tigers will be eliminated." We know what that means - if the Tigers lose and the Twins win, then the Tigers are eliminated. But it's much harder to come up with natural cases of embedding on the left.
+
+Still, logic doesn't care about these linguistic niceties; we allow arbitrary embedding. So we have this conditional that says, roughly, If it's the case that if not Q then not P, then it's the case that R. That's our second premise.
+
+And our task is to prove R on this basis.
+
+I've shown the whole proof here so you can see where we'll end up, but let's go over line by line how it got built.
+
+<new slide>
+
+We start the way we start all proofs; setting out the desired conclusion.
+
+<new slide>
+
+Then we write out the premises, and again there is nothing new here.
+
+<new slide>
+
+But line 4 is new. It's a show step that isn't the very first line of the argument. And I want to go a bit slowly over what it's doing.
+
+<new slide>
+
+To prove any conditional in Carnap you follow these four steps.
+
+First, you use 'Show' to say you're going to prove it.
+Second, you assume the antecedent; remember that's the left hand side.
+Third, you derive the consequent; remember that's the right hand side.
+Then you end with a CD statement to say that you are done.
+
+The key thing here is that this is what you do whether the conditional is the ultimate aim of the proof, the conclusion of the whole argument, or a step along the way.
+
+<new slide> 
+
+Let's apply this to our argument. So line 4 is the first of these steps, it's where we say what we are doing.
+
+<new slide>
+
+At line 5 we do the second of these four steps. We assume the antecedent of the conditional - the left-hand side.
+
+<new slide>
+
+Then to get to the right hand side of the conditional you use any familiar rules. This system doesn't have any restrictions on what rules you can apply in these sub proofs.
+
+<new slide>
+
+It turns out it just takes one step of modus tollens to get from line 2 and line 5 to not P.
+
+<new slide>
+
+The indentation really matters here. 
+
+<new slide>
+
+Every time we start a sub-proof, we indent by more spaces. I'm using four, though I don't think Carnap really cares how many. But it does care that there are spaces. And four is a nice habit.
+
+<new slide>
+
+Now we've reasoned all the way from antecedent to consequent, so we can end. It wasn't a long path this time, but in principle it can be arbitrarily long.
+
+<new slide>
+
+The point of line 7 is just to record what we've done. That is, we are saying here that we did it; we got from the left hand side to the right hand. So we've proven the conditional if not Q then not P.
+
+<new slide>
+
+Note that we say this in the main proof, not in this set off part of the proof that starts wth assuming not Q. Some books talk about discharging an assumption here.
+
+What line 6 means is that we've proven ~P given the extra assumption ~Q. But line 7 says that we have proven the conditional if ~Q then ~P without making any extra assumptions at all.
+
+<new slide>
+
+That conditional is the left hand side of the weird conditional at line 3, and so we can use Modus Ponens to get R.
+
+<new slide>
+
+There is something about line 8 that I find a bit unintuitive. The justification we give cites lines 3 and 4.
+
+Now citing line 3 makes sense - that's the big conditional with R as its right hand side that we used. But why cite line 4?
+
+Well, the way Carnap is thinking is that these show lines sort of are where you have shown things. So the 4 next to the 3 there is meant to refer back to the thing we've shown.
+
+I don't know, I think I'd rather the rule there was that you cite line 7, because that's where the derivation is done. But Carnap says that you cite line 4 so that's what we'll do.
+
+<new slide>
+
+And that's it. We've proven R, just as required, so we do the standard mic drop at the end. That's what the DD at 10 means - I'm done.
+
+<new slide>
+
+Now one big rule. When you have this kind of sub-proof - when you infer the left-hand side and try to derive the right-hand side - there is a special rule that applies later in the proof. Once you have the CD line, that's line 7 in what's above, the indented lines are out of bounds. You can't use them as justification for anything that's not indented.
+
+This is sort of how we ordinarily reason. When I suppose something for the sake of argument, and draw some derivations from that, I can't go back and use those derivations once we've stopped making the supposition. If I say "Assume that there will be in person courses in the Fall", and then work through the consequences of that, we can't use those consequences in a later discussion that doesn't include that assumption. That's what the rule here is doing.
+
+<new slide>
+
+If you don't put this restriction in place, you get some really bad results. I'm not going to talk through this example, but I want to stress it is bad. And it's bad because of lines 11 and 12; on both occasions I try to justify what I'm doing by using an indented line. And both of these lines are bad. And in fact the thing I purport to prove is not in fact valid.
+
+<new slide>
+
+Note that as well as lines 11 and 12 being mistakes, there is something else weird in the proof - it goes through this big attempt to prove something that we already have.
+
+Now while this is a mistake, it's a different kind of mistake to the mistakes at line 11 and 12. It just means we are being inefficient, not that we are breaking the rules of the system. It's a mistake in the way that having too many words in a sentence is a mistake, not in the way that adding 1 and 1 and making 3 is a mistake.
+
+<new slide>
+
+This term 'subproof' I've been using is not actually in the book. I find it useful, and by 'subproof' I mean the lines from one of these 'show' statements not on line 1 until the ':CD' that closes it off. It's useful because it's convenient to talk about these set aside parts.
+
+<new slide>
+
+That's enough for today. Next time I'll go over something that is apparently impossible - proving a negative.

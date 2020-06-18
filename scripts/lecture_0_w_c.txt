@@ -4,6 +4,14 @@ Lecture 3: Propositional Logic
 
 <new slide>
 
+In this lecture we're introducing propositional logic, and talking about what it is.
+
+<new slide>
+
+This lecture covers the material in the section "Our Formal Language" in Chapter 1 of the Carnap book.
+
+<new slide>
+
 Classical propositional logic starts with one big assumption. The assumption is that any sentence is either true or false, but not both. That's to say, every sentence has precisely one of the two classical truth values: TRUE and FALSE. I'll often write these as T and F. 
 
 <new slide>

@@ -1,6 +1,18 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 5 - Forms in Propositional Logic
+
+<new slide>
+
 In this lecture we're going to look at how to translate English sentences into a form where we can use the tools of propositional logic on them. So we'll be translating them into a formal language where the only formal words are the sentential connectives that propositional logic works with: and, or, not, if and if-and-only-if.
 
 <new slide>
+
+The material here is from the "English to Symbols" part of chapter 2 of the Carnap book. That isn't part of the required reading, because I think that what I say here should be enough. But if you want to go back and look at the book too, I'll never complain about students doing more reading.
+
+<new slide>
+
+OK, so we're working with five sentential conectives: and, or, not, if and if-and-only-if. (And I'll say a bit more about what I mean by calling them sentential connectives in a bit.)
 
 Everything that's not one of these five terms is treated as a whole sentence, and replaced with a sentence letter. Any letter will do. If you are using more than 26 sentences - and we will never use more than 26 sentences - you can use numerical subscripts.
 

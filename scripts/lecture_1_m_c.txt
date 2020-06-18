@@ -1,6 +1,14 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 6 - Recursive Composition Rules
+
 <new slide> 
 
 In this lecture we're going to go over two things. First, we're going to look at how to iterate the translation procedures we used last time. That will allow us to translate longer sentences into the language of propositional logic. Second, we're going to look at how to understand longer sentences written in that language. The techniques for each of these tasks will be pretty similar, so it makes sense to do these jobs together.
+
+<new slide>
+
+This is still the material from the "English to Symbols" part of chapter 2, though I'm going into a fair bit more detail than the book does I think.
 
 <new slide>
 
@@ -113,4 +121,4 @@ And then we just need to enter the main connective for that not-Q, which is the 
 
 <new slide>
 
-That's all for chapter 1; in the next lecture we'll move on to chapter 3, and use these tools for analysing arguments.
+That's all for chapters 1 and 2; in the next lecture we'll move on to chapter 3, and use these tools for analysing arguments.
