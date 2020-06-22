@@ -248,8 +248,11 @@
 \definecolor{mypink2}{RGB}{219, 48, 122}
 \definecolor{dodgerblue}{RGB}{30,144,255}
 
-\def\True{\textcolor{dodgerblue}{\text{T}}}
-\def\False{\textcolor{red}{\text{F}}}
+%\def\True{\textcolor{dodgerblue}{\text{T}}}
+%\def\False{\textcolor{red}{\text{F}}}
+
+\def\True{\mathbb{T}}
+\def\False{\mathbb{F}}
 
 \title{305 Lecture 15 - Truth Tables}
 \author{Brian Weatherson}
@@ -390,7 +393,7 @@ first want to talk about is how to read them.
 P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
 \hline 
 $\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
-\textbf{$\True$} & \textbf{$\False$} &  &  & \textbf{$\True$} & \textbf{$\False$} & \textbf{$\False$} &  & \textcolor{red}{\textbf{$\True$}} &  & \textbf{$\False$} & \textbf{$\True$} & \textbf{$\True$} &  & \\
+\textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\False$} &  &  & \textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\False$} & \textcolor{dodgerblue}{$\False$} &  & \textcolor{red}{\textcolor{dodgerblue}{$\True$}} &  & \textcolor{dodgerblue}{$\False$} & \textcolor{dodgerblue}{$\True$} & \textcolor{dodgerblue}{$\True$} &  & \\
 $\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
 $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
 \end{tabular}
@@ -398,7 +401,7 @@ $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$
 \end{center}
 
 Each of the four rows represent a way things could be. For instance, the
-second row (bolded here) represents how things are if \(P\) is true and
+second row (in blue here) represents how things are if \(P\) is true and
 \(Q\) is false.
 
 \end{frame}
@@ -482,16 +485,16 @@ $\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$
 \begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
 P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
 \hline 
-$\True$ & $\True$ &  &  & \textbf{$\True$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & \textbf{$\True$} &  & \\
-$\True$ & $\False$ &  &  & \textbf{$\True$} & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textbf{$\True$} &  & \\
-$\False$ & $\True$ &  &  & \textbf{$\False$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & \textbf{$\False$} &  & \\
-$\False$ & $\False$ &  &  & \textbf{$\False$} & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textbf{$\False$} &  & \\
+$\True$ & $\True$ &  &  & \textcolor{dodgerblue}{$\True$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & \textcolor{dodgerblue}{$\True$} &  & \\
+$\True$ & $\False$ &  &  & \textcolor{dodgerblue}{$\True$} & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textcolor{dodgerblue}{$\True$} &  & \\
+$\False$ & $\True$ &  &  & \textcolor{dodgerblue}{$\False$} & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & \textcolor{dodgerblue}{$\False$} &  & \\
+$\False$ & $\False$ &  &  & \textcolor{dodgerblue}{$\False$} & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & \textcolor{dodgerblue}{$\False$} &  & \\
 \end{tabular}
 \bigskip
 \end{center}
 
-I've bolded all the truth values for \(P\), which as you can see were
-just copied and pasted from the columns on the far left.
+I've put in blue all the truth values for \(P\), which as you can see
+were just copied and pasted from the columns on the far left.
 
 \end{frame}
 
@@ -502,17 +505,17 @@ just copied and pasted from the columns on the far left.
 \begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
 P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
 \hline 
-$\True$ & $\True$ &  &  & $\True$ & \textbf{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
-$\True$ & $\False$ &  &  & $\True$ & \textbf{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
-$\False$ & $\True$ &  &  & $\False$ & \textbf{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
-$\False$ & $\False$ &  &  & $\False$ & \textbf{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+$\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
 \end{tabular}
 \bigskip
 \end{center}
 
 The surprising thing (or at least the thing that surprised me as a
 student) was what we mean by the column under the \(\rightarrow\), which
-I've bolded.
+I've put in blue.
 
 \end{frame}
 
@@ -523,10 +526,10 @@ I've bolded.
 \begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
 P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
 \hline 
-$\True$ & $\True$ &  &  & $\True$ & \textbf{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
-$\True$ & $\False$ &  &  & $\True$ & \textbf{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
-$\False$ & $\True$ &  &  & $\False$ & \textbf{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
-$\False$ & $\False$ &  &  & $\False$ & \textbf{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
+$\True$ & $\True$ &  &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\True$ & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & $\False$ & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & $\True$ & $\False$ &  & \\
 \end{tabular}
 \bigskip
 \end{center}
@@ -544,10 +547,10 @@ first \(\rightarrow\) as its main connective. That is,
 \begin{tabular}{@{ }c@{ }@{ }c | c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c@{ }@{}c@{}@{ }c@{ }@{ }c@{ }@{ }c@{ }@{}c@{}@{ }c}
 P & Q &  & ( & P & $\rightarrow$ & Q & ) & $\lor$ & ( & Q & $\rightarrow$ & P & ) & \\
 \hline 
-$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textbf{$\True$} & $\True$ &  & \\
-$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textbf{$\True$} & $\True$ &  & \\
-$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textbf{$\False$} & $\False$ &  & \\
-$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textbf{$\True$} & $\False$ &  & \\
+$\True$ & $\True$ &  &  & $\True$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \\
+$\True$ & $\False$ &  &  & $\True$ & $\False$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\True$ &  & \\
+$\False$ & $\True$ &  &  & $\False$ & $\True$ & $\True$ &  & \textcolor{red}{$\True$} &  & $\True$ & \textcolor{dodgerblue}{$\False$} & $\False$ &  & \\
+$\False$ & $\False$ &  &  & $\False$ & $\True$ & $\False$ &  & \textcolor{red}{$\True$} &  & $\False$ & \textcolor{dodgerblue}{$\True$} & $\False$ &  & \\
 \end{tabular}
 \bigskip
 \end{center}

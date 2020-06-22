@@ -1,0 +1,179 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 13 - Disjunction
+
+<new slide>
+
+This lecture is about how 'or' sentences behave in Carnap. These sentences are called **disjunctions**, and the parts either side of the 'or' are called disjuncts.
+
+<new slide>
+
+The part of the book we're using is the section called "Modus Tollendo Ponens and Addition". It's in chapter 8, about 1/2 way down the page.
+
+<new slide>
+
+Like with and, there are two rules. And like with and, one of them is primarily for getting to or sentences as conclusions, the other is for using or sentences as premises.
+
+One of these is a little easier than then other.
+
+<new slide> 
+
+The main way we prove a disjunction is by proving one of the disjuncts.
+
+So if you've proven A, you can infer that A or B is true. This is because we're really understanding A or B as saying that at least one of the disjuncts is the case. So if one of them is, then for sure at least one is.
+
+Obviously it doens't matter which one. So you can also go from B to A or B.
+
+The rule here is called 'Addition', and abbreviated 'ADD'. And you just have to cite the line that the disjunct appears on.
+
+<new slide>
+
+What about using a disjunction? Well, that's a little bit harder. The idea is to take this argument to be kind of a primitive in the system.
+
+Premise 1: P or Q. Premise 2: Not Q. Conclusion P.
+
+This is sometimes called **disjunctive syllogism**.
+
+<new slide>
+
+Why might we think this is true? Well, consider the following argument.
+
+Premise One: Either the butler did it or the gardener did it.
+Premise Two: The gardener didn't do it.
+Conclusion: So, the butler did it.
+
+That sounds pretty good, right? That's the form we're assuming is good.
+
+<new slide>
+
+Here's another example to make the point.
+
+Premise One: The cat raced down the left alley or the right alley.
+Premise Two: The cat did not race down the right alley.
+Conclusion: So, the cat raced down the left alley.
+
+The historical significance of this is that, allegedly, it was used in arguments between ancient Greek logicians. Some of them thought this form was fine - like we are assuming here - and others did not. And the ones who thought it was fine argued that even dogs can reason this way. If they know the premises - e.g., because they are chasing a cat that came to a fork in the alleyway, and they sniffed down one alley to detect no cat there - they could conclude that the conclusion was true. They didn't go and sniff down the second alley. So if even the dogs can reason this way, we should be able to as well.
+
+<new slide>
+
+It doesn't matter much whether you negate the first or the second disjunct. This looks like a good argument as well.
+
+Premise One: Either the butler did it or the gardener did it.
+Premise Two: The butler didn't do it.
+Conclusion: So, the gardener did it.
+
+So we'll allow either disjunct to be negated.
+
+<new slide>
+
+Here's the rule we'll use.
+
+If you have A or B on a line, and a negation of one of the disjuncts on another line, you can infer the other disjunct.
+
+The rule has a Latin name which is abbreviated 'MTP'. But I'm going to use its sort of English name, disjunctive syllogism.
+
+When you use the rule, you cite the lines where the disjunction appears, and where the negation of the disjunct appears.
+
+<new slide>
+
+And for completeness, here's the statement of it that allows explicitly for the first disjunct to be negated.
+
+<new slide> 
+
+Carnap is fussy about a point here. The negation of one of the disjuncts has to be the sentence you get when you add a negation symbol to the front of that disjunct. It can't just be the opposite.
+
+<new slide>
+
+So it won't let you do this. Why? Because Q isn't what you get when you add a negation symbol to Not Q.
+
+<new slide>
+
+Here's how you have to do things. First derive Not Not Q from Q, then use disjunctive syllogism.
+
+<new slide>
+
+Just like with And, there is an interesting way that or interacts with conditionals. The following two sentences sound like they should be equivalent.
+
+First, if either P or Q is the case, then R is the case.
+
+Second, if P then R, and if Q then R.
+
+Try it for yourself with some particular sentences to see if it works. 
+
+<new slide>
+
+Now try proving that each of them is equivalent to the other. Just like last time, this requires doing a pair of proofs.
+
+It's worth pausing here for few minutes to try the proofs yourself.
+
+Done? OK, let's see how I did it. And remember, there are lots of ways to do these proofs, so if you did them differently, it doesn't mean you were incorrect.
+
+<new slide>
+
+First proving the conjunction If P then R and If Q then R.
+
+I'll write out the Show sentence, then add the premise. That gives us lines 1 and 2. What next?
+
+Well, to prove a conjunction, the usual tactic is to simply prove one conjunct then prove the other. Let's take that approach.
+
+So first we have to prove If P then R.
+
+That's a conditional, so we assume P and try to prove R.
+
+Once we've assumed P, getting to R isn't hard. We get P or Q by addition, then use Modus Ponens to get R.
+
+Now we've done the first part; we've shown that if P is the case, R is the case.
+
+What about the second part?
+
+Well, again we say what we're trying to do. This is up to line 8 now.
+
+We're trying to prove a conditional, so we assume the left hand side try to derive the right hand side. And the derivation is fairly straightforward. From Q we get P or Q by addition. Then we get R by modus ponens.
+
+Now we use the Adjunction rule, this is line 13, to put the two conjuncts onto a single line. And then we declare victory at line 14.
+
+<new slide>
+
+Here it is in a form you can cut and paste into Carnap.
+
+<new slide>
+
+The reverse direction is a little trickier.
+
+We're trying to prove a conditional this time, so we use Conditional Derivation not Direct Derivation. So we will (eventually) assume the left hand side and derive the right hand side.
+
+Before we do that, this time I started with the premise. And it's an and-premise, and it's usually good practive to use Simplification to split it up. So that's what I did at lines 3 and 4.
+
+Then at line 5 I finally get around to assuming the left hand side of the target.
+
+The next bit is tricky. I'm trying to prove R. But I can't get there yet - none of the rules I have is triggered.
+
+So what to do, what to do?
+
+Well, it turns out there is a universal what to do when stuck rule in Carnap. Assume the opposite of what you're trying to prove, and see if you can derive a contradition. That gives you one more chance to trigger some rules.
+
+Here we're aiming for R, so we'll assume Not R and see what happens.
+
+And what happens is that we now have the conditionals for Modus Tollens met. We have If P then R and line 3. And we have Not R at line 7. So we can infer Not P at line 8.
+
+And now the conditions for disjunctive syllogism are met.
+
+We have P or Q at line 5. And we have not P at line 8. So Q must be the case. That's what we infer at line 9.
+
+And if Q is the case, line 4 tells us R must be the case as well.
+
+So now we have our contradiction - Not R implies an inconsistent pair - R and not R. It's fine for the thing you've assumed to be one half of the inconsistent pair.
+
+So at line 11 we say that we have prove Not Not R by indirect proof. We assumed Not R and got a contradiction.
+
+At line 12 we say well if Not Not R is the case, then R must the case. If it isn't not true, then it's true, right?
+
+So finally we are done. We got from the assumption of P or Q - back at line 5 - to R down at line 12. So the conditional, if P or Q then R, is proven.
+
+<new slide>
+
+And here it is in a text only form.
+
+<new slide>
+
+Next time we'll end up the week by talking about the interaction between and and or.

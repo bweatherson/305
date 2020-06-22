@@ -1,0 +1,138 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 12 - Conjunction
+
+
+<new slide> 
+
+In this lecture we're going to talk about how proofs involving 'and' work.
+
+<new slide>
+
+The material here is covered in the section called "Simplification and Adjunction" in chapter 8 of Carnap. That's about 1/3 of the way through the chapter if you're scrolling through it.
+
+<new slide>
+
+Carnap has two rules for 'and'. They are really very simple rules. If I was designing it, I would have led with these because they are very simple ways to see how rules work. But no matter, in this lecture we get some very straightforward rules with no tricks or catches.
+
+<new slide>
+
+First, here's how we prove a conjunction. And remember that we're using this word 'conjunction' to mean a sentence where the main connective is 'and'. The sentences either side of 'and' are called 'conjuncts'.
+
+Anyway, the way you prove one of these is you prove the two parts. That's it.
+
+If you want to convince me that A and B is true, you convince me that A is true, and you convince me that B is true, and that's it.
+
+The only thing to remember about this rule is that it has a funny name: Adjunction. It's shortened to A.D.J.
+
+The lines you cite as justification are the lines where the conjuncts appear. You don't have to cite them in any particular order. The program is smart enough to know that if the right hand conjunct is cited first and the left hand conjunct is cited second then you've cited what you need to cite.
+
+<new slide>
+
+What about the other way, if we want to prove something from a conjunction.
+
+Well, the rule here is even easier.
+
+If you have a line that says A and B, you can derive A from it by the rule 'Simplification'. You just cite the line A and B appears on.
+
+You can also use Simplication to derive B; again you just cite the line A and B appears on.
+
+The only thing to remember is that Simplification is shortened to S. I don't know why it gets a one letter acronym while the others get three letter acronyms.
+
+<new slide>
+
+So I'm not going to prove this, but you should check for yourself that the following two things are equivalent.
+
+First, the argument with premise 1 equals A and premise 2 equals B and conclusion C is valid.
+
+Second, the argument with premise 1 equals A and B and conclusion C is valid.
+
+In effect, the comma between premises is kind of like an and.
+
+<new slide>
+
+In general it's worth thinking a bit about how 'and' behaves in English. It turns out to do slightly unexpected things in certain embeddings. So think about how you'd translate this English sentnce into the language we have so far.
+
+"If we win, and if Michigan State loses, then we're going to the Big Ten Championship Game."
+
+<new slide>
+
+Using the dictionary P is We win, Q is Michigan State loses, and R is We're Going to the Big Ten Championship Game, how would you translate it?
+
+I'll give you just a little time to think about it.
+
+<thinking music>
+
+<new slide> 
+
+I think there are two perfectly good ways to translate it.
+
+First, if P then if Q then R.
+
+Second, if P and Q, then R.
+
+Both of those are ways of saying that P plus Q together are sufficient for R.
+
+<new slide>
+
+Should we worry about this pair of possible translations? No, because they are equivalent.
+
+<new slide> 
+
+I'm not going to include thinking music for this one, because it might take a while. But I encourage you to pause the lecture now and prove that 1 and 2 are equivalent. That is, do two proofs in Carnap, each of them starting with one of the two translations and ending with the other.
+
+OK - are you done? I'll go over how I did them.
+
+<new slide> 
+
+I start with what I'm trying to prove, If P and Q then R. 
+
+It's a conditional, so I assume the left hand side at line 2.
+
+At line 3 I get around to bringing in the one premise I have. The premise is this messy thing: if p then if q then r.
+
+Now the only thing I can really do with line 2 is break it up. So that's what I do at lines 4 and 5.
+
+Line 3 is a conditional with P on the left, and line 4 says P. So I can derive the right hand side of line 3. That's what I do at line 6. I derive If Q then R by Modus Ponens from P and if p, then if q then r.
+
+Now at line 6 I have a conditional with Q on the left. And at line 5 I have Q. So I can use Modus Ponens to derive the right hand side of line 6. That's R.
+
+And that's nice because that's what I was aiming for. I now have got from the left hand side of the target (at line 2) down to the right hand side of the target (at line 7). So I can declare a conditional derivation done.
+
+<new slide> Text Version of Proof
+
+Here's how it looks in a version you could type into Carnap. It's a bit annoying to find these various symbols all over the edges of the keyboard, but that's much less annoying than installing special fonts for all of them I guess.
+
+<new slide>
+
+OK, let's end with the other direction. This is a bit trickier.
+
+We are trying to prove a conditional, so we say what we're aiming for at line 1. And we assume its left hand side at line 2.
+
+But now think about what we're aiming for. The right hand side of the target is a conditional, If Q then R. And to prove that we need to do one of these conditional derivations.
+
+So at line 3 we say where we're aiming for. It's a conditional, so at line 4 we assume its left hand side and indent things even more.
+
+Finally at line 5 we can list the premise we have.
+
+It's a conditional, so we need to get its left hand side to trigger it. And its left hand side is a conjunction P and Q. We can get that by putting together P, from line 2, and Q, from line 4.
+
+So line 6 says that we have derived the conjunction.
+
+Then line 7 says that we have a conditional at line 5, and its left hand side at line 6, so we can derive its right hand side.
+
+But it's right hand side is R. That lets us finish the proof of If Q then R.
+
+So at line 8 we declare that we're done with this part of the proof: we've got to If Q then R.
+
+But now, and this is the tricky part, remember what our overall game plan was. We wanted to get from P to If Q then R. And we have done just that. At line 8 we finished a proof of If Q then R.
+
+So at line 9 we can declare that we are done with the main proof: we've shown If P then If Q then R.
+
+<new slide>
+
+Here is the version that proof in text only format.
+
+<new slide>
+
+Next time we'll do the same thing, but for disjunction.

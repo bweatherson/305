@@ -1,0 +1,67 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 11 - The Conditional Theorem
+
+<new slide>
+
+This is going to be a short lecture on a nice feature of Carnap.
+
+<new slide> 
+
+The book doesn't cover it, but it's relevant to what we'll do later, so I'm covering it now.
+
+<new slide>
+
+It turns out that in Carnap these two things are equivalent.
+
+First, that the argument from A and B to C is valid.
+
+Second, that the argument from A to if B then C is valid.
+
+That is, if one of these is correct, the other has to be as well.
+
+It should be a fairly intuitive result, but it's worth pausing just a bit about why it is correct.
+
+<new slide>
+
+To prove that two things are equivalent, you have to do two things. You have to prove that if the first is correct, so is the second. And you have to prove that if the second is correct, so is the first. So let's get to it.
+
+First, we'll prove that if the first is right, so is the second.
+
+In this case, remember, the first is that there is a proof of C with premises A and B. So assume that this proof exists.
+
+Now what we're trying to prove is that there is a proof of If B then C from just premise A.
+
+Well, imagine starting a proof with A followed by the line Show: If B then C.
+
+Now we know there is a proof of C from A and B. So we can run through whatever goes on in that proof after these lines. We will have to indent all the lines - since B is now an assumption not a premise - but nothing else will change.
+
+And we know that proof ends with C.
+
+And then we can use conditional derivation to show If B then C.
+
+<new slide>
+
+The other way is even easier. Here we are assuming that there is a proof of If B then C from premise A. And we're trying to prove C with the premises A and B.
+
+Well start by just listing one of the premises, A.
+
+Now run the proof, whatever it is, that gets from A to If B then C.
+
+The use MPP on line 1 and the the line that proves If B then C, and you'll get C.
+
+<new slide>
+
+This was fairly hand-wavy as these kinds of proofs go. But they were sound arguments - or at least they were hand-wavy gestures at sound arguments.
+
+They are the kind of arguments we give in metalogic.
+
+In this course we will primarily work on building proofs, and showing that things are valid.
+
+But one really nice thing about logic is that proofs themselves are formal entities that we can reason about. And this lets us use logic to inquire about the nature of logic itself.
+
+This is not at all a metalogic course. But the philosophy department at UM does have metalogic courses. And I believe the the math department does too. And the results that you get when you start applying logic to itself this way are really surprising.
+
+<new slide> 
+
+But that's not our topic - I just wanted to make sure you know that it's one direction you can go next with this stuff. We'll go back to doing proofs rather than reasoning about them, and in particular next time we'll look at proofs involving 'and'.

@@ -1,0 +1,185 @@
+Hello, and welcome to Philosophy 305 - Introduction to Formal Methods
+
+Lecture 14 - Explosion
+
+<new slide> 
+
+We'll end the week talking about two fun facts about the interaction of and and or.
+
+The first is that the theory we've got so far lets us derive explosion, the thesis that everything follows from a contradiction.
+
+The second is that the theory lets us derive all four of DeMorgan's Laws.
+
+<new slide>
+
+This isn't in the book, but it's helpful for understanding chapter 8.
+
+<new slide>
+
+So Explosion.
+
+<new slide>
+
+What do we mean by Explosion? We mean that this is a good valid argument. Premise 1: P. Premise 2: Not P. Conclusion: Q.
+
+And that works for any P and Q you like.
+
+<new slide>
+
+Now this is weird. It violates a principle of relevance. The premises don't have to be about the same subject matter as the conclusion. P could be about the weather in Ann Arbor, and Q could be about the fall of the Roman Empire, and this would be a valid argument. That seems weird - premises should, you might think, be relevant to the conclusion. But here they are not.
+
+<new slide>
+
+Here is a very informal way to argue for the validity of Explosion.
+
+<new slide>
+
+An argument is valid if it is impossible for the premises to be true and the conclusion false. That's our definition of validity.
+
+<new slide>
+
+In **Explosion**, it is impossible for the premises to be true. After all, they are inconsistent.
+
+<new slide>
+
+So in **Explosion**, it is impossible for the premises to be true and the conclusion false. If something is impossible, adding more things doesn't make it possible.
+
+<new slide>
+
+So **Explosion** is valid. It satisfies the very definition of validity.
+
+But you might think this is a trick. Or you might think it's evidence we got off on the wrong foot in defining validity.
+
+So it's useful to see how to derive Explosion.
+
+<new slide>
+
+If you feel up for a challenge, try to do this yourself in Carnap.
+
+There are multiple ways to do it, but they are all a bit odd.
+
+So pause if you want to try it yourself, otherwise I'll show you a couple of ways to go.
+
+<new slide>
+
+This is a good proof in Carnap, though it is incredibly weird. We assume the premises. Then assume not Q. Then say hey, given not Q and our premises, we get a contradiction - namely, the premises. So not not Q. Therefore Q.
+
+If you didn't like Explosion, you'll probably think this is trickery piled upon trickery.
+
+Fortunately, there is a better argument.
+
+<new slide>
+
+From P, we can derive P or Q.
+
+And from P or Q combined with Not P, we can derive Q.
+
+So from P plus Not P, we can derive Q.
+
+<new slide>
+
+At this point it is clear there are only really three options on the table.
+
+First, we can reject Addition, and reject the step from P to P or Q.
+
+Second, we can reject Disjunctive Syllogism, and reject the step from P or Q, plus not P, to Q.
+
+Third, we can accept that there is an intuitive, good argument for Explosion.
+
+<new slide>
+
+Most people who reject explosion also reject disjunctive syllogism.
+
+<new slide>
+
+Why do these folks reject Explosion? Well there tend to be three reasons.
+
+<new slide>
+
+One concerns databases, especially databases that store information. You might want to have a logic for databases that satisfies the following principles.
+
+First, the database includes the logical consequences of what it's told. If you tell it p, and you tell it if p then q, you don't want to have to also tell it q.
+
+Second, you don't want it to break if by mistake two people enter opposite pieces of information.
+
+But obviously if you've got explosion you can't have those things. A database that includes all the logical consequences of what it is told, and which is told inconsistent things, will include everything.
+
+So some people think that logic shouldn't have explosion, because it should govern what these ideal databases can conclude.
+
+<new slide>
+
+Second thought. Logic seems to govern what's true in a story. If a story says P, and it says If P, Q, then it seems it must be true in the story that Q. There is no further question about whether Q is true in the story.
+
+On the other hand, either by accident or design, some stories have inconsistencies in them. Those stories aren't trivial though - they don't make everything true.
+
+So a story can have P true, and Not P, but not have Q true. So P, Not P can't entail Q.
+
+<new slide>
+
+Third, really radical view. Some philosophers think that there are actually true contradictions. For example, they think that the liar sentence, "This sentence is not true" is both true and not true. They really can't think that if P and Not P are both true, then Q has to be true as well.
+
+<new slide>
+
+I don't think these are good arguments, though I think they show us that the relationship between logic and stores of information - be they databases or stories - is more complicated than we might have thought.
+
+But I'll leave further discussion of that for different classes.
+
+<new slide>
+
+OK, onto DeMorgan Laws.
+
+We've covered a lot today, and I'm just going to state what these laws are rather than work through the proofs in any detail.
+
+The proofs are going to be there if you want to study them, but I'm not going to talk through the.
+
+<new slide>
+
+What are the DeMorgan Laws. They are a pair of equivalences. Here is the first of them.
+
+It's not the case that P or Q; is equivalent to
+It's not the case that P and it's not the case that Q.
+
+If you want to try proving these for yourself, pause this and do so before the next slide.
+
+<new slide>
+
+Here's the proof with premise It's not the case that P or Q and conclusion It's not the case that P and it's not the case that Q.
+
+<new slide>
+
+And here's the proof of the argument where we flip the premise and conclusion around.
+
+<new slide>
+
+The second DeMorgan equivalence says that these two things are equivalent.
+
+First, it isn't the case that P or it isn't the case that Q.
+
+Second, it isn't the case that both P and Q.
+
+Again, think about how you'd prove these - or pause the lecture and try proving them before continuing.
+
+<new slide>
+
+Here's how I did the first of the proofs.
+
+<new slide>
+
+And here's how I did the second.
+
+<new slide>
+
+There is a general pattern behind the DeMorgan laws.
+
+To move a negation from outside the parentheses to inside it, you do two things.
+
+First, you negate each of the parts.
+Second, you flip the conjunction/disjunction symbol upside down.
+
+So the negation of a disjunction is a conjunction of negations, and the negation of a conjunction is a disjunction of negations.
+
+This is important to remember - inside a negation, and and or behave not the way you might have expected.
+
+<new slide>
+
+That's all for this week. Next week we'll start talking about truth tables.
